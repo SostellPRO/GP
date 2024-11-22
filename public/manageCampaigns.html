@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Importer une Campagne</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/manageCampaigns.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Importer une Campagne</h1>
+    </header>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <label for="campaignFile">Fichier Excel :</label>
+      <input
+        type="file"
+        id="campaignFile"
+        name="campaignFile"
+        accept=".xlsx"
+        required
+      />
+      <button type="submit">Importer</button>
+    </form>
+    <div id="importStatus"></div>
+  </body>
+</html>

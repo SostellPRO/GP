@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fiche Client</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/clientDetail.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Fiche Client</h1>
+    </header>
+    <form id="clientForm">
+      <div>
+        <h2>Section 1 : Contact</h2>
+        <label for="raisonSociale">Raison Sociale :</label>
+        <input type="text" id="raisonSociale" required />
+
+        <label for="secteurActivite">Secteur d'Activité :</label>
+        <input type="text" id="secteurActivite" />
+
+        <label for="siren">SIREN :</label>
+        <input type="text" id="siren" />
+
+        <label for="siret">SIRET :</label>
+        <input type="text" id="siret" />
+      </div>
+
+      <div>
+        <h2>Section 2 : Prospection</h2>
+        <label for="nombreDossiers">Nombre de Dossiers :</label>
+        <input type="number" id="nombreDossiers" required />
+
+        <label for="montantEstime">Montant Estimé :</label>
+        <input type="number" id="montantEstime" />
+
+        <label for="statut">Statut :</label>
+        <select id="statut">
+          <option value="En attente d'appel">En attente d'appel</option>
+          <option value="À rappeler">À rappeler</option>
+          <option value="Signé">Signé</option>
+          <option value="Fin de communication">Fin de communication</option>
+        </select>
+      </div>
+      <button type="submit">Enregistrer</button>
+    </form>
+    <button onclick="navigateToAgenda()">Retour à l'Agenda</button>
+  </body>
+</html>

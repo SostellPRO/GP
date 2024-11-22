@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Agenda</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/agenda.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Agenda</h1>
+    </header>
+    <div id="user-info">
+      <p>ID Utilisateur : <span id="user-id"></span></p>
+      <p>Nom : <span id="user-name"></span></p>
+    </div>
+    <nav>
+      <button onclick="loadClients('En attente d\'appel')">Lead</button>
+      <button onclick="loadClients('À rappeler')">À rappeler</button>
+      <button onclick="loadClients('Signé')">Signé</button>
+      <button onclick="loadClients('Fin de communication')">Échoué</button>
+    </nav>
+    <section>
+      <h2>Liste des clients</h2>
+      <div id="client-list">Chargement...</div>
+    </section>
+  </body>
+</html>
