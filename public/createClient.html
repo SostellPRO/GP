@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Créer un Client</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/createClient.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Créer un Client</h1>
+    </header>
+    <form id="createClientForm">
+      <fieldset>
+        <legend>Informations sur l'entreprise</legend>
+        <label for="raisonSociale">Raison Sociale :</label>
+        <input type="text" id="raisonSociale" name="raisonSociale" required />
+
+        <label for="secteurActivite">Secteur d'Activité :</label>
+        <input
+          type="text"
+          id="secteurActivite"
+          name="secteurActivite"
+          required
+        />
+
+        <label for="siren">SIREN :</label>
+        <input type="text" id="siren" name="siren" maxlength="9" required />
+
+        <label for="siret">SIRET :</label>
+        <input type="text" id="siret" name="siret" maxlength="14" required />
+
+        <label for="typologie">Typologie Créances :</label>
+        <select id="typologie" name="typologie" required>
+          <option value="B2B">B2B</option>
+          <option value="B2C">B2C</option>
+          <option value="B2B & B2C">B2B & B2C</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Interlocuteur Principal</legend>
+        <label for="civilite1">Civilité :</label>
+        <select id="civilite1" name="civilite1" required>
+          <option value="M">M</option>
+          <option value="Mme">Mme</option>
+        </select>
+
+        <label for="nomInterlocuteur1">Nom :</label>
+        <input
+          type="text"
+          id="nomInterlocuteur1"
+          name="nomInterlocuteur1"
+          required
+        />
+
+        <label for="prenomInterlocuteur1">Prénom :</label>
+        <input
+          type="text"
+          id="prenomInterlocuteur1"
+          name="prenomInterlocuteur1"
+          required
+        />
+
+        <label for="telephone1_1">Téléphone Principal :</label>
+        <input type="tel" id="telephone1_1" name="telephone1_1" required />
+
+        <label for="mail1_1">E-mail Principal :</label>
+        <input type="email" id="mail1_1" name="mail1_1" required />
+      </fieldset>
+
+      <fieldset>
+        <legend>Autres Informations</legend>
+        <label for="adressePostale">Adresse Postale :</label>
+        <input type="text" id="adressePostale" name="adressePostale" required />
+
+        <label for="complementAdresse">Complément Adresse :</label>
+        <input type="text" id="complementAdresse" name="complementAdresse" />
+
+        <label for="codePostal">Code Postal :</label>
+        <input type="text" id="codePostal" name="codePostal" required />
+
+        <label for="nombreDossiers">Nombre de Dossiers :</label>
+        <input
+          type="number"
+          id="nombreDossiers"
+          name="nombreDossiers"
+          required
+        />
+
+        <label for="montantEstime">Montant Estimé :</label>
+        <input type="number" id="montantEstime" name="montantEstime" required />
+
+        <label for="statut">Statut :</label>
+        <select id="statut" name="statut" required>
+          <option value="En attente d'appel">En attente d'appel</option>
+          <option value="À rappeler">À rappeler</option>
+          <option value="En attente d'information">
+            En attente d'information
+          </option>
+          <option value="Fin de communication">Fin de communication</option>
+          <option value="En cours de signature">En cours de signature</option>
+          <option value="Signé">Signé</option>
+        </select>
+      </fieldset>
+
+      <button type="submit">Créer le Client</button>
+      <button type="button" id="backToHome">Retour à l'Accueil</button>
+    </form>
+    <p id="statusMessage"></p>
+  </body>
+</html>

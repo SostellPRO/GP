@@ -11,9 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (userInfo) {
     document.getElementById("user-id").textContent = userInfo.id;
-    document.getElementById(
-      "user-name"
-    ).textContent = `${userInfo.prenom} ${userInfo.nom}`;
+    document.getElementById("user-name").textContent =
+      `${userInfo.prenom} ${userInfo.nom}`;
 
     const navLinks = document.getElementById("navigation-links");
 
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     navLinks.innerHTML += `
       <li><a href="agenda.html">Agenda</a></li>
-      <li><a href="clientDetail.html">Créer un client</a></li>
+      <li><a href="createClient.html">Créer un client</a></li>
     `;
   } else {
     alert("Erreur d'authentification. Veuillez vous reconnecter.");
