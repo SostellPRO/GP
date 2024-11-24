@@ -261,7 +261,6 @@
     "montantEstime": "<5000",
     "montantEstimeCustom": "",
     "statut": "En attente d'appel",
-    "matriculeGestionnaire": "a001",
-    "matriculeGestionnaireCustom": ""
+    "matriculeGestionnaire": "a001"
   }
 ]
