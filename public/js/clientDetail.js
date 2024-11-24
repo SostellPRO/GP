@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!clientId) {
     alert("Aucun client trouvé.");
-    window.location.href = "/agenda.html";
+    window.location.href = "/agenda.html"; // Redirection vers l'agenda
     return;
   }
 
@@ -18,9 +18,54 @@ document.addEventListener("DOMContentLoaded", async () => {
     populateClientForm(client); // Remplir le formulaire avec les données
   } catch (error) {
     alert(error.message);
+    window.location.href = "/agenda.html"; // Redirection en cas d'erreur
   }
 
-  // Ajouter un événement pour le bouton "Ajouter Commentaire"
+  // Ajouter un événement pour soumettre le formulaire
+  document
+    .getElementById("clientForm")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const updatedClient = {
+        raisonSociale: document.getElementById("raisonSociale").value,
+        secteurActivite: document.getElementById("secteurActivite").value,
+        siren: document.getElementById("siren").value,
+        siret: document.getElementById("siret").value,
+        typologie: document.getElementById("typologie").value,
+        civilite: document.getElementById("civilite").value,
+        nomInterlocuteur: document.getElementById("nomInterlocuteur").value,
+        prenomInterlocuteur: document.getElementById("prenomInterlocuteur")
+          .value,
+        telephone1: document.getElementById("telephone1").value,
+        telephone2: document.getElementById("telephone2").value,
+        mail1: document.getElementById("mail1").value,
+        mail2: document.getElementById("mail2").value,
+        adressePostale: document.getElementById("adressePostale").value,
+        complementAdresse: document.getElementById("complementAdresse").value,
+        codePostal: document.getElementById("codePostal").value,
+        nombreDossiers: document.getElementById("nombreDossiers").value,
+        montantEstime: document.getElementById("montantEstime").value,
+        statut: document.getElementById("statut").value,
+      };
+
+      try {
+        const response = await fetch(`/api/clients/${clientId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedClient),
+        });
+
+        if (!response.ok) throw new Error("Erreur lors de la mise à jour.");
+
+        // Rediriger vers la page agenda après mise à jour
+        window.location.href = "/agenda.html";
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+
+  // Ajouter un événement pour ajouter un commentaire
   document.getElementById("addComment").addEventListener("click", async () => {
     const commentaire = document.getElementById("commentaire").value.trim();
 
@@ -30,7 +75,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-      // Ajouter un commentaire à l'historique via une requête PATCH
       const response = await fetch(`/api/clients/${clientId}/historique`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -41,28 +85,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         throw new Error("Erreur lors de l'ajout du commentaire.");
 
       const updatedClient = await response.json();
-      updateHistorique(updatedClient.historique); // Mettre à jour l'historique
-      document.getElementById("commentaire").value = ""; // Réinitialiser le champ commentaire
-    } catch (error) {
-      alert(error.message);
-    }
-  });
-
-  // Ajouter un événement pour la modification du statut
-  document.getElementById("statut").addEventListener("change", async (e) => {
-    const nouveauStatut = e.target.value;
-
-    try {
-      // Mettre à jour le statut du client via une requête PATCH
-      const response = await fetch(`/api/clients/${clientId}/statut`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ statut: nouveauStatut }),
-      });
-
-      if (!response.ok)
-        throw new Error("Erreur lors de la mise à jour du statut.");
-      alert("Statut mis à jour avec succès !");
+      updateHistorique(updatedClient.historique);
+      document.getElementById("commentaire").value = ""; // Réinitialiser le champ
     } catch (error) {
       alert(error.message);
     }
@@ -97,7 +121,6 @@ function populateClientForm(client) {
   document.getElementById("statut").value =
     client.statut || "En attente d'appel";
 
-  // Mettre à jour la section historique
   updateHistorique(client.historique);
 }
 
@@ -113,10 +136,13 @@ function updateHistorique(historique) {
     return;
   }
 
-  // Ajouter chaque commentaire à la liste
   historique.forEach((comment) => {
     const li = document.createElement("li");
     li.textContent = comment;
     historiqueList.appendChild(li);
   });
+}
+
+function navigateToAgenda() {
+  window.location.href = "/agenda.html";
 }

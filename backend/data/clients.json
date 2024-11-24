@@ -154,9 +154,9 @@
     "adressePostale": "20 avenue de l'Europe",
     "complementAdresse": "Bâtiment P",
     "codePostal": "08003",
-    "nombreDossiers": "100",
-    "montantEstime": "10000",
-    "statut": "En attente d'appel",
+    "nombreDossiers": "",
+    "montantEstime": "",
+    "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
     "dateStatut": "2024-11-24T23:10:12.635Z",
     "historique": [
