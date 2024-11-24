@@ -119,7 +119,7 @@ router.put("/:id", (req, res) => {
 
     writeClients(clients);
 
-    res.json(clients[clientIndex]);
+    res.sendStatus(204); // Succès sans contenu
   } catch (error) {
     console.error("Erreur lors de la mise à jour d'un client :", error);
     res.status(500).json({ error: "Erreur interne du serveur." });
@@ -143,11 +143,11 @@ router.patch("/:id/statut", (req, res) => {
     }
 
     clients[clientIndex].statut = statut;
-    clients[clientIndex].dateStatut = new Date().toISOString(); // Ajouter une date pour le changement de statut
+    clients[clientIndex].dateStatut = new Date().toISOString();
 
     writeClients(clients);
 
-    res.json(clients[clientIndex]);
+    res.sendStatus(204); // Succès sans contenu
   } catch (error) {
     console.error("Erreur lors de la mise à jour du statut :", error);
     res.status(500).json({ error: "Erreur interne du serveur." });
@@ -174,7 +174,6 @@ router.patch("/:id/historique", (req, res) => {
         .json({ error: "Le champ 'commentaire' est requis." });
     }
 
-    // Ajouter le commentaire à l'historique avec un timestamp
     const timestamp = new Date().toLocaleString("fr-FR", {
       day: "2-digit",
       month: "2-digit",
@@ -187,7 +186,7 @@ router.patch("/:id/historique", (req, res) => {
 
     writeClients(clients);
 
-    res.json(client);
+    res.sendStatus(204); // Succès sans contenu
   } catch (error) {
     console.error("Erreur lors de la mise à jour de l'historique :", error);
     res.status(500).json({ error: "Erreur interne du serveur." });
@@ -206,7 +205,7 @@ router.delete("/:id", (req, res) => {
     }
 
     writeClients(filteredClients);
-    res.status(200).json({ message: "Client supprimé avec succès." });
+    res.sendStatus(204); // Succès sans contenu
   } catch (error) {
     console.error("Erreur lors de la suppression d'un client :", error);
     res.status(500).json({ error: "Erreur interne du serveur." });

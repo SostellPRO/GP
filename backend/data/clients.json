@@ -18,9 +18,9 @@
     "codePostal": "75001",
     "nombreDossiers": "15",
     "montantEstime": "15000",
-    "statut": "En attente d'appel",
+    "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
-    "dateStatut": "2024-11-24T22:49:32.860Z",
+    "dateStatut": "2024-11-24T23:09:22.182Z",
     "historique": [
       "[24/11/2024 23:44] commentaires 5",
       "[24/11/2024 23:35] commentaires 4",
@@ -50,7 +50,7 @@
     "montantEstime": "25000",
     "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
-    "dateStatut": "2023-11-15",
+    "dateStatut": "2024-11-24T23:11:56.377Z",
     "historique": [
       "[15/11/2023 - 14:00] Dossier à suivre.",
       "[16/11/2023 - 09:20] Client a demandé un rappel."
@@ -111,7 +111,7 @@
     ]
   },
   {
-    "id": "230911101005",
+    "id": "230911101006",
     "raisonSociale": "Eco Solutions",
     "secteurActivite": "Environnement",
     "siren": "203948576",
@@ -129,11 +129,66 @@
     "codePostal": "69003",
     "nombreDossiers": "75",
     "montantEstime": "75000",
-    "statut": "Signé",
+    "statut": "Fin de communication",
     "matriculeGestionnaire": "a001",
-    "dateStatut": "2023-11-12",
+    "dateStatut": "2024-11-24T23:00:35.225Z",
     "historique": [
       "[12/11/2023 - 14:00] Collaboration confirmée.",
+      "[11/11/2023 - 10:30] Contrat en cours de signature."
+    ]
+  },
+  {
+    "id": "230911101007",
+    "raisonSociale": "Vivatech",
+    "secteurActivite": "Environnement",
+    "siren": "203948576",
+    "siret": "20394857610293",
+    "typologie": "B2C",
+    "civilite": "Mme",
+    "nomInterlocuteur": "Khalamet",
+    "prenomInterlocuteur": "Dragon",
+    "telephone1": "0723445566",
+    "telephone2": "0845667788",
+    "mail1": "kdra@eco.com",
+    "mail2": "infotel@eco.com",
+    "adressePostale": "20 avenue de l'Europe",
+    "complementAdresse": "Bâtiment P",
+    "codePostal": "08003",
+    "nombreDossiers": "100",
+    "montantEstime": "10000",
+    "statut": "En attente d'appel",
+    "matriculeGestionnaire": "a001",
+    "dateStatut": "2024-11-24T23:10:12.635Z",
+    "historique": [
+      "[12/11/2023 - 14:00] Collaboration confirmée.",
+      "[11/11/2023 - 10:30] Contrat en cours de signature."
+    ]
+  },
+  {
+    "id": "230911101005",
+    "raisonSociale": "Pollution Solutions",
+    "secteurActivite": "Environnement",
+    "siren": "203948576",
+    "siret": "20394857610293",
+    "typologie": "B2C",
+    "civilite": "M",
+    "nomInterlocuteur": "Calile",
+    "prenomInterlocuteur": "Labeche",
+    "telephone1": "0623445568",
+    "telephone2": "0645668844",
+    "mail1": "callile.lemoine@eco.com",
+    "mail2": "information@eco.com",
+    "adressePostale": "15 avenue de l'Europe",
+    "complementAdresse": "Bâtiment B",
+    "codePostal": "69003",
+    "nombreDossiers": "75",
+    "montantEstime": "69000",
+    "statut": "En attente d'appel",
+    "matriculeGestionnaire": "a001",
+    "dateStatut": "2024-11-24T23:10:48.885Z",
+    "historique": [
+      "[25/11/2024 00:02] commentaire 3",
+      "[12/11/2023 - 14:00] Collaboration.",
       "[11/11/2023 - 10:30] Contrat en cours de signature."
     ]
   }
