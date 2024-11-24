@@ -238,5 +238,30 @@
     "matriculeGestionnaire": "a001",
     "dateStatut": "2023-11-13",
     "derniersCommentaires": "Premier contact programmé."
+  },
+  {
+    "id": "202411241558",
+    "raisonSociale": "Maison1",
+    "secteurActivite": "jeux vidéos",
+    "siren": "555444333",
+    "siret": "55544433300007",
+    "typologie": "B2C",
+    "civilite1": "M",
+    "nomInterlocuteur1": "Papou",
+    "prenomInterlocuteur1": "Yades",
+    "telephone1": "0478956410",
+    "telephone2": "0785976411",
+    "mail1": "papou@hotmail.com",
+    "mail2": "yades@yahoo.fr",
+    "adressePostale": "19 impasse Hyères",
+    "complementAdresse": "ter",
+    "codePostal": "03699",
+    "nombreDossiers": "<500",
+    "nombreDossiersCustom": "",
+    "montantEstime": "<5000",
+    "montantEstimeCustom": "",
+    "statut": "En attente d'appel",
+    "matriculeGestionnaire": "a001",
+    "matriculeGestionnaireCustom": ""
   }
 ]

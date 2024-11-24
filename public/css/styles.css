@@ -72,18 +72,13 @@ header {
 }
 
 form {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 fieldset {
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
+  grid-column: span 2; /* Ajuste la largeur si nécessaire */
 }
 
 legend {
@@ -91,8 +86,12 @@ legend {
 }
 
 label {
-  display: block;
-  margin-top: 10px;
+  font-size: 14px;
+}
+
+input,
+select {
+  font-size: 14px;
 }
 
 input,

@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 
@@ -12,8 +11,14 @@ const app = express();
 const PORT = 3000;
 
 // Middlewares
-app.use(bodyParser.json());
+app.use(express.json()); // Remplace bodyParser.json()
 app.use(cors());
+
+// Middleware pour consigner les requêtes
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
 
 // Servir les fichiers statiques (frontend)
 app.use(express.static(path.join(__dirname, "../public")));
