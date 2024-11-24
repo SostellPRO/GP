@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -24,15 +24,77 @@
 
         <label for="siret">SIRET :</label>
         <input type="text" id="siret" />
+
+        <label for="typologie">Typologie :</label>
+        <select id="typologie">
+          <option value="B2B">B2B</option>
+          <option value="B2C">B2C</option>
+          <option value="B2B & B2C">B2B & B2C</option>
+        </select>
+
+        <label for="civilite">Civilité :</label>
+        <select id="civilite">
+          <option value="M">M</option>
+          <option value="Mme">Mme</option>
+        </select>
+
+        <label for="nomInterlocuteur">Nom :</label>
+        <input type="text" id="nomInterlocuteur" />
+
+        <label for="prenomInterlocuteur">Prénom :</label>
+        <input type="text" id="prenomInterlocuteur" />
+
+        <label for="telephone1">Téléphone 1 :</label>
+        <input type="text" id="telephone1" />
+
+        <label for="telephone2">Téléphone 2 :</label>
+        <input type="text" id="telephone2" />
+
+        <label for="mail1">Mail 1 :</label>
+        <input type="text" id="mail1" />
+
+        <label for="mail2">Mail 2 :</label>
+        <input type="text" id="mail2" />
+
+        <label for="adressePostale">Adresse Postale :</label>
+        <input type="text" id="adressePostale" />
+
+        <label for="complementAdresse">Complément Adresse :</label>
+        <input type="text" id="complementAdresse" />
+
+        <label for="codePostal">Code Postal :</label>
+        <input type="text" id="codePostal" />
       </div>
 
       <div>
-        <h2>Section 2 : Prospection</h2>
+        <h2>Section 2 : Informations supplémentaires</h2>
         <label for="nombreDossiers">Nombre de Dossiers :</label>
-        <input type="number" id="nombreDossiers" required />
+        <select id="nombreDossiers">
+          <option value="<10">Moins de 10</option>
+          <option value="<100">Moins de 100</option>
+          <option value="<500">Moins de 500</option>
+          <option value="+500">Plus de 500</option>
+        </select>
 
         <label for="montantEstime">Montant Estimé :</label>
-        <input type="number" id="montantEstime" />
+        <select id="montantEstime">
+          <option value="<500">Moins de 500€</option>
+          <option value="<1000">Moins de 1000€</option>
+          <option value="<5000">Moins de 5000€</option>
+          <option value="<10000">Plus de 10000€</option>
+          <option value="+10000">Plus de 10000€</option>
+        </select>
+
+        <fieldset>
+          <legend>Commentaires</legend>
+          <label for="commentaire">Ajouter un commentaire :</label>
+          <textarea id="commentaire" name="commentaire"></textarea>
+          <button type="button" id="addComment">Ajouter Commentaire</button>
+          <div id="historique">
+            <h3>Historique :</h3>
+            <ul id="historiqueList"></ul>
+          </div>
+        </fieldset>
 
         <label for="statut">Statut :</label>
         <select id="statut">

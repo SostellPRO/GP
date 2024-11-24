@@ -1,8 +1,8 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const clientsFilePath = path.join(__dirname, "../data/clients.json");
 
+const clientsFilePath = path.join(__dirname, "../data/clients.json");
 const router = express.Router();
 
 // Fonction pour lire les clients
@@ -61,10 +61,13 @@ router.post("/", (req, res) => {
     }
 
     // Générer un ID unique pour le client
-    const id = `${new Date().toISOString().replace(/[-:.TZ]/g, "")}${
-      clients.length + 1
-    }`;
-    const newClient = { id, ...client };
+    const id = `${new Date().toISOString().replace(/[-:.TZ]/g, "")}${clients.length + 1}`;
+    const newClient = {
+      id,
+      ...client,
+      historique: client.historique || [],
+      statut: client.statut || "En attente d'appel",
+    };
 
     clients.push(newClient);
     writeClients(clients);
@@ -106,13 +109,87 @@ router.put("/:id", (req, res) => {
       return res.status(404).json({ error: "Client non trouvé." });
     }
 
-    // Mettre à jour les données du client
-    clients[clientIndex] = { ...clients[clientIndex], ...updatedData };
+    const existingClient = clients[clientIndex];
+
+    // Mise à jour des champs
+    clients[clientIndex] = {
+      ...existingClient,
+      ...updatedData,
+    };
+
     writeClients(clients);
 
     res.json(clients[clientIndex]);
   } catch (error) {
     console.error("Erreur lors de la mise à jour d'un client :", error);
+    res.status(500).json({ error: "Erreur interne du serveur." });
+  }
+});
+
+// Mettre à jour uniquement le statut
+router.patch("/:id/statut", (req, res) => {
+  try {
+    const { id } = req.params;
+    const { statut } = req.body;
+    const clients = readClients();
+    const clientIndex = clients.findIndex((client) => client.id === id);
+
+    if (clientIndex === -1) {
+      return res.status(404).json({ error: "Client non trouvé." });
+    }
+
+    if (!statut) {
+      return res.status(400).json({ error: "Le champ 'statut' est requis." });
+    }
+
+    clients[clientIndex].statut = statut;
+    clients[clientIndex].dateStatut = new Date().toISOString(); // Ajouter une date pour le changement de statut
+
+    writeClients(clients);
+
+    res.json(clients[clientIndex]);
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du statut :", error);
+    res.status(500).json({ error: "Erreur interne du serveur." });
+  }
+});
+
+// Ajouter un commentaire à l'historique
+router.patch("/:id/historique", (req, res) => {
+  try {
+    const { id } = req.params;
+    const { commentaire } = req.body;
+    const clients = readClients();
+    const clientIndex = clients.findIndex((client) => client.id === id);
+
+    if (clientIndex === -1) {
+      return res.status(404).json({ error: "Client non trouvé." });
+    }
+
+    const client = clients[clientIndex];
+
+    if (!commentaire) {
+      return res
+        .status(400)
+        .json({ error: "Le champ 'commentaire' est requis." });
+    }
+
+    // Ajouter le commentaire à l'historique avec un timestamp
+    const timestamp = new Date().toLocaleString("fr-FR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const fullComment = `[${timestamp}] ${commentaire}`;
+    client.historique = [fullComment, ...(client.historique || [])];
+
+    writeClients(clients);
+
+    res.json(client);
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour de l'historique :", error);
     res.status(500).json({ error: "Erreur interne du serveur." });
   }
 });

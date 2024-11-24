@@ -20,8 +20,14 @@
     "montantEstime": "15000",
     "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
-    "dateStatut": "2023-11-20",
-    "derniersCommentaires": "Premier contact établi."
+    "dateStatut": "2024-11-24T22:49:32.860Z",
+    "historique": [
+      "[24/11/2024 23:44] commentaires 5",
+      "[24/11/2024 23:35] commentaires 4",
+      "[24/11/2024 23:33] commentaires 3",
+      "[20/11/2023 - 10:30] Premier contact établi.",
+      "[21/11/2023 - 15:45] En attente de retour du client."
+    ]
   },
   {
     "id": "230911101002",
@@ -45,7 +51,10 @@
     "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
     "dateStatut": "2023-11-15",
-    "derniersCommentaires": "Dossier à suivre."
+    "historique": [
+      "[15/11/2023 - 14:00] Dossier à suivre.",
+      "[16/11/2023 - 09:20] Client a demandé un rappel."
+    ]
   },
   {
     "id": "230911101003",
@@ -69,7 +78,10 @@
     "statut": "Signé",
     "matriculeGestionnaire": "a001",
     "dateStatut": "2023-11-10",
-    "derniersCommentaires": "Contrat signé."
+    "historique": [
+      "[10/11/2023 - 11:15] Contrat signé.",
+      "[09/11/2023 - 10:00] Derniers ajustements discutés."
+    ]
   },
   {
     "id": "230911101004",
@@ -93,7 +105,10 @@
     "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
     "dateStatut": "2023-11-18",
-    "derniersCommentaires": "En attente de documents supplémentaires."
+    "historique": [
+      "[18/11/2023 - 09:00] En attente de documents supplémentaires.",
+      "[17/11/2023 - 16:00] Documents envoyés au client."
+    ]
   },
   {
     "id": "230911101005",
@@ -117,150 +132,9 @@
     "statut": "Signé",
     "matriculeGestionnaire": "a001",
     "dateStatut": "2023-11-12",
-    "derniersCommentaires": "Collaboration confirmée."
-  },
-  {
-    "id": "230911101006",
-    "raisonSociale": "Alpha Construction",
-    "secteurActivite": "Bâtiment",
-    "siren": "304958472",
-    "siret": "30495847210293",
-    "typologie": "B2B",
-    "civilite": "M",
-    "nomInterlocuteur": "Jacques",
-    "prenomInterlocuteur": "Dupuis",
-    "telephone1": "0634556677",
-    "telephone2": "0655667788",
-    "mail1": "jacques.dupuis@alpha.com",
-    "mail2": "contact@alpha.com",
-    "adressePostale": "42 rue Nationale",
-    "complementAdresse": "",
-    "codePostal": "69004",
-    "nombreDossiers": "120",
-    "montantEstime": "120000",
-    "statut": "À rappeler",
-    "matriculeGestionnaire": "a001",
-    "dateStatut": "2023-11-14",
-    "derniersCommentaires": "Rendez-vous prévu pour la semaine prochaine."
-  },
-  {
-    "id": "230911101007",
-    "raisonSociale": "MediCare",
-    "secteurActivite": "Santé",
-    "siren": "405968374",
-    "siret": "40596837410293",
-    "typologie": "B2C",
-    "civilite": "Mme",
-    "nomInterlocuteur": "Elodie",
-    "prenomInterlocuteur": "Bernard",
-    "telephone1": "0645667788",
-    "telephone2": "0677889900",
-    "mail1": "elodie.bernard@medicare.com",
-    "mail2": "info@medicare.com",
-    "adressePostale": "8 place des Terreaux",
-    "complementAdresse": "",
-    "codePostal": "69001",
-    "nombreDossiers": "300",
-    "montantEstime": "150000",
-    "statut": "Signé",
-    "matriculeGestionnaire": "a001",
-    "dateStatut": "2023-11-17",
-    "derniersCommentaires": "Contrat validé."
-  },
-  {
-    "id": "230911101008",
-    "raisonSociale": "FoodExpress",
-    "secteurActivite": "Restauration",
-    "siren": "506978362",
-    "siret": "50697836210293",
-    "typologie": "B2C",
-    "civilite": "M",
-    "nomInterlocuteur": "Julien",
-    "prenomInterlocuteur": "Roux",
-    "telephone1": "0655667788",
-    "telephone2": "0688990011",
-    "mail1": "julien.roux@foodexpress.com",
-    "mail2": "support@foodexpress.com",
-    "adressePostale": "90 avenue des Gobelins",
-    "complementAdresse": "",
-    "codePostal": "75013",
-    "nombreDossiers": "180",
-    "montantEstime": "180000",
-    "statut": "À rappeler",
-    "matriculeGestionnaire": "a001",
-    "dateStatut": "2023-11-19",
-    "derniersCommentaires": "Documents envoyés au client."
-  },
-  {
-    "id": "230911101009",
-    "raisonSociale": "GreenEnergy",
-    "secteurActivite": "Énergie",
-    "siren": "607986451",
-    "siret": "60798645110293",
-    "typologie": "B2B",
-    "civilite": "Mme",
-    "nomInterlocuteur": "Caroline",
-    "prenomInterlocuteur": "Noir",
-    "telephone1": "0677889900",
-    "telephone2": "0699001122",
-    "mail1": "caroline.noir@greenenergy.com",
-    "mail2": "contact@greenenergy.com",
-    "adressePostale": "77 boulevard Haussmann",
-    "complementAdresse": "Etage 3",
-    "codePostal": "75008",
-    "nombreDossiers": "220",
-    "montantEstime": "220000",
-    "statut": "Signé",
-    "matriculeGestionnaire": "a001",
-    "dateStatut": "2023-11-11",
-    "derniersCommentaires": "En attente de confirmation finale."
-  },
-  {
-    "id": "230911101010",
-    "raisonSociale": "BlueTech",
-    "secteurActivite": "Technologie",
-    "siren": "708976543",
-    "siret": "70897654310293",
-    "typologie": "B2B",
-    "civilite": "M",
-    "nomInterlocuteur": "Philippe",
-    "prenomInterlocuteur": "Blanc",
-    "telephone1": "0688990011",
-    "telephone2": "0700011223",
-    "mail1": "philippe.blanc@bluetech.com",
-    "mail2": "support@bluetech.com",
-    "adressePostale": "10 rue des Lilas",
-    "complementAdresse": "Bâtiment D",
-    "codePostal": "69006",
-    "nombreDossiers": "80",
-    "montantEstime": "80000",
-    "statut": "En attente d'appel",
-    "matriculeGestionnaire": "a001",
-    "dateStatut": "2023-11-13",
-    "derniersCommentaires": "Premier contact programmé."
-  },
-  {
-    "id": "202411241558",
-    "raisonSociale": "Maison1",
-    "secteurActivite": "jeux vidéos",
-    "siren": "555444333",
-    "siret": "55544433300007",
-    "typologie": "B2C",
-    "civilite1": "M",
-    "nomInterlocuteur1": "Papou",
-    "prenomInterlocuteur1": "Yades",
-    "telephone1": "0478956410",
-    "telephone2": "0785976411",
-    "mail1": "papou@hotmail.com",
-    "mail2": "yades@yahoo.fr",
-    "adressePostale": "19 impasse Hyères",
-    "complementAdresse": "ter",
-    "codePostal": "03699",
-    "nombreDossiers": "<500",
-    "nombreDossiersCustom": "",
-    "montantEstime": "<5000",
-    "montantEstimeCustom": "",
-    "statut": "En attente d'appel",
-    "matriculeGestionnaire": "a001"
+    "historique": [
+      "[12/11/2023 - 14:00] Collaboration confirmée.",
+      "[11/11/2023 - 10:30] Contrat en cours de signature."
+    ]
   }
 ]

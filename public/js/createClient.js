@@ -106,3 +106,78 @@ function parseJwt(token) {
     return null;
   }
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const historiqueList = document.getElementById("historiqueList");
+  const addCommentButton = document.getElementById("addComment");
+  const commentaireField = document.getElementById("commentaire");
+
+  const commentaires = [];
+
+  // Ajouter un commentaire à l'historique
+  addCommentButton.addEventListener("click", () => {
+    const commentaire = commentaireField.value.trim();
+    if (commentaire) {
+      const timestamp = new Date().toLocaleString("fr-FR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      const historiqueEntry = `[${timestamp}] ${commentaire}`;
+      commentaires.unshift(historiqueEntry);
+
+      // Mettre à jour l'affichage
+      updateHistoriqueDisplay();
+      commentaireField.value = ""; // Réinitialiser le champ
+    }
+  });
+
+  function updateHistoriqueDisplay() {
+    historiqueList.innerHTML = "";
+    commentaires.forEach((entry) => {
+      const li = document.createElement("li");
+      li.textContent = entry;
+      historiqueList.appendChild(li);
+    });
+  }
+
+  // Soumission du formulaire
+  document
+    .getElementById("createClientForm")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const clientData = Object.fromEntries(formData.entries());
+
+      // Ajouter l'historique dans les données du client
+      clientData.historique = commentaires;
+
+      try {
+        const response = await fetch("/api/clients", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(clientData),
+        });
+
+        if (!response.ok) {
+          throw new Error("Erreur lors de la création du client.");
+        }
+
+        document.getElementById("statusMessage").textContent =
+          "Client créé avec succès !";
+        document.getElementById("statusMessage").style.color = "green";
+        e.target.reset();
+        historiqueList.innerHTML = ""; // Réinitialiser l'historique
+      } catch (error) {
+        document.getElementById("statusMessage").textContent =
+          error.message || "Erreur inconnue.";
+        document.getElementById("statusMessage").style.color = "red";
+      }
+    });
+
+  document.getElementById("backToHome").addEventListener("click", () => {
+    window.location.href = "/home.html";
+  });
+});

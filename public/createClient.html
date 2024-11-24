@@ -77,6 +77,17 @@
       </fieldset>
 
       <fieldset>
+        <legend>Commentaires</legend>
+        <label for="commentaire">Ajouter un commentaire :</label>
+        <textarea id="commentaire" name="commentaire"></textarea>
+        <button type="button" id="addComment">Ajouter Commentaire</button>
+        <div id="historique">
+          <h3>Historique :</h3>
+          <ul id="historiqueList"></ul>
+        </div>
+      </fieldset>
+
+      <fieldset>
         <legend>Informations Complémentaires</legend>
         <label for="adressePostale">Adresse Postale :</label>
         <input type="text" id="adressePostale" name="adressePostale" required />
@@ -87,44 +98,9 @@
         <label for="codePostal">Code Postal :</label>
         <input type="text" id="codePostal" name="codePostal" required />
 
-        <label for="nombreDossiers">Nombre de Dossiers :</label>
-        <select id="nombreDossiers" name="nombreDossiers">
-          <option value="<10">Moins de 10</option>
-          <option value="<100">Moins de 100</option>
-          <option value="<500">Moins de 500</option>
-          <option value="+500">Plus de 500</option>
-          <option value="custom">Autre</option>
-        </select>
-        <input
-          type="number"
-          id="nombreDossiersCustom"
-          name="nombreDossiersCustom"
-          placeholder="Entrez un nombre"
-          style="display: none"
-        />
-
-        <label for="montantEstime">Montant Estimé :</label>
-        <select id="montantEstime" name="montantEstime">
-          <option value="<500">Moins de 500</option>
-          <option value="<1000">Moins de 1 000</option>
-          <option value="<5000">Moins de 5 000</option>
-          <option value="<10000">Moins de 10 000</option>
-          <option value="+10000">Plus de 10 000</option>
-          <option value="custom">Autre</option>
-        </select>
-        <input
-          type="number"
-          id="montantEstimeCustom"
-          name="montantEstimeCustom"
-          placeholder="Entrez un montant"
-          style="display: none"
-        />
-
         <label for="statut">Statut :</label>
         <select id="statut" name="statut">
-          <option value="En attente d'appel" selected>
-            En attente d'appel
-          </option>
+          <option value="En attente d'appel">En attente d'appel</option>
           <option value="À rappeler">À rappeler</option>
           <option value="En attente d'information">
             En attente d'information
@@ -133,12 +109,6 @@
           <option value="En cours de signature">En cours de signature</option>
           <option value="Signé">Signé</option>
         </select>
-
-        <label for="matriculeGestionnaire">Matricule Gestionnaire :</label>
-        <select
-          id="matriculeGestionnaire"
-          name="matriculeGestionnaire"
-        ></select>
       </fieldset>
 
       <button type="submit">Créer le Client</button>
