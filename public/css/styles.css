@@ -7,7 +7,7 @@ body {
 }
 
 header {
-  background-color: #007bff;
+  background-color: rgb(rgb(116, 0, 255));
   color: white;
   padding: 10px;
   text-align: center;
@@ -121,4 +121,57 @@ button:hover {
   margin-top: 20px;
   color: green;
   font-weight: bold;
+}
+
+/* Conteneur principal du menu */
+.menu-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+/* Bouton du menu */
+#menuButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Dropdown menu */
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1000;
+  width: 200px;
+}
+
+.menu-dropdown a {
+  display: block;
+  padding: 10px;
+  color: #007bff;
+  text-decoration: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.menu-dropdown a:hover {
+  background-color: #f1f1f1;
+}
+
+.menu-dropdown.open {
+  display: block;
 }
