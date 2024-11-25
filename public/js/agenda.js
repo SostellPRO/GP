@@ -4,9 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (userInfo) {
     document.getElementById("user-id").textContent = userInfo.id;
-    document.getElementById(
-      "user-name"
-    ).textContent = `${userInfo.prenom} ${userInfo.nom}`;
+    document.getElementById("user-name").textContent =
+      `${userInfo.prenom} ${userInfo.nom}`;
     loadClients("En attente d'appel");
   } else {
     alert("Erreur d'authentification. Veuillez vous reconnecter.");
@@ -43,6 +42,8 @@ function displayClients(clients) {
         `<div>
           <p><strong>${client.raisonSociale}</strong></p>
           <p>Statut : ${client.statut}</p>
+          <p>Typologie : ${client.typologie}</p>
+          <p>Commentaire : ${client.historique[0]}</p>
           <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
         </div>`
     )
