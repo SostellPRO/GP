@@ -7,10 +7,24 @@
     "email": "alice@example.com"
   },
   {
-    "id": "a002",
+    "id": "b002",
     "prenom": "Bob",
-    "nom": "Martin",
-    "role": "Administrateur",
+    "nom": "Dylan",
+    "role": "Superviseur",
     "email": "bob@example.com"
+  },
+  {
+    "id": "c003",
+    "prenom": "Conrad",
+    "nom": "Behart",
+    "role": "Gestionnaire",
+    "email": "conrad@example.com"
+  },
+  {
+    "id": "d004",
+    "prenom": "Didier",
+    "nom": "Morville",
+    "role": "Gestionnaire",
+    "email": "didier@example.com"
   }
 ]
