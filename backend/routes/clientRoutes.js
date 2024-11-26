@@ -26,27 +26,34 @@ const writeClients = (clients) => {
   }
 };
 
-// Récupérer tous les clients ou filtrer par statut
+// Route : Récupérer tous les clients ou filtrer par statut
 router.get("/", (req, res) => {
   try {
-    const { status } = req.query; // Paramètre de requête pour filtrer par statut
+    const { status, userId } = req.query;
     const clients = readClients();
 
+    let filteredClients = clients;
+
     if (status) {
-      const filteredClients = clients.filter(
+      filteredClients = filteredClients.filter(
         (client) => client.statut.toLowerCase() === status.toLowerCase()
       );
-      return res.json(filteredClients);
     }
 
-    res.json(clients);
+    if (userId) {
+      filteredClients = filteredClients.filter(
+        (client) => client.matriculeGestionnaire === userId
+      );
+    }
+
+    res.json(filteredClients);
   } catch (error) {
     console.error("Erreur lors de la récupération des clients :", error);
     res.status(500).json({ error: "Erreur interne du serveur." });
   }
 });
 
-// Ajouter un nouveau client
+// Route : Ajouter un nouveau client
 router.post("/", (req, res) => {
   try {
     const client = req.body;
@@ -79,7 +86,7 @@ router.post("/", (req, res) => {
   }
 });
 
-// Récupérer un client par ID
+// Route : Récupérer un client par ID
 router.get("/:id", (req, res) => {
   try {
     const { id } = req.params;
@@ -97,7 +104,7 @@ router.get("/:id", (req, res) => {
   }
 });
 
-// Mettre à jour un client
+// Route : Mettre à jour un client
 router.put("/:id", (req, res) => {
   try {
     const { id } = req.params;
@@ -126,35 +133,7 @@ router.put("/:id", (req, res) => {
   }
 });
 
-// Mettre à jour uniquement le statut
-router.patch("/:id/statut", (req, res) => {
-  try {
-    const { id } = req.params;
-    const { statut } = req.body;
-    const clients = readClients();
-    const clientIndex = clients.findIndex((client) => client.id === id);
-
-    if (clientIndex === -1) {
-      return res.status(404).json({ error: "Client non trouvé." });
-    }
-
-    if (!statut) {
-      return res.status(400).json({ error: "Le champ 'statut' est requis." });
-    }
-
-    clients[clientIndex].statut = statut;
-    clients[clientIndex].dateStatut = new Date().toISOString();
-
-    writeClients(clients);
-
-    res.sendStatus(204); // Succès sans contenu
-  } catch (error) {
-    console.error("Erreur lors de la mise à jour du statut :", error);
-    res.status(500).json({ error: "Erreur interne du serveur." });
-  }
-});
-
-// Ajouter un commentaire à l'historique
+// Route : Ajouter un commentaire à l'historique
 router.patch("/:id/historique", (req, res) => {
   try {
     const { id } = req.params;
@@ -186,14 +165,14 @@ router.patch("/:id/historique", (req, res) => {
 
     writeClients(clients);
 
-    res.sendStatus(204); // Succès sans contenu
+    res.status(200).json(client);
   } catch (error) {
     console.error("Erreur lors de la mise à jour de l'historique :", error);
     res.status(500).json({ error: "Erreur interne du serveur." });
   }
 });
 
-// Supprimer un client
+// Route : Supprimer un client
 router.delete("/:id", (req, res) => {
   try {
     const { id } = req.params;

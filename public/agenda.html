@@ -17,10 +17,26 @@
       <p>Nom : <span id="user-name"></span></p>
     </div>
     <nav>
-      <button onclick="loadClients('En attente d\'appel')">Lead</button>
-      <button onclick="loadClients('À rappeler')">À rappeler</button>
-      <button onclick="loadClients('Signé')">Signé</button>
-      <button onclick="loadClients('Fin de communication')">Échoué</button>
+      <button
+        onclick="loadClients('En attente d\'appel', document.getElementById('user-id').textContent)"
+      >
+        Lead
+      </button>
+      <button
+        onclick="loadClients('À rappeler', document.getElementById('user-id').textContent)"
+      >
+        À rappeler
+      </button>
+      <button
+        onclick="loadClients('Signé', document.getElementById('user-id').textContent)"
+      >
+        Signé
+      </button>
+      <button
+        onclick="loadClients('Fin de communication', document.getElementById('user-id').textContent)"
+      >
+        Échoué
+      </button>
     </nav>
     <section>
       <h2>Liste des clients</h2>

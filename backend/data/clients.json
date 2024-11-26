@@ -22,6 +22,7 @@
     "matriculeGestionnaire": "a001",
     "dateStatut": "2024-11-24T23:09:22.182Z",
     "historique": [
+      "[27/11/2024 00:24] hello",
       "[24/11/2024 23:44] commentaires 5",
       "[24/11/2024 23:35] commentaires 4",
       "[24/11/2024 23:33] commentaires 3",
@@ -52,6 +53,10 @@
     "matriculeGestionnaire": "b002",
     "dateStatut": "2024-11-24T23:11:56.377Z",
     "historique": [
+      "[26/11/2024 15:01] je suis le goat",
+      "[26/11/2024 15:00] lues",
+      "[26/11/2024 14:56] hello",
+      "[26/11/2024 14:28] je suis le goat",
       "[15/11/2023 - 14:00] Dossier à suivre.",
       "[16/11/2023 - 09:20] Client a demandé un rappel."
     ]

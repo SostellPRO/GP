@@ -19,9 +19,8 @@ document.getElementById("profileForm").addEventListener("submit", async (e) => {
     }
 
     const { prenom: createdPrenom, nom: createdNom } = await response.json();
-    document.getElementById(
-      "statusMessage"
-    ).textContent = `Profil créé avec succès pour ${createdPrenom} ${createdNom}.`;
+    document.getElementById("statusMessage").textContent =
+      `Profil créé avec succès pour ${createdPrenom} ${createdNom}.`;
     document.getElementById("profileForm").reset();
   } catch (error) {
     document.getElementById("statusMessage").textContent = error.message;
