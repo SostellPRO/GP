@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css" />
     <script src="js/createClient.js" defer></script>
     <script src="js/menu.js" defer></script>
+    <script src="js/createProfile.js" defer></script>
   </head>
   <body>
     <header>
@@ -100,6 +101,14 @@
         <label for="codePostal">Code Postal :</label>
         <input type="text" id="codePostal" name="codePostal" required />
 
+        <label for="dateProchaineAction">Date prochaine action :</label>
+        <input
+          type="date"
+          id="dateProchaineAction"
+          name="dateProchaineAction"
+          required
+        />
+
         <label for="statut">Statut :</label>
         <select id="statut" name="statut">
           <option value="En attente d'appel">En attente d'appel</option>
@@ -117,5 +126,6 @@
       <button type="button" id="backToHome">Retour à l'Accueil</button>
     </form>
     <p id="statusMessage"></p>
+    <button onclick="navigateToHome()">Retour à l'accueil</button>
   </body>
 </html>

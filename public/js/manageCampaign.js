@@ -12,13 +12,13 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
     });
 
     if (!response.ok) {
-      throw new Error("Erreur lors de l'importation.");
+      const error = await response.json();
+      throw new Error(error.error || "Erreur lors de l'importation.");
     }
 
     const result = await response.json();
-    document.getElementById(
-      "importStatus"
-    ).textContent = `Importation réussie : ${result.count} clients ajoutés.`;
+    document.getElementById("importStatus").textContent =
+      `Importation réussie : ${result.count} clients ajoutés.`;
   } catch (error) {
     document.getElementById("importStatus").textContent = error.message;
   }

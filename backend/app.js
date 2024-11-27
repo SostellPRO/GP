@@ -6,6 +6,7 @@ const path = require("path");
 const authRoutes = require("./routes/authRoutes");
 const clientRoutes = require("./routes/clientRoutes");
 const userRoutes = require("./routes/userRoutes");
+const importClientsRoute = require("./routes/importClients");
 
 const app = express();
 const PORT = 3000;
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use("/api/auth", authRoutes);
 app.use("/api/clients", clientRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/clients", importClientsRoute);
 
 // Gestion des routes inexistantes
 app.use((req, res) => {

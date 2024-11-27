@@ -16,11 +16,11 @@
     "adressePostale": "1 rue de Paris",
     "complementAdresse": "Bâtiment A",
     "codePostal": "75001",
-    "nombreDossiers": "15",
-    "montantEstime": "15000",
-    "statut": "À rappeler",
+    "nombreDossiers": "",
+    "montantEstime": "",
+    "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
-    "dateStatut": "2024-11-24T23:09:22.182Z",
+    "dateProchaineAction": "2024-11-24T23:09:22.182Z",
     "historique": [
       "[27/11/2024 00:24] hello",
       "[24/11/2024 23:44] commentaires 5",
@@ -51,7 +51,7 @@
     "montantEstime": "25000",
     "statut": "À rappeler",
     "matriculeGestionnaire": "b002",
-    "dateStatut": "2024-11-24T23:11:56.377Z",
+    "dateProchaineAction": "2024-11-24T23:11:56.377Z",
     "historique": [
       "[26/11/2024 15:01] je suis le goat",
       "[26/11/2024 15:00] lues",
@@ -82,7 +82,7 @@
     "montantEstime": "100000",
     "statut": "Signé",
     "matriculeGestionnaire": "c003",
-    "dateStatut": "2023-11-10",
+    "dateProchaineAction": "2023-11-10",
     "historique": [
       "[10/11/2023 - 11:15] Contrat signé.",
       "[09/11/2023 - 10:00] Derniers ajustements discutés."
@@ -109,7 +109,7 @@
     "montantEstime": "50000",
     "statut": "À rappeler",
     "matriculeGestionnaire": "d004",
-    "dateStatut": "2023-11-18",
+    "dateProchaineAction": "2023-11-18",
     "historique": [
       "[18/11/2023 - 09:00] En attente de documents supplémentaires.",
       "[17/11/2023 - 16:00] Documents envoyés au client."
@@ -132,11 +132,11 @@
     "adressePostale": "15 avenue de l'Europe",
     "complementAdresse": "Bâtiment B",
     "codePostal": "69003",
-    "nombreDossiers": "75",
-    "montantEstime": "75000",
-    "statut": "Fin de communication",
+    "nombreDossiers": "",
+    "montantEstime": "",
+    "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
-    "dateStatut": "2024-11-24T23:00:35.225Z",
+    "dateProchaineAction": "2024-11-24T23:00:35.225Z",
     "historique": [
       "[12/11/2023 - 14:00] Collaboration confirmée.",
       "[11/11/2023 - 10:30] Contrat en cours de signature."
@@ -163,7 +163,7 @@
     "montantEstime": "",
     "statut": "À rappeler",
     "matriculeGestionnaire": "b002",
-    "dateStatut": "2024-11-24T23:10:12.635Z",
+    "dateProchaineAction": "2024-11-24T23:10:12.635Z",
     "historique": [
       "[12/11/2023 - 14:00] Collaboration confirmée.",
       "[11/11/2023 - 10:30] Contrat en cours de signature."
@@ -190,11 +190,85 @@
     "montantEstime": "69000",
     "statut": "En attente d'appel",
     "matriculeGestionnaire": "c003",
-    "dateStatut": "2024-11-24T23:10:48.885Z",
+    "dateProchaineAction": "2024-11-24T23:10:48.885Z",
     "historique": [
       "[25/11/2024 00:02] commentaire 3",
       "[12/11/2023 - 14:00] Collaboration.",
       "[11/11/2023 - 10:30] Contrat en cours de signature."
     ]
+  },
+  {
+    "id": "241127004251008",
+    "raisonSociale": "import",
+    "secteurActivite": "export",
+    "siren": "748748748",
+    "siret": "74874874800008",
+    "typologie": "B2B",
+    "civilite": "M",
+    "nomInterlocuteur": "Lagaffe",
+    "prenomInterlocuteur": "Gaston",
+    "telephone1": "303030303",
+    "telephone2": "606060606",
+    "mail1": "gl@dupuis.com",
+    "adressePostale": "20 rue Delcourt",
+    "complementAdresse": "demeasmaker",
+    "codePostal": "75008",
+    "nombreDossiers": "<500",
+    "montantEstime": "<10000",
+    "statut": "En attente d'appel",
+    "dateProchaineAction": 45624,
+    "matriculeGestionnaire": "a001",
+    "historique": [
+      "[27/11/2024 01:55] prometteur"
+    ],
+    "mail2": ""
+  },
+  {
+    "id": "202411270112144299",
+    "raisonSociale": "creation ",
+    "secteurActivite": "recouvrement",
+    "siren": "456456456",
+    "siret": "45645645600001",
+    "typologie": "B2B & B2C",
+    "civilite1": "Mme",
+    "nomInterlocuteur1": "Tussaud",
+    "prenomInterlocuteur1": "Bernadette",
+    "telephone1": "0101010303",
+    "telephone2": "0303030101",
+    "mail1": "tudor@cinema.com",
+    "mail2": "",
+    "commentaire": "",
+    "adressePostale": "21 downing street ",
+    "complementAdresse": "",
+    "codePostal": "45100",
+    "dateProchaineAction": "2024-11-28",
+    "statut": "En cours de signature",
+    "historique": [
+      "[27/11/2024 02:11] de cire"
+    ]
+  },
+  {
+    "id": "241127011747010",
+    "raisonSociale": "raptora",
+    "secteurActivite": "papacito",
+    "siren": 748748748,
+    "siret": 74874874800008,
+    "typologie": "B2B",
+    "civilite": "M",
+    "nomInterlocuteur": "bourdon",
+    "prenomInterlocuteur": "didier",
+    "telephone1": 303030303,
+    "telephone2": 606060606,
+    "mail1": "gl@dupuis.com",
+    "adressePostale": "20 rue Dela rue",
+    "complementAdresse": "rabbit",
+    "codePostal": 69200,
+    "nombreDossiers": 150,
+    "montantEstime": 2000,
+    "statut": "en attente d'appel",
+    "dateProchaineAction": 45624,
+    "matriculeGestionnaire": "a001",
+    "dateStatut": "2024-11-27T01:17:47.250Z",
+    "historique": []
   }
 ]

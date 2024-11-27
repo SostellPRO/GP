@@ -52,6 +52,7 @@ function displayClients(clients) {
           <p>Statut : ${client.statut}</p>
           <p>Typologie : ${client.typologie}</p>
           <p>Commentaire : ${client.historique[0]}</p>
+          <p>Date prochaine action : ${client.dateProchaineAction}</p>
           <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
         </div>`;
     })
