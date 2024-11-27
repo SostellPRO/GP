@@ -54,5 +54,19 @@
     "nom": "orial",
     "email": "eo@example.com",
     "role": "Superviseur"
+  },
+  {
+    "id": "P001",
+    "prenom": "philippe",
+    "nom": "laville",
+    "email": "pl@example.com",
+    "role": "Administrateur"
+  },
+  {
+    "id": "m001",
+    "prenom": "Magalie",
+    "nom": "Gallac",
+    "email": "mg@example.com",
+    "role": "Superviseur"
   }
 ]

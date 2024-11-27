@@ -49,9 +49,12 @@ router.post("/", (req, res) => {
 
     const users = readUsers();
 
-    const id = `${prenom[0]}${users.length + 1}`;
-    const newUser = { id, prenom, nom, email, role };
+    // Générer l'ID : première lettre du prénom + trois chiffres chronologiques
+    const prefix = prenom[0].toLowerCase();
+    const matchingUsers = users.filter((user) => user.id.startsWith(prefix));
+    const id = `${prefix}${(matchingUsers.length + 1).toString().padStart(3, "0")}`;
 
+    const newUser = { id, prenom, nom, email, role };
     users.push(newUser);
     writeUsers(users);
 
