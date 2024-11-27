@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const path = require("path");
 
 // Importation des routes
@@ -14,6 +15,7 @@ const PORT = 3000;
 // Middlewares
 app.use(express.json()); // Remplace bodyParser.json()
 app.use(cors());
+app.use(bodyParser.json());
 
 // Middleware pour consigner les requêtes
 app.use((req, res, next) => {

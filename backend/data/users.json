@@ -26,5 +26,33 @@
     "nom": "Morville",
     "role": "Gestionnaire",
     "email": "didier@example.com"
+  },
+  {
+    "id": "d5",
+    "prenom": "dalton",
+    "nom": "dalton",
+    "email": "d@d.d",
+    "role": "Gestionnaire"
+  },
+  {
+    "id": "d006",
+    "prenom": "dalton",
+    "nom": "dalton",
+    "email": "d@d.d",
+    "role": "Gestionnaire"
+  },
+  {
+    "id": "j007",
+    "prenom": "jean",
+    "nom": "val",
+    "email": "jv@example.com",
+    "role": "Gestionnaire"
+  },
+  {
+    "id": "e008",
+    "prenom": "eric",
+    "nom": "orial",
+    "email": "eo@example.com",
+    "role": "Superviseur"
   }
 ]

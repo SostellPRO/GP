@@ -65,6 +65,14 @@
           name="prenomInterlocuteur1"
           required
         />
+        <label for="adressePostale">Adresse Postale :</label>
+        <input type="text" id="adressePostale" name="adressePostale" required />
+
+        <label for="complementAdresse">Complément Adresse :</label>
+        <input type="text" id="complementAdresse" name="complementAdresse" />
+
+        <label for="codePostal">Code Postal :</label>
+        <input type="text" id="codePostal" name="codePostal" required />
 
         <label for="telephone1">Téléphone Principal :</label>
         <input type="tel" id="telephone1" name="telephone1" required />
@@ -80,26 +88,18 @@
       </fieldset>
 
       <fieldset>
-        <legend>Commentaires</legend>
-        <label for="commentaire">Ajouter un commentaire :</label>
-        <textarea id="commentaire" name="commentaire"></textarea>
-        <button type="button" id="addComment">Ajouter Commentaire</button>
         <div id="historique">
           <h3>Historique :</h3>
           <ul id="historiqueList"></ul>
+          <legend>Commentaires</legend>
+          <label for="commentaire">Ajouter un commentaire :</label>
+          <textarea id="commentaire" name="commentaire"></textarea>
+          <button type="button" id="addComment">Ajouter Commentaire</button>
         </div>
       </fieldset>
 
       <fieldset>
         <legend>Informations Complémentaires</legend>
-        <label for="adressePostale">Adresse Postale :</label>
-        <input type="text" id="adressePostale" name="adressePostale" required />
-
-        <label for="complementAdresse">Complément Adresse :</label>
-        <input type="text" id="complementAdresse" name="complementAdresse" />
-
-        <label for="codePostal">Code Postal :</label>
-        <input type="text" id="codePostal" name="codePostal" required />
 
         <label for="dateProchaineAction">Date prochaine action :</label>
         <input
@@ -122,8 +122,19 @@
         </select>
       </fieldset>
 
+      <fieldset>
+        <legend>Gestionnaire</legend>
+        <label for="matriculeGestionnaire">Gestionnaire :</label>
+        <select
+          id="matriculeGestionnaire"
+          name="matriculeGestionnaire"
+          required
+        >
+          <option value="">Chargement...</option>
+        </select>
+      </fieldset>
+
       <button type="submit">Créer le Client</button>
-      <button type="button" id="backToHome">Retour à l'Accueil</button>
     </form>
     <p id="statusMessage"></p>
     <button onclick="navigateToHome()">Retour à l'accueil</button>

@@ -1,0 +1,6 @@
+id;raisonSociale;secteurActivite;siren;siret;typologie;civilite;nomInterlocuteur;prenomInterlocuteur;telephone1;telephone2;mail1;mail2;adressePostale;complementAdresse;codePostal;nombreDossiers;montantEstime;statut;dateProchaineAction;matriculeGestionnaire
+;raptora;papacito;748748748;7,48749E+13;B2B;M;bourdon;didier;303030303;606060606;gl@dupuis.com;;20 rue Dela rue;rabbit;69200;150;2000;en attente d'appel;28/11/2024;a001
+;xyzcorp;commerce;123456789;1,23457E+13;B2C;Mme;dupont;marie;404040404;707070707;marie@xyz.com;info@xyz.com;10 avenue Champs;apartment 5A;75008;250;3500;en attente d'appel;30/11/2024;b002
+;globaltech;technology;987654321;9,87654E+13;B2B & B2C;M;smith;john;505050505;808080808;jsmith@globaltech.com;contact@globaltech.com;15 rue Lafayette;;75009;300;5000;en attente d'appel;29/11/2024;c003
+;ecogreen;environment;654321987;6,54322E+13;B2C;Mme;brown;susan;606060606;909090909;susan@ecogreen.com;info@ecogreen.com;25 boulevard Haussmann;suite 101;75009;75;1500;en attente d'appel;01/12/2024;d004
+;techworld;IT services;321654987;3,21655E+13;B2B;M;clark;peter;707070707;101010101;pclark@techworld.com;support@techworld.com;30 avenue de l'Opéra;floor 3;75001;200;4000;en attente d'appel;02/12/2024;a001

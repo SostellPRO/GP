@@ -14,12 +14,12 @@
     </header>
     <div id="menuContainer" class="menu-container"></div>
     <form id="uploadForm" enctype="multipart/form-data">
-      <label for="campaignFile">Fichier Excel :</label>
+      <label for="campaignFile">Fichier Excel ou CSV :</label>
       <input
         type="file"
         id="campaignFile"
         name="campaignFile"
-        accept=".xlsx"
+        accept=".xlsx,.csv"
         required
       />
       <button type="submit">Importer</button>
