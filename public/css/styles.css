@@ -1,21 +1,102 @@
+/* GENERAUX */
+
+@font-face {
+  font-family: "Public";
+  src: url("../fonts/Public_Sans/PublicSans-VariableFont_wght.ttf");
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Public", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f9;
   color: #333;
 }
-.login-container {
-  justify-content: center;
-  align-items: center;
-  margin-top: 200px;
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: rgb(116, 0, 255);
+  color: white;
 }
 
-h1 {
-  font-size: 4rem;
-  margin-left: 41%;
-  margin-right: 41%;
+/* LOGIN */
+
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex; /* Active Flexbox */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  background: linear-gradient(
+    rgb(116, 0, 255) 50%,
+    #ffffff 50%
+  ); /* Optionnel : ajoute un fond */
+
+  .form_login {
+    width: 40%;
+    padding-top: 40px; /* Ajoute un espace interne */
+    padding-bottom: 40px; /* Ajoute un espace interne */
+    padding-left: 5px; /* Ajoute un espace interne */
+    padding-right: 5px; /* Ajoute un espace interne */
+    background-color: white; /* Optionnel : fond blanc pour le formulaire */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optionnel : ombre pour style */
+    border-radius: 10px; /* Arrondit les bords */
+    display: flex; /* Active Flexbox */
+    flex-direction: column; /* Les éléments s'empilent verticalement */
+    align-items: center;
+    border: solid rgb(217, 183, 0);
+  } /* Centre horizontalement les éléments enfants */
 }
+
+.img_login {
+  width: 60%;
+  height: auto;
+  margin-bottom: 20px; /* Espace sous l'image */
+}
+
+.input_login {
+  font-size: 1.5rem;
+  border-radius: 5px;
+  width: 80%; /* Réduction de la largeur pour un meilleur rendu */
+  height: 3rem;
+  margin: 10px 0; /* Espacement entre les champs */
+  padding: 5px; /* Ajoute un espace interne */
+  border: 1px solid #ccc; /* Ajoute une bordure */
+}
+
+.button_login {
+  width: 60%; /* Largeur ajustée */
+  height: 3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: rgb(116, 0, 255);
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.button_login:hover {
+  background-color: rgb(51, 0, 153);
+}
+
+/* HOME*/
+.title_page {
+  background-color: rgb(116, 0, 255);
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+#user-info {
+  margin-left: 10%;
+  margin-top: 5%;
+  border: solid rgb(51, 0, 153);
+  width: 12.5%;
+  border-radius: 7.5px;
+}
+
+/* TITRES */
 
 header {
   background-color: rgb(rgb(116, 0, 255));
@@ -24,62 +105,26 @@ header {
   text-align: center;
 }
 
-form {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.p_id {
+  margin-left: 5%;
+  font-weight: bold;
 }
 
+#navigation-links {
+  font-size: 2rem;
+}
+/* INPUTS */
+
 label {
+  font-size: 2rem;
   display: block;
   margin: 10px 0 5px;
   font-weight: bold;
 }
 
 input,
-select,
-button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  background-color: rgb(116, 0, 255);
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: rgb(51, 0, 153);
-}
-
-.error-message {
-  color: rgb(210, 50, 120);
-}
-
-.success-message {
-  color: rgb(125, 244, 103);
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f2f5;
-}
-
-header {
-  text-align: center;
-  padding: 20px;
-  background-color: #1160ff;
-  color: white;
+select {
+  font-size: 14px;
 }
 
 form {
@@ -100,21 +145,19 @@ label {
   font-size: 14px;
 }
 
-input,
-select {
-  font-size: 14px;
+/* BOUTONS */
+
+.error-message {
+  color: rgb(210, 50, 120);
 }
 
-input,
-select,
-button {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.success-message {
+  color: rgb(125, 244, 103);
 }
 
+.button_login {
+  background-color: rgb(116, 0, 255);
+}
 button {
   background-color: #1160ff;
   color: white;
@@ -124,7 +167,7 @@ button {
 }
 
 button:hover {
-  background-color: #0d4bcc;
+  background-color: rgb(51, 0, 153);
 }
 
 #statusMessage {
@@ -133,6 +176,8 @@ button:hover {
   color: green;
   font-weight: bold;
 }
+
+/* MENU */
 
 /* Conteneur principal du menu */
 .menu-container {

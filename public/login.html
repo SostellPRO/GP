@@ -8,21 +8,34 @@
   </head>
   <body>
     <div class="login-container">
-      <h1>Connexion</h1>
-      <form id="loginForm">
-        <label for="email">Adresse e-mail :</label>
+      <form class="form_login" id="loginForm">
+        <img
+          src="./images/LOGO violet-jaune-print.png"
+          alt="logo"
+          class="img_login"
+        />
+
         <input
           type="email"
           id="email"
           name="email"
           autocomplete="email"
+          class="input_login"
+          placeholder="Adresse mail"
           required
         />
 
-        <label for="id">ID utilisateur :</label>
-        <input type="text" id="id" name="id" autocomplete="username" required />
+        <input
+          type="text"
+          id="id"
+          name="id"
+          autocomplete="username"
+          class="input_login"
+          placeholder="Identifiant"
+          required
+        />
 
-        <button type="submit">Se connecter</button>
+        <button class="button_login" type="submit">CONNEXION</button>
       </form>
       <p id="errorMessage" style="color: red; margin-top: 10px"></p>
     </div>
