@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Créer le bouton de menu
   const menuButton = document.createElement("button");
   menuButton.id = "menuButton";
-  menuButton.textContent = "Menu";
+  menuButton.textContent = "MENU";
   menuContainer.appendChild(menuButton);
 
   // Créer le menu déroulant

@@ -8,17 +8,26 @@
     <script src="js/menu.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1 class="title_page">ACCUEIL</h1>
+    <header class="header_home">
+      <h1 class="title_home">ACCUEIL</h1>
+      <div id="menuContainer" class="menu-container"></div>
     </header>
-    <div id="menuContainer" class="menu-container"></div>
-    <div id="user-info">
-      <p class="p_id">ID Utilisateur : <span id="user-id"></span></p>
-      <p class="p_id">Nom : <span id="user-name"></span></p>
+
+    <div class="container">
+      <div class="partie1">
+        <div id="user-info">
+          <p class="p_id">ID Utilisateur : <span id="user-id"></span></p>
+          <p class="p_id">Nom : <span id="user-name"></span></p>
+        </div>
+      </div>
+      <div class="partie2">
+        <nav>
+          <ul id="navigation-links"></ul>
+        </nav>
+      </div>
     </div>
-    <nav>
-      <ul id="navigation-links"></ul>
-    </nav>
-    <button id="logoutButton">Se déconnecter</button>
+    <div class="home_logoutButton">
+      <button id="logoutButton">Se déconnecter</button>
+    </div>
   </body>
 </html>
