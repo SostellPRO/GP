@@ -5,6 +5,17 @@ body {
   background-color: #f4f4f9;
   color: #333;
 }
+.login-container {
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-left: 41%;
+  margin-right: 41%;
+}
 
 header {
   background-color: rgb(rgb(116, 0, 255));
@@ -39,22 +50,22 @@ button {
 }
 
 button {
-  background-color: #007bff;
+  background-color: rgb(116, 0, 255);
   color: white;
   cursor: pointer;
   font-size: 16px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: rgb(51, 0, 153);
 }
 
 .error-message {
-  color: red;
+  color: rgb(210, 50, 120);
 }
 
 .success-message {
-  color: green;
+  color: rgb(125, 244, 103);
 }
 
 body {
