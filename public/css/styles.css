@@ -194,6 +194,89 @@ header {
   transform: scale(1.1);
 }
 
+/* MANAGE CLIENT*/
+
+.title_manage {
+  background-color: rgb(116, 0, 255);
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.container_campaign {
+  width: 80vw;
+  height: 80vh;
+  display: flex; /* Active Flexbox */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  text-align: center;
+  margin: auto;
+}
+
+.uploadForm {
+  width: 40%;
+  padding-top: 40px; /* Ajoute un espace interne */
+  padding-bottom: 40px; /* Ajoute un espace interne */
+  padding-left: 5px; /* Ajoute un espace interne */
+  padding-right: 5px; /* Ajoute un espace interne */
+  background-color: white; /* Optionnel : fond blanc pour le formulaire */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optionnel : ombre pour style */
+  border-radius: 10px; /* Arrondit les bords */
+  display: flex; /* Active Flexbox */
+  flex-direction: column; /* Les éléments s'empilent verticalement */
+  align-items: center;
+  border: solid rgb(217, 183, 0);
+}
+
+.campaignFile {
+  font-size: 1.5rem;
+  border-radius: 5px;
+  width: 80%; /* Réduction de la largeur pour un meilleur rendu */
+  height: 1.6rem;
+  margin: 10px 0; /* Espacement entre les champs */
+  border: 1px solid #ccc; /* Ajoute une bordure */
+}
+
+.label_campaign {
+  font-size: 2rem;
+}
+
+.button_manage {
+  width: 80%; /* Largeur ajustée */
+  height: 3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: rgb(116, 0, 255);
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.button_manage:hover {
+  background-color: rgb(51, 0, 153);
+}
+
+.logoutButton {
+  background-color: rgb(116, 0, 255);
+  font-size: 2rem;
+  font-weight: bold;
+  height: 10vh;
+  color: white;
+  border: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.buttonManageButton {
+  background-color: rgb(116, 0, 255);
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  border: white;
+}
+
 /*CREATE CLIENT*/
 
 .title_create {
