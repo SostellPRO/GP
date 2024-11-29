@@ -198,6 +198,14 @@ header {
 
 /* MANAGE CLIENT*/
 
+.global_manage {
+  height: 100vh;
+}
+
+.header_manage {
+  height: 20vh;
+}
+
 .title_manage {
   background-color: rgb(116, 0, 255);
   font-size: 4rem;
@@ -206,7 +214,7 @@ header {
 
 .container_campaign {
   width: 100vw;
-  height: 65vh;
+  height: 70vh;
   display: flex; /* Active Flexbox */
   justify-content: center; /* Centre horizontalement */
   align-items: center; /* Centre verticalement */

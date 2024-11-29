@@ -9,29 +9,36 @@
     <script src="js/createProfile.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1 class="title_manage">IMPORTER UNE CAMPAGNE</h1>
-    </header>
-    <div id="menuContainer" class="menu-container"></div>
-    <div class="container_campaign">
-      <form id="uploadForm" enctype="multipart/form-data" class="uploadForm">
-        <label for="campaignFile" class="label_campaign">Fichier Excel:</label>
-        <input
-          type="file"
-          id="campaignFile"
-          name="campaignFile"
-          accept=".xlsx,.csv"
-          class="campaignFile"
-          required
-        />
-        <button type="submit" class="button_manage">Importer</button>
-      </form>
-      <div id="importStatus" style="margin-top: 20px; font-weight: bold"></div>
-    </div>
-    <div class="logoutButton">
-      <button onclick="navigateToHome()" class="buttonManageLogout">
-        Retour à l'accueil
-      </button>
+    <div class="global_manage">
+      <header class="header_manage">
+        <h1 class="title_manage">IMPORTER UNE CAMPAGNE</h1>
+      </header>
+      <div id="menuContainer" class="menu-container"></div>
+      <div class="container_campaign">
+        <form id="uploadForm" enctype="multipart/form-data" class="uploadForm">
+          <label for="campaignFile" class="label_campaign"
+            >Fichier Excel:</label
+          >
+          <input
+            type="file"
+            id="campaignFile"
+            name="campaignFile"
+            accept=".xlsx,.csv"
+            class="campaignFile"
+            required
+          />
+          <button type="submit" class="button_manage">Importer</button>
+        </form>
+        <div
+          id="importStatus"
+          style="margin-top: 20px; font-weight: bold"
+        ></div>
+      </div>
+      <div class="logoutButton">
+        <button onclick="navigateToHome()" class="buttonManageLogout">
+          Retour à l'accueil
+        </button>
+      </div>
     </div>
   </body>
 </html>
