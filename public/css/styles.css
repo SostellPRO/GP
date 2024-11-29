@@ -5,17 +5,20 @@
   src: url("../fonts/Public_Sans/PublicSans-VariableFont_wght.ttf");
 }
 
-body {
+.body_home {
   font-family: "Public", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f9;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Assure que le contenu occupe toute la hauteur */
 }
 
 header {
   text-align: center;
-  padding: 20px;
+  padding: 15px; /* Réduction de la hauteur */
   background-color: rgb(116, 0, 255);
   color: white;
 }
@@ -84,14 +87,13 @@ header {
 /* HOME*/
 
 .header_home {
+  height: 15vh; /* Aligné avec la page Manage Campaigns */
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 .title_home {
-  background-color: rgb(116, 0, 255);
-  font-size: 4rem;
+  font-size: 2.5rem; /* Taille réduite pour correspondre */
   font-weight: bold;
 }
 
@@ -123,18 +125,19 @@ header {
 }
 
 .container {
+  flex: 1; /* S'étend pour occuper l'espace restant */
   display: flex;
 }
 
 .partie1 {
-  height: 70vh;
+  height: 75vh;
   width: 20%;
   background-color: rgb(217, 183, 0);
 }
 
 #user-info {
   margin-left: 10%;
-  margin-top: 30%;
+  margin-top: 20%;
   border: solid black;
   width: 80%;
   font-size: 1.5rem;
@@ -143,6 +146,9 @@ header {
 .partie2 {
   height: 70vh;
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centre le contenu verticalement */
 }
 
 #navigation-links a {
@@ -155,15 +161,15 @@ header {
 }
 
 #navigation-links {
-  font-size: 3rem;
+  font-size: 2rem; /* Réduction pour aligner avec Manage Campaigns */
   margin-left: 10%;
-  margin-top: 7.5%;
+  margin-top: 5%; /* Réduction des marges */
   list-style-type: none;
   text-decoration: none;
 }
 
 #navigation-links li {
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 }
 
 .title_page {
@@ -174,21 +180,19 @@ header {
 
 .home_logoutButton {
   background-color: rgb(116, 0, 255);
-  width: 100vw;
-  height: 10vh;
+  height: 8vh; /* Réduction alignée avec Manage Campaigns */
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 #logoutButton {
   background-color: rgb(116, 0, 255);
   margin: 10px;
-  font-size: 2rem;
+  font-size: 1.5rem; /* Réduction pour cohérence */
   font-weight: bold;
   color: white;
-  border: white;
+  border: none;
   cursor: pointer;
 }
 
@@ -198,39 +202,57 @@ header {
 
 /* MANAGE CLIENT*/
 
-.global_manage {
+.body_manage {
+  font-family: "Public", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 
+.global_manage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .header_manage {
-  height: 20vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 15px; /* Réduction de la hauteur */
+  background-color: rgb(116, 0, 255);
+  color: white;
+  height: 12.5vh;
 }
 
 .title_manage {
   background-color: rgb(116, 0, 255);
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-weight: bold;
+  margin: 0;
 }
 
 .container_campaign {
   width: 100vw;
-  height: 70vh;
+  flex: 1;
   display: flex; /* Active Flexbox */
   justify-content: center; /* Centre horizontalement */
   align-items: center; /* Centre verticalement */
   text-align: center;
-  margin: auto;
+  height: 685px;
 }
 
 .uploadForm {
   width: 40%;
-  padding-top: 40px; /* Ajoute un espace interne */
-  padding-bottom: 40px; /* Ajoute un espace interne */
-  padding-left: 5px; /* Ajoute un espace interne */
-  padding-right: 5px; /* Ajoute un espace interne */
+  padding: 20px 10px; /* Ajoute un espace interne */
   background-color: white; /* Optionnel : fond blanc pour le formulaire */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optionnel : ombre pour style */
-  border-radius: 10px; /* Arrondit les bords */
+  border-radius: 8px; /* Arrondit les bords */
   display: flex; /* Active Flexbox */
   flex-direction: column; /* Les éléments s'empilent verticalement */
   align-items: center;
@@ -238,28 +260,34 @@ header {
 }
 
 .campaignFile {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   border-radius: 5px;
   width: 80%; /* Réduction de la largeur pour un meilleur rendu */
-  height: 1.6rem;
-  margin: 10px 0; /* Espacement entre les champs */
-  border: 1px solid #ccc; /* Ajoute une bordure */
+  height: 1.4rem;
+  margin: 5px 0; /* Espacement entre les champs */
+  border: solid grey 2px;
 }
 
 .label_campaign {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+input#campaignFile.campaignFile {
+  height: 1.7rem;
+  cursor: pointer;
 }
 
 .button_manage {
-  width: 80%; /* Largeur ajustée */
-  height: 3rem;
-  font-size: 1.2rem;
+  width: 70%; /* Largeur ajustée */
+  height: 2.5rem;
+  font-size: 1rem;
   font-weight: bold;
   background-color: rgb(116, 0, 255);
   color: white;
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .button_manage:hover {
@@ -268,26 +296,26 @@ header {
 
 .logoutButton {
   background-color: rgb(116, 0, 255);
-  font-size: 2rem;
-  font-weight: bold;
-  height: 10vh;
+  height: 8vh;
   color: white;
   border: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  margin-bottom: 0;
 }
 
 .buttonManageLogout {
   background-color: rgb(116, 0, 255);
   margin: 10px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: white;
   border: white;
   cursor: pointer;
+}
+
+.buttonManageLogout:hover {
+  transform: scale(1.05);
 }
 
 /*CREATE CLIENT*/
@@ -413,9 +441,20 @@ button:hover {
   display: block;
 }
 #menuButton {
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+  background-color: rgb(255, 231, 0);
+  color: black;
+  border: solid black;
+  padding: 8px 15px; /* Réduction de padding */
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1.5rem; /* Réduction de la taille */
+  font-weight: bold;
+}
+
+#menuButton:hover {
+  transform: scale(1.1);
+  color: rgb(210, 50, 120);
+  border: solid rgb(210, 50, 120);
 }
 
 #menuButton.hidden {
