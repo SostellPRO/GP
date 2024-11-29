@@ -8,30 +8,51 @@
     <script src="js/createProfile.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1>Créer un Profil Utilisateur</h1>
-    </header>
-    <div id="menuContainer" class="menu-container"></div>
-    <form id="profileForm">
-      <label for="prenom">Prénom :</label>
-      <input type="text" id="prenom" name="prenom" required />
+    <div class="body_profil">
+      <header class="header_profil">
+        <h1>CREER UN PROFIL UTILISATEUR</h1>
+      </header>
+      <div id="menuContainer" class="menu-container"></div>
+      <div class="form_profil_container">
+        <form id="profileForm" class="form_profil">
+          <input
+            type="text"
+            id="prenom"
+            name="prenom"
+            class="input_profil"
+            placeholder="Prénom"
+          />
 
-      <label for="nom">Nom :</label>
-      <input type="text" id="nom" name="nom" required />
+          <input
+            type="text"
+            id="nom"
+            name="nom"
+            class="input_profil"
+            placeholder="Nom"
+          />
 
-      <label for="email">Adresse e-mail :</label>
-      <input type="email" id="email" name="email" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="input_profil"
+            placeholder="E-mail"
+          />
 
-      <label for="role">Rôle :</label>
-      <select id="role" name="role" required>
-        <option value="Gestionnaire">Gestionnaire</option>
-        <option value="Superviseur">Superviseur</option>
-        <option value="Administrateur">Administrateur</option>
-      </select>
+          <select id="role" name="role" class="input_profil" placeholder="Rôle">
+            <option value="Gestionnaire">Gestionnaire</option>
+            <option value="Superviseur">Superviseur</option>
+            <option value="Administrateur">Administrateur</option>
+          </select>
 
-      <button type="submit">Créer le profil</button>
-    </form>
-    <p id="statusMessage" class="success-message"></p>
-    <button onclick="navigateToHome()">Retour à l'accueil</button>
+          <button type="submit" class="button_profil">CREER LE PROFIL</button>
+        </form>
+      </div>
+      <div class="logoutButton">
+        <button onclick="navigateToHome()" class="buttonManageLogout">
+          Retour à l'accueil
+        </button>
+      </div>
+    </div>
   </body>
 </html>
