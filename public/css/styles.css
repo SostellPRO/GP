@@ -184,10 +184,12 @@ header {
 
 #logoutButton {
   background-color: rgb(116, 0, 255);
+  margin: 10px;
   font-size: 2rem;
   font-weight: bold;
   color: white;
   border: white;
+  cursor: pointer;
 }
 
 #logoutButton:hover {
@@ -203,8 +205,8 @@ header {
 }
 
 .container_campaign {
-  width: 80vw;
-  height: 80vh;
+  width: 100vw;
+  height: 65vh;
   display: flex; /* Active Flexbox */
   justify-content: center; /* Centre horizontalement */
   align-items: center; /* Centre verticalement */
@@ -267,14 +269,17 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-bottom: 0;
 }
 
-.buttonManageButton {
+.buttonManageLogout {
   background-color: rgb(116, 0, 255);
+  margin: 10px;
   font-size: 2rem;
   font-weight: bold;
   color: white;
   border: white;
+  cursor: pointer;
 }
 
 /*CREATE CLIENT*/
@@ -346,7 +351,7 @@ label {
 }
 
 button:hover {
-  background-color: rgb(51, 0, 153);
+  transform: scale(1.1);
 }
 
 #statusMessage {
@@ -398,4 +403,14 @@ button:hover {
 
 .menu-dropdown.open {
   display: block;
+}
+#menuButton {
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+#menuButton.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
