@@ -1,3 +1,11 @@
+html,
+body {
+  height: 100%; /* Nécessaire pour que les enfants occupent la hauteur */
+  margin: 0; /* Retire les marges par défaut */
+  padding: 0; /* Retire les padding par défaut */
+  box-sizing: border-box;
+}
+
 .body_manage {
   font-family: "Public", sans-serif;
   margin: 0;

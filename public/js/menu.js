@@ -42,21 +42,4 @@ document.addEventListener("DOMContentLoaded", () => {
       menuDropdown.classList.remove("open");
     }
   });
-
-  // Fonctionnalité pour cacher/montrer le bouton menu en fonction du défilement
-  window.addEventListener("scroll", () => {
-    const scrollPosition = window.scrollY;
-    const pageHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
-
-    // Cache le menu si on a défilé de plus de 10% de la page
-    if (scrollPosition / pageHeight > 0.1) {
-      menuButton.style.display = "none";
-    }
-
-    // Montre le menu si on est à moins de 90% de la page
-    if (scrollPosition / pageHeight < 0.9) {
-      menuButton.style.display = "block";
-    }
-  });
 });

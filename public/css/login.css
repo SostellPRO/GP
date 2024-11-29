@@ -1,6 +1,14 @@
+html,
+body {
+  height: 100%; /* Nécessaire pour que les enfants occupent la hauteur */
+  margin: 0; /* Retire les marges par défaut */
+  padding: 0; /* Retire les padding par défaut */
+  box-sizing: border-box;
+}
+
 .login-container {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 60px); /* Ajuste en fonction de la hauteur de `header` */
   display: flex; /* Active Flexbox */
   justify-content: center; /* Centre horizontalement */
   align-items: center; /* Centre verticalement */

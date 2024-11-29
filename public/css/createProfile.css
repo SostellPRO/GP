@@ -1,3 +1,10 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Nécessaire pour que la hauteur soit héritée */
+}
+
 .body_profil {
   font-family: "Public", sans-serif;
   margin: 0;
@@ -26,8 +33,8 @@
 }
 
 .form_profil {
-  width: 60%;
-  padding: 20px 10px; /* Ajoute un espace interne */
+  width: 50%;
+  padding: 30px 5px; /* Ajoute un espace interne */
   background-color: white; /* Optionnel : fond blanc pour le formulaire */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optionnel : ombre pour style */
   border-radius: 8px; /* Arrondit les bords */
@@ -41,7 +48,7 @@
   font-size: 1.5rem;
   border-radius: 5px;
   width: 80%; /* Réduction de la largeur pour un meilleur rendu */
-  height: 2rem;
+  height: 4rem;
   margin: 5px; /* Ajoute un espace interne */
   border: 1px solid #ccc; /* Ajoute une bordure */
 }

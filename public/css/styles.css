@@ -16,7 +16,7 @@ header {
 
 .menu-container {
   margin-right: 5%;
-  margin-top: 2.5%;
+  margin-top: 1.75%;
 }
 
 /* Bouton du menu */
@@ -24,7 +24,7 @@ header {
   background-color: rgb(255, 231, 0);
   color: black;
   border: solid black;
-  height: 4rem;
+  height: 5rem;
   padding-top: 10%;
   padding-bottom: 10%;
   padding-left: 10%;
@@ -84,11 +84,6 @@ header {
 }
 
 /* MANAGE CLIENT*/
-
-input#campaignFile.campaignFile {
-  height: 1.7rem;
-  cursor: pointer;
-}
 
 .logoutButton {
   background-color: rgb(116, 0, 255);
