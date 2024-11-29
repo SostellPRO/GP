@@ -12,9 +12,7 @@ header {
   color: white;
 }
 
-/* LOGIN */
-
-/* HOME*/
+/*MENU*/
 
 .menu-container {
   margin-right: 5%;
@@ -87,96 +85,9 @@ header {
 
 /* MANAGE CLIENT*/
 
-.body_manage {
-  font-family: "Public", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f9;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.global_manage {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.header_manage {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  padding: 15px; /* Réduction de la hauteur */
-  background-color: rgb(116, 0, 255);
-  color: white;
-  height: 12.5vh;
-}
-
-.title_manage {
-  background-color: rgb(116, 0, 255);
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0;
-}
-
-.container_campaign {
-  width: 100vw;
-  flex: 1;
-  display: flex; /* Active Flexbox */
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
-  text-align: center;
-  height: 685px;
-}
-
-.uploadForm {
-  width: 40%;
-  padding: 20px 10px; /* Ajoute un espace interne */
-  background-color: white; /* Optionnel : fond blanc pour le formulaire */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optionnel : ombre pour style */
-  border-radius: 8px; /* Arrondit les bords */
-  display: flex; /* Active Flexbox */
-  flex-direction: column; /* Les éléments s'empilent verticalement */
-  align-items: center;
-  border: solid rgb(217, 183, 0);
-}
-
-.campaignFile {
-  font-size: 1.2rem;
-  border-radius: 5px;
-  width: 80%; /* Réduction de la largeur pour un meilleur rendu */
-  height: 1.4rem;
-  margin: 5px 0; /* Espacement entre les champs */
-  border: solid grey 2px;
-}
-
-.label_campaign {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
 input#campaignFile.campaignFile {
   height: 1.7rem;
   cursor: pointer;
-}
-
-.button_manage {
-  width: 70%; /* Largeur ajustée */
-  height: 2.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: rgb(116, 0, 255);
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 15px;
-}
-
-.button_manage:hover {
-  background-color: rgb(51, 0, 153);
 }
 
 .logoutButton {
@@ -187,16 +98,6 @@ input#campaignFile.campaignFile {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.buttonManageLogout {
-  background-color: rgb(116, 0, 255);
-  margin: 10px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  border: white;
-  cursor: pointer;
 }
 
 .buttonManageLogout:hover {
