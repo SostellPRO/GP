@@ -5,17 +5,6 @@
   src: url("../fonts/Public_Sans/PublicSans-VariableFont_wght.ttf");
 }
 
-.body_home {
-  font-family: "Public", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f9;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Assure que le contenu occupe toute la hauteur */
-}
-
 header {
   text-align: center;
   padding: 15px; /* Réduction de la hauteur */
@@ -25,77 +14,7 @@ header {
 
 /* LOGIN */
 
-.login-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex; /* Active Flexbox */
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
-  background: linear-gradient(
-    rgb(116, 0, 255) 50%,
-    #ffffff 50%
-  ); /* Optionnel : ajoute un fond */
-
-  .form_login {
-    width: 40%;
-    padding-top: 40px; /* Ajoute un espace interne */
-    padding-bottom: 40px; /* Ajoute un espace interne */
-    padding-left: 5px; /* Ajoute un espace interne */
-    padding-right: 5px; /* Ajoute un espace interne */
-    background-color: white; /* Optionnel : fond blanc pour le formulaire */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optionnel : ombre pour style */
-    border-radius: 10px; /* Arrondit les bords */
-    display: flex; /* Active Flexbox */
-    flex-direction: column; /* Les éléments s'empilent verticalement */
-    align-items: center;
-    border: solid rgb(217, 183, 0);
-  } /* Centre horizontalement les éléments enfants */
-}
-
-.img_login {
-  width: 60%;
-  height: auto;
-  margin-bottom: 20px; /* Espace sous l'image */
-}
-
-.input_login {
-  font-size: 1.5rem;
-  border-radius: 5px;
-  width: 80%; /* Réduction de la largeur pour un meilleur rendu */
-  height: 3rem;
-  margin: 10px 0; /* Espacement entre les champs */
-  padding: 5px; /* Ajoute un espace interne */
-  border: 1px solid #ccc; /* Ajoute une bordure */
-}
-
-.button_login {
-  width: 60%; /* Largeur ajustée */
-  height: 3rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  background-color: rgb(116, 0, 255);
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-.button_login:hover {
-  background-color: rgb(51, 0, 153);
-}
-
 /* HOME*/
-
-.header_home {
-  height: 15vh; /* Aligné avec la page Manage Campaigns */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.title_home {
-  font-size: 2.5rem; /* Taille réduite pour correspondre */
-  font-weight: bold;
-}
 
 .menu-container {
   margin-right: 5%;
@@ -124,17 +43,6 @@ header {
   border: solid rgb(210, 50, 120);
 }
 
-.container {
-  flex: 1; /* S'étend pour occuper l'espace restant */
-  display: flex;
-}
-
-.partie1 {
-  height: 75vh;
-  width: 20%;
-  background-color: rgb(217, 183, 0);
-}
-
 #user-info {
   margin-left: 10%;
   margin-top: 20%;
@@ -142,13 +50,6 @@ header {
   width: 80%;
   font-size: 1.5rem;
   border-radius: 7.5px;
-}
-.partie2 {
-  height: 70vh;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centre le contenu verticalement */
 }
 
 #navigation-links a {
@@ -160,14 +61,6 @@ header {
   transition: 50ms;
 }
 
-#navigation-links {
-  font-size: 2rem; /* Réduction pour aligner avec Manage Campaigns */
-  margin-left: 10%;
-  margin-top: 5%; /* Réduction des marges */
-  list-style-type: none;
-  text-decoration: none;
-}
-
 #navigation-links li {
   margin-bottom: 3%;
 }
@@ -176,14 +69,6 @@ header {
   background-color: rgb(116, 0, 255);
   font-size: 3rem;
   font-weight: bold;
-}
-
-.home_logoutButton {
-  background-color: rgb(116, 0, 255);
-  height: 8vh; /* Réduction alignée avec Manage Campaigns */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 #logoutButton {
@@ -320,126 +205,7 @@ input#campaignFile.campaignFile {
 
 /*CREATE USER*/
 
-.body_profil {
-  font-family: "Public", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f9;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.header_profil {
-  height: 15vh; /* Aligné avec la page Manage Campaigns */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form_profil_container {
-  width: 100vw;
-  flex: 1;
-  display: flex; /* Active Flexbox */
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
-  text-align: center;
-}
-
-.form_profil {
-  width: 60%;
-  padding: 20px 10px; /* Ajoute un espace interne */
-  background-color: white; /* Optionnel : fond blanc pour le formulaire */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optionnel : ombre pour style */
-  border-radius: 8px; /* Arrondit les bords */
-  display: flex; /* Active Flexbox */
-  flex-direction: column; /* Les éléments s'empilent verticalement */
-  align-items: center;
-  border: solid rgb(217, 183, 0);
-}
-
-.input_profil {
-  font-size: 1.5rem;
-  border-radius: 5px;
-  width: 80%; /* Réduction de la largeur pour un meilleur rendu */
-  height: 2rem;
-  margin: 5px; /* Ajoute un espace interne */
-  border: 1px solid #ccc; /* Ajoute une bordure */
-}
-
-.button_profil {
-  width: 60%; /* Largeur ajustée */
-  height: 3rem;
-  font-size: 1.2rem;
-  font-weight: bold;
-  background-color: rgb(116, 0, 255);
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 20px;
-}
-
-.button_profil:hover {
-  background-color: rgb(51, 0, 153);
-}
-
 /*CREATE CLIENT*/
-
-.body_client {
-  font-family: "Public", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f9;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.header_client {
-  text-align: center;
-  padding: 15px;
-  background-color: rgb(116, 0, 255);
-  color: white;
-}
-
-#createClientForm {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 80%;
-  margin: auto;
-  height: 80vh; /* Hauteur totale du formulaire */
-}
-
-.part1_client {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex: 1;
-}
-
-.field1_client {
-  width: 45%;
-}
-.field2_client {
-  width: 45%;
-}
-
-.part2_client {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex: 1;
-}
-
-.field3_client {
-  width: 45%;
-}
-.field4_client {
-  width: 45%;
-}
 
 /* HISTORIQUE */
 #historique {
@@ -516,12 +282,6 @@ button {
 
 button:hover {
   background-color: rgb(51, 0, 153);
-}
-
-.title_create {
-  background-color: rgb(116, 0, 255);
-  font-size: 4rem;
-  font-weight: bold;
 }
 
 /* TITRES */

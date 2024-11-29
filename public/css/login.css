@@ -1,0 +1,55 @@
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex; /* Active Flexbox */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  background: linear-gradient(rgb(116, 0, 255) 50%, #ffffff 50%);
+}
+
+.form_login {
+  width: 40%;
+  padding-top: 40px; /* Ajoute un espace interne */
+  padding-bottom: 40px; /* Ajoute un espace interne */
+  padding-left: 5px; /* Ajoute un espace interne */
+  padding-right: 5px; /* Ajoute un espace interne */
+  background-color: white; /* Optionnel : fond blanc pour le formulaire */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optionnel : ombre pour style */
+  border-radius: 10px; /* Arrondit les bords */
+  display: flex; /* Active Flexbox */
+  flex-direction: column; /* Les éléments s'empilent verticalement */
+  align-items: center;
+  border: solid rgb(217, 183, 0);
+} /* Centre horizontalement les éléments enfants */
+
+.img_login {
+  width: 60%;
+  height: auto;
+  margin-bottom: 20px; /* Espace sous l'image */
+}
+
+.input_login {
+  font-size: 1.5rem;
+  border-radius: 5px;
+  width: 80%; /* Réduction de la largeur pour un meilleur rendu */
+  height: 3rem;
+  margin: 10px 0; /* Espacement entre les champs */
+  padding: 5px; /* Ajoute un espace interne */
+  border: 1px solid #ccc; /* Ajoute une bordure */
+}
+
+.button_login {
+  width: 60%; /* Largeur ajustée */
+  height: 3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: rgb(116, 0, 255);
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.button_login:hover {
+  background-color: rgb(51, 0, 153);
+}

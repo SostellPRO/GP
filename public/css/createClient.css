@@ -1,0 +1,59 @@
+.body_client {
+  font-family: "Public", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header_client {
+  text-align: center;
+  padding: 15px;
+  background-color: rgb(116, 0, 255);
+  color: white;
+}
+
+.title_create {
+  background-color: rgb(116, 0, 255);
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+#createClientForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 80%;
+  margin: auto;
+  height: 80vh; /* Hauteur totale du formulaire */
+}
+.part1_client {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1;
+}
+
+.field1_client {
+  width: 45%;
+}
+.field2_client {
+  width: 45%;
+}
+
+.part2_client {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1;
+}
+
+.field3_client {
+  width: 45%;
+}
+.field4_client {
+  width: 45%;
+}

@@ -1,0 +1,63 @@
+.body_profil {
+  font-family: "Public", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header_profil {
+  height: 15vh; /* Aligné avec la page Manage Campaigns */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_profil_container {
+  width: 100vw;
+  flex: 1;
+  display: flex; /* Active Flexbox */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  text-align: center;
+}
+
+.form_profil {
+  width: 60%;
+  padding: 20px 10px; /* Ajoute un espace interne */
+  background-color: white; /* Optionnel : fond blanc pour le formulaire */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optionnel : ombre pour style */
+  border-radius: 8px; /* Arrondit les bords */
+  display: flex; /* Active Flexbox */
+  flex-direction: column; /* Les éléments s'empilent verticalement */
+  align-items: center;
+  border: solid rgb(217, 183, 0);
+}
+
+.input_profil {
+  font-size: 1.5rem;
+  border-radius: 5px;
+  width: 80%; /* Réduction de la largeur pour un meilleur rendu */
+  height: 2rem;
+  margin: 5px; /* Ajoute un espace interne */
+  border: 1px solid #ccc; /* Ajoute une bordure */
+}
+
+.button_profil {
+  width: 60%; /* Largeur ajustée */
+  height: 3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: rgb(116, 0, 255);
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.button_profil:hover {
+  background-color: rgb(51, 0, 153);
+}

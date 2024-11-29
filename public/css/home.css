@@ -1,0 +1,57 @@
+.body_home {
+  font-family: "Public", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Assure que le contenu occupe toute la hauteur */
+}
+
+.header_home {
+  height: 15vh; /* Aligné avec la page Manage Campaigns */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title_home {
+  font-size: 2.5rem; /* Taille réduite pour correspondre */
+  font-weight: bold;
+}
+
+.container {
+  flex: 1; /* S'étend pour occuper l'espace restant */
+  display: flex;
+}
+
+.partie1 {
+  height: 75vh;
+  width: 20%;
+  background-color: rgb(217, 183, 0);
+}
+
+.partie2 {
+  height: 70vh;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centre le contenu verticalement */
+}
+
+#navigation-links {
+  font-size: 2rem; /* Réduction pour aligner avec Manage Campaigns */
+  margin-left: 10%;
+  margin-top: 5%; /* Réduction des marges */
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.home_logoutButton {
+  background-color: rgb(116, 0, 255);
+  height: 8vh; /* Réduction alignée avec Manage Campaigns */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
