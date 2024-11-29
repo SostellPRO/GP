@@ -386,6 +386,138 @@ input#campaignFile.campaignFile {
 
 /*CREATE CLIENT*/
 
+.body_client {
+  font-family: "Public", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header_client {
+  text-align: center;
+  padding: 15px;
+  background-color: rgb(116, 0, 255);
+  color: white;
+}
+
+#createClientForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 80%;
+  margin: auto;
+  height: 80vh; /* Hauteur totale du formulaire */
+}
+
+.part1_client {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1;
+}
+
+.field1_client {
+  width: 45%;
+}
+.field2_client {
+  width: 45%;
+}
+
+.part2_client {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1;
+}
+
+.field3_client {
+  width: 45%;
+}
+.field4_client {
+  width: 45%;
+}
+
+/* HISTORIQUE */
+#historique {
+  margin-top: 10px;
+}
+
+#historiqueList {
+  margin: 10px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#historiqueList li {
+  margin-bottom: 5px;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+  align-self: center;
+  width: 30%;
+}
+
+fieldset {
+  flex: 1;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid rgb(116, 0, 255);
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: rgb(116, 0, 255);
+}
+
+label {
+  font-size: 1.2rem; /* Réduction de la taille pour une meilleure gestion de l'espace */
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+textarea {
+  resize: vertical;
+  height: 4rem;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(116, 0, 255);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(51, 0, 153);
+}
+
 .title_create {
   background-color: rgb(116, 0, 255);
   font-size: 4rem;
