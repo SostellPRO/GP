@@ -72,8 +72,8 @@ body {
   font-size: 1.2rem;
   border-radius: 5px;
   width: 80%; /* Réduction de la largeur pour un meilleur rendu */
-  height: 1.4rem;
-  margin: 5px 0; /* Espacement entre les champs */
+  height: 3rem;
+  margin: 5px; /* Espacement entre les champs */
   border: solid grey 2px;
 }
 

@@ -1,3 +1,11 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Nécessaire pour que la hauteur soit héritée */
+  background-color: #f4f4f9;
+}
+
 .body_client {
   font-family: "Public", sans-serif;
   margin: 0;
@@ -28,6 +36,7 @@
   gap: 20px;
   width: 80%;
   margin: auto;
+  margin-top: 30px;
   height: 80vh; /* Hauteur totale du formulaire */
 }
 .part1_client {

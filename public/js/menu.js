@@ -42,4 +42,26 @@ document.addEventListener("DOMContentLoaded", () => {
       menuDropdown.classList.remove("open");
     }
   });
+
+  // Gestion du scroll pour afficher/masquer le bouton menu
+  let lastScrollPosition = 0;
+
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const documentHeight = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
+
+    // Calcul du pourcentage de défilement
+    const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+
+    if (scrollPercent > 2 && scrollTop > lastScrollPosition) {
+      // Masquer le bouton menu si on descend et dépasse 2% de la page
+      menuButton.classList.add("hidden");
+    } else if (scrollPercent < 4 && scrollTop < lastScrollPosition) {
+      // Réafficher le bouton menu si on remonte en restant sous 98%
+      menuButton.classList.remove("hidden");
+    }
+
+    lastScrollPosition = scrollTop;
+  });
 });
