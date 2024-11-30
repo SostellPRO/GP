@@ -16,8 +16,8 @@
     "adressePostale": "1 rue de Paris",
     "complementAdresse": "Bâtiment A",
     "codePostal": "75001",
-    "nombreDossiers": "",
-    "montantEstime": "",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500",
     "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
     "dateProchaineAction": "2024-11-24T23:09:22.182Z",
@@ -292,7 +292,11 @@
     "dateProchaineAction": "1970-01-01",
     "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "prenomInterlocuteur": "",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "2024112722364859613",

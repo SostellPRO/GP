@@ -70,3 +70,56 @@ function parseJwt(token) {
     return null;
   }
 }
+
+let currentPage = 1;
+const itemsPerPage = 8; // 4 lignes, 2 colonnes par ligne
+
+function displayClients(clients) {
+  const clientList = document.getElementById("client-list");
+  const totalPages = Math.ceil(clients.length / itemsPerPage);
+
+  // Limiter l'affichage aux clients de la page actuelle
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const clientsToDisplay = clients.slice(startIndex, endIndex);
+
+  // Rendre les cartes
+  clientList.innerHTML = clientsToDisplay
+    .map(
+      (client) => `
+      <div class="client-card">
+        <h3>${client.raisonSociale}</h3>
+        <p>Statut: ${client.statut}</p>
+        <p>Typologie: ${client.typologie}</p>
+        <p>Prochaine action: ${client.dateProchaineAction}</p>
+        <a href="clientDetail.html?id=${client.id}">Voir les détails</a>
+      </div>
+    `
+    )
+    .join("");
+
+  updatePaginationControls(totalPages);
+}
+
+function updatePaginationControls(totalPages) {
+  const paginationContainer = document.querySelector(".pagination");
+  paginationContainer.innerHTML = `
+    <button onclick="changePage(-1)" ${currentPage === 1 ? "disabled" : ""}>
+      Précédent
+    </button>
+    <span>Page ${currentPage} sur ${totalPages}</span>
+    <button onclick="changePage(1)" ${
+      currentPage === totalPages ? "disabled" : ""
+    }>
+      Suivant
+    </button>
+  `;
+}
+
+function changePage(direction) {
+  currentPage += direction;
+  loadClients(
+    "En attente d'appel",
+    document.getElementById("user-id").textContent
+  );
+}
