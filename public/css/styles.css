@@ -95,10 +95,6 @@ header {
   align-items: center;
 }
 
-.buttonManageLogout:hover {
-  transform: scale(1.05);
-}
-
 /*CREATE USER*/
 
 /*CREATE CLIENT*/

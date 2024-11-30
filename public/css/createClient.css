@@ -115,26 +115,19 @@ body {
   visibility: visible;
 }
 
-.footer:hover {
-  transform: scale(1.1);
-  background-color: rgb(51, 0, 153);
-}
-
 .buttonManageLogout {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: white;
   background-color: rgb(116, 0, 255);
   border: none;
+  padding: 10px 20px;
 
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.buttonManageLogout:hover {
-  background-color: rgb(51, 0, 153);
-}
 .logoutButton {
   background-color: rgb(116, 0, 255);
   font-size: 1.5rem; /* Réduction pour cohérence */
@@ -142,8 +135,5 @@ body {
   color: white;
   border: none;
   cursor: pointer;
-}
-
-.logoutButton:hover {
-  transform: scale(1.1);
+  padding: 10px;
 }
