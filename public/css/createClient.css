@@ -66,3 +66,84 @@ body {
 .field4_client {
   width: 45%;
 }
+
+#addComment {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  width: 15%;
+  background-color: rgb(116, 0, 255);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit_button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 20px;
+  font-weight: bold;
+  align-self: center;
+  width: 15%;
+  color: white;
+  background-color: rgb(116, 0, 255);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.footer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  background-color: rgb(116, 0, 255);
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.footer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.footer:hover {
+  transform: scale(1.1);
+  background-color: rgb(51, 0, 153);
+}
+
+.buttonManageLogout {
+  font-weight: bold;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(116, 0, 255);
+  border: none;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonManageLogout:hover {
+  background-color: rgb(51, 0, 153);
+}
+.logoutButton {
+  background-color: rgb(116, 0, 255);
+  font-size: 1.5rem; /* Réduction pour cohérence */
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.logoutButton:hover {
+  transform: scale(1.1);
+}

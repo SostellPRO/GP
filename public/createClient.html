@@ -115,12 +115,40 @@
         <div class="part2_client">
           <fieldset>
             <legend>Informations Complémentaires</legend>
+            <label for="nombreDossiers">Nombre de Dossiers :</label>
+            <select id="nombreDossiers" name="nombreDossiers">
+              <option value="standard">Standard</option>
+              <option value="custom">Autre</option>
+            </select>
+            <input
+              type="text"
+              id="nombreDossiersCustom"
+              name="nombreDossiersCustom"
+              placeholder="Spécifiez le nombre"
+              style="display: none"
+            />
+
+            <label for="montantEstime">Montant Estimé :</label>
+            <select id="montantEstime" name="montantEstime">
+              <option value="standard">Standard</option>
+              <option value="custom">Autre</option>
+            </select>
+            <input
+              type="text"
+              id="montantEstimeCustom"
+              name="montantEstimeCustom"
+              placeholder="Spécifiez le montant"
+              style="display: none"
+            />
+
             <h3>Historique :</h3>
             <ul id="historiqueList"></ul>
 
             <label for="commentaire">Ajouter un commentaire :</label>
             <textarea id="commentaire" name="commentaire"></textarea>
-            <button type="button" id="addComment">Ajouter Commentaire</button>
+            <button type="button" id="addComment" clss>
+              Ajouter Commentaire
+            </button>
 
             <label for="dateProchaineAction">Date prochaine action :</label>
             <input
@@ -154,11 +182,22 @@
             >
               <option value="">Chargement...</option>
             </select>
-            <button type="submit">Créer le Client</button>
+            <button type="submit" class="submit_button">Créer le Client</button>
           </fieldset>
         </div>
       </form>
       <p id="statusMessage"></p>
+    </div>
+    <div id="footer" class="footer hidden">
+      <div class="logoutButton">
+        <button
+          id="backToHome"
+          onclick="navigateToHome()"
+          class="buttonManageLogout"
+        >
+          ACCUEIL
+        </button>
+      </div>
     </div>
   </body>
 </html>
