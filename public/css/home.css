@@ -24,7 +24,8 @@ body {
 }
 
 .title_home {
-  font-size: 2.5rem; /* Taille réduite pour correspondre */
+  background-color: rgb(116, 0, 255);
+  font-size: 4rem;
   font-weight: bold;
 }
 

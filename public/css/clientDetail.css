@@ -1,0 +1,133 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Nécessaire pour que la hauteur soit héritée */
+  background-color: #f4f4f9;
+}
+.body_detail {
+  font-family: "Public", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.header_detail {
+  text-align: center;
+  padding: 15px;
+  background-color: rgb(116, 0, 255);
+  color: white;
+}
+.title_detail {
+  background-color: rgb(116, 0, 255);
+  font-size: 4rem;
+  font-weight: bold;
+}
+#clientFormDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+  height: 80vh; /* Hauteur totale du formulaire */
+}
+
+.part1_detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1;
+}
+.field1_detail {
+  width: 45%;
+}
+.field2_detail {
+  width: 45%;
+}
+.part2_detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1;
+}
+
+.field3_detail {
+  width: 45%;
+}
+.field4_detail {
+  width: 45%;
+}
+#addComment {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  width: 15%;
+  background-color: rgb(116, 0, 255);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit_button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 20px;
+  font-weight: bold;
+  align-self: center;
+  width: 15%;
+  color: white;
+  background-color: rgb(116, 0, 255);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.footer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  background-color: rgb(116, 0, 255);
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.footer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.buttonManageLogout {
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(116, 0, 255);
+  border: none;
+  padding: 10px 20px;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton {
+  background-color: rgb(116, 0, 255);
+  font-size: 1.5rem; /* Réduction pour cohérence */
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}

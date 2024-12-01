@@ -23,6 +23,12 @@ body {
   align-items: center;
 }
 
+.title_profil {
+  background-color: rgb(116, 0, 255);
+  font-size: 4rem;
+  font-weight: bold;
+}
+
 .form_profil_container {
   width: 100vw;
   flex: 1;

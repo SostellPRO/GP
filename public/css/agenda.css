@@ -1,5 +1,6 @@
 html,
 body {
+  font-family: "Public", sans-serif;
   margin: 0;
   padding: 0;
   height: 100%; /* Nécessaire pour que la hauteur soit héritée */
@@ -20,6 +21,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.agenda_title {
+  background-color: rgb(116, 0, 255);
+  font-size: 4rem;
+  font-weight: bold;
 }
 
 .partie_gauche {
