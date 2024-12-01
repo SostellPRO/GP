@@ -41,24 +41,6 @@ async function loadClients(status, userId) {
   }
 }
 
-function displayClients(clients) {
-  const clientList = document.getElementById("client-list");
-  clientList.innerHTML = clients
-    .map((client) => {
-      console.log(client.id); // Affiche l'ID du client dans la console
-      return `
-        <div>
-          <p><strong>${client.raisonSociale}</strong></p>
-          <p>Statut : ${client.statut}</p>
-          <p>Typologie : ${client.typologie}</p>
-          <p>Commentaire : ${client.historique[0]}</p>
-          <p>Date prochaine action : ${client.dateProchaineAction}</p>
-          <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
-        </div>`;
-    })
-    .join("");
-}
-
 // Fonction pour décoder un JWT
 function parseJwt(token) {
   try {
@@ -78,12 +60,10 @@ function displayClients(clients) {
   const clientList = document.getElementById("client-list");
   const totalPages = Math.ceil(clients.length / itemsPerPage);
 
-  // Limiter l'affichage aux clients de la page actuelle
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const clientsToDisplay = clients.slice(startIndex, endIndex);
 
-  // Rendre les cartes
   clientList.innerHTML = clientsToDisplay
     .map(
       (client) => `
@@ -91,7 +71,10 @@ function displayClients(clients) {
         <h3>${client.raisonSociale}</h3>
         <p>Statut: ${client.statut}</p>
         <p>Typologie: ${client.typologie}</p>
-        <p>Prochaine action: ${client.dateProchaineAction}</p>
+        <p>Commentaire : ${
+          client.historique?.[0]?.slice(0, 50) || "Aucun commentaire disponible"
+        }</p>
+        <p>Prochaine action: ${client.dateProchaineAction || "Non définie"}</p>
         <a href="clientDetail.html?id=${client.id}">Voir les détails</a>
       </div>
     `

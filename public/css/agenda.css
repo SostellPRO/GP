@@ -91,7 +91,7 @@ body {
 
 .client-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 cartes par ligne */
+  grid-template-columns: repeat(3, 1fr); /* 4 cartes par ligne */
   gap: 1rem;
   width: 100%;
 }
@@ -102,9 +102,33 @@ body {
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  text-align: justify;
   font-size: 1rem;
 }
+
+.client-card h3 {
+  text-align: center; /* Centre le titre */
+  margin-bottom: 1rem; /* Ajoute de l'espace en dessous */
+  color: rgb(116, 0, 255); /* Style optionnel pour le titre */
+}
+
+.client-card a {
+  display: block; /* Transforme le lien en bloc pour centrer facilement */
+  text-align: center; /* Centre le texte du lien */
+  margin-top: 1rem; /* Ajoute de l'espace au-dessus du lien */
+  color: rgb(116, 0, 255); /* Couleur du lien */
+  text-decoration: none; /* Supprime le soulignement */
+}
+
+.client-card a:hover {
+  text-decoration: underline; /* Ajoute le soulignement au survol */
+  transform: scale(1.1);
+}
+
+.client-card p {
+  margin: 0.5rem 0; /* Espacement entre les paragraphes */
+}
+
 .client-card:hover {
   border: 2px solid rgb(217, 183, 0);
   transform: scale(1.025);
