@@ -49,6 +49,10 @@ header {
   font-size: 1.5rem;
   border-radius: 7.5px;
 }
+#user-info p {
+  padding-left: 5%;
+  font-weight: bold;
+}
 
 #navigation-links a {
   text-decoration: none;
