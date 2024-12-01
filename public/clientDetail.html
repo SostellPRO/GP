@@ -49,41 +49,47 @@
           <fieldset class="field2_detail">
             <legend>Interlocuteur Principal</legend>
             <label for="civilite">Civilité :</label>
-            <select id="civilite" name="civilite>
+            <select id="civilite" name="civilite">
               <option value="M">M</option>
               <option value="Mme">Mme</option>
             </select>
 
             <label for="nomInterlocuteur">Nom :</label>
-            <input type="text" id="nomInterlocuteur" name="nomInterlocuteur1"/>
+            <input type="text" id="nomInterlocuteur" name="nomInterlocuteur1" />
 
             <label for="prenomInterlocuteur">Prénom :</label>
-            <input type="text" id="prenomInterlocuteur"  name="prenomInterlocuteur1"/>
+            <input
+              type="text"
+              id="prenomInterlocuteur"
+              name="prenomInterlocuteur1"
+            />
 
             <label for="adressePostale">Adresse Postale :</label>
-            <input type="text" id="adressePostale" name="adressePostale"/>
-    
+            <input type="text" id="adressePostale" name="adressePostale" />
+
             <label for="complementAdresse">Complément Adresse :</label>
-            <input type="text" id="complementAdresse" name="complementAdresse"/>
-    
+            <input
+              type="text"
+              id="complementAdresse"
+              name="complementAdresse"
+            />
+
             <label for="codePostal">Code Postal :</label>
-            <input type="text" id="codePostal" name="codePostal"/>
+            <input type="text" id="codePostal" name="codePostal" />
 
             <label for="telephone1">Téléphone 1 :</label>
-            <input type="text" id="telephone1" name="telephone1"/>
+            <input type="text" id="telephone1" name="telephone1" />
 
             <label for="telephone2">Téléphone 2 :</label>
-            <input type="text" id="telephone2" name="telephone2"/>
+            <input type="text" id="telephone2" name="telephone2" />
 
             <label for="mail1">Mail 1 :</label>
-            <input type="text" id="mail1" name="mail1"/>
+            <input type="text" id="mail1" name="mail1" />
 
             <label for="mail2">Mail 2 :</label>
-            <input type="text" id="mail2" name="mail2"/>
+            <input type="text" id="mail2" name="mail2" />
           </fieldset>
         </div>
-
-
 
         <div class="part2_detail">
           <fieldset>
@@ -97,12 +103,12 @@
               <option value="+500">Plus de 500</option>
             </select>
             <input
-            type="text"
-            id="nombreDossiersCustom"
-            name="nombreDossiersCustom"
-            placeholder="Spécifiez le nombre"
-            style="display: none"
-          />
+              type="text"
+              id="nombreDossiersCustom"
+              name="nombreDossiersCustom"
+              placeholder="Spécifiez le nombre"
+              style="display: none"
+            />
 
             <label for="montantEstime">Montant Estimé :</label>
             <select id="montantEstime" name="montantEstime">
@@ -113,53 +119,53 @@
               <option value="+10000">Plus de 10000€</option>
             </select>
             <input
-            type="text"
-            id="montantEstimeCustom"
-            name="montantEstimeCustom"
-            placeholder="Spécifiez le montant"
-            style="display: none"
-          />
-          <h3>Historique :</h3>
-          <ul id="historiqueList"></ul>  
-          <label for="commentaire">Ajouter un commentaire :</label>
-          <textarea id="commentaire" name="commentaire"></textarea>
-          <button type="button" id="addComment" clss>Ajouter Commentaire</button>
-          <label for="dateProchaineAction">Date prochaine action :</label>
-          <input
-            type="date"
-            id="dateProchaineAction"
-            name="dateProchaineAction"
-            required
-          />
-
-
-
-
+              type="text"
+              id="montantEstimeCustom"
+              name="montantEstimeCustom"
+              placeholder="Spécifiez le montant"
+              style="display: none"
+            />
+            <h3>Historique :</h3>
+            <ul id="historiqueList"></ul>
+            <label for="commentaire">Ajouter un commentaire :</label>
+            <textarea id="commentaire" name="commentaire"></textarea>
+            <button type="button" id="addComment" clss>
+              Ajouter Commentaire
+            </button>
+            <label for="dateProchaineAction">Date prochaine action :</label>
+            <input
+              type="date"
+              id="dateProchaineAction"
+              name="dateProchaineAction"
+              required
+            />
 
             <label for="statut">Statut :</label>
             <select id="statut" name="statut">
-              <option value="En attente d'appel" selected>En attente d'appel</option>
+              <option value="En attente d'appel" selected>
+                En attente d'appel
+              </option>
               <option value="À rappeler">À rappeler</option>
               <option value="En attente d'information">
                 En attente d'information
               </option>
               <option value="Fin de communication">Fin de communication</option>
-            </select>
-            <option value="En cours de signature">
-              En cours de signature
-            </option>
+              <option value="En cours de signature">
+                En cours de signature
+              </option>
               <option value="Signé">Signé</option>
-              <label for="matriculeGestionnaire">Gestionnaire :</label>
-              <select
-                id="matriculeGestionnaire"
-                name="matriculeGestionnaire"
-                required
-              >
-                <option value="">Chargement...</option>
-              </select>
+            </select>
+
+            <label for="matriculeGestionnaire">Gestionnaire :</label>
+            <select
+              id="matriculeGestionnaire"
+              name="matriculeGestionnaire"
+              required
+            >
+              <option value="">Chargement...</option>
+            </select>
             <button type="submit">Enregistrer</button>
           </fieldset>
-        
         </div>
       </form>
       <p id="statusMessage"></p>

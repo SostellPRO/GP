@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Ajouter un événement pour soumettre le formulaire
   document
-    .getElementById("clientForm")
+    .getElementById("clientFormDetail")
     .addEventListener("submit", async (e) => {
       e.preventDefault();
 
@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         nombreDossiers: document.getElementById("nombreDossiers").value,
         montantEstime: document.getElementById("montantEstime").value,
         statut: document.getElementById("statut").value,
+        dateProchaineAction: document.getElementById("dateProchaineAction")
+          .value,
       };
 
       try {
