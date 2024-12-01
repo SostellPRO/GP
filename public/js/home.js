@@ -17,14 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.getElementById("navigation-links");
 
     // Liens selon le rôle de l'utilisateur
-    navLinks.innerHTML += `<li><a href="agenda.html">Agenda</a></li>`;
-    navLinks.innerHTML += `<li><a href="createClient.html">Créer un client</a></li>`;
+    navLinks.innerHTML += `<li><a href="agenda.html">AGENDA</a></li>`;
+    navLinks.innerHTML += `<li><a href="createClient.html">CREER UN CLIENT</a></li>`;
 
     if (["Superviseur", "Administrateur"].includes(userInfo.role)) {
-      navLinks.innerHTML += `<li><a href="manageCampaigns.html">Gérer les campagnes</a></li>`;
+      navLinks.innerHTML += `<li><a href="manageCampaigns.html">GERER LES CAMPAGNES</a></li>`;
     }
     if (userInfo.role === "Administrateur") {
-      navLinks.innerHTML += `<li><a href="createProfile.html">Créer un profil utilisateur</a></li>`;
+      navLinks.innerHTML += `<li><a href="createProfile.html">CREER UN UTILISATEUR</a></li>`;
     }
   } else {
     alert("Erreur d'authentification. Veuillez vous reconnecter.");
