@@ -1,184 +1,161 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const token = localStorage.getItem("token");
-  const userInfo = parseJwt(token);
-  const commentaires = [];
-  const footer = document.getElementById("footer");
+  const urlParams = new URLSearchParams(window.location.search);
+  const clientId = urlParams.get("id");
+  let currentHistorique = []; // Historique local pour gérer les commentaires
 
-  // Charger les utilisateurs dans le champ "matriculeGestionnaire"
-  await loadUsers(token, userInfo);
+  if (!clientId) {
+    alert("Aucun client trouvé.");
+    window.location.href = "/agenda.html";
+    return;
+  }
 
-  // Affichage conditionnel des champs "Autre"
-  setupConditionalFields();
+  // Charger les données du client
+  try {
+    const response = await fetch(`/api/clients/${clientId}`);
+    if (!response.ok)
+      throw new Error("Erreur lors de la récupération du client.");
 
-  // Gestion de l'historique des commentaires
-  setupHistorique(commentaires);
+    const client = await response.json();
+    populateClientForm(client); // Remplir le formulaire avec les données
+    currentHistorique = client.historique || []; // Charger l'historique initial
+  } catch (error) {
+    alert(error.message);
+    window.location.href = "/agenda.html";
+  }
 
-  // Gestion de la visibilité du footer
-  setupFooterVisibility(footer);
-
-  // Soumission du formulaire
+  // Soumission du formulaire principal
   document
-    .getElementById("createClientForm")
+    .getElementById("clientFormDetail")
     .addEventListener("submit", async (e) => {
       e.preventDefault();
-      await submitForm(e, commentaires, token);
+
+      const updatedClient = {
+        raisonSociale: document.getElementById("raisonSociale").value,
+        secteurActivite: document.getElementById("secteurActivite").value,
+        siren: document.getElementById("siren").value,
+        siret: document.getElementById("siret").value,
+        typologie: document.getElementById("typologie").value,
+        civilite: document.getElementById("civilite").value,
+        nomInterlocuteur: document.getElementById("nomInterlocuteur").value,
+        prenomInterlocuteur: document.getElementById("prenomInterlocuteur")
+          .value,
+        telephone1: document.getElementById("telephone1").value,
+        telephone2: document.getElementById("telephone2").value,
+        mail1: document.getElementById("mail1").value,
+        mail2: document.getElementById("mail2").value,
+        adressePostale: document.getElementById("adressePostale").value,
+        complementAdresse: document.getElementById("complementAdresse").value,
+        codePostal: document.getElementById("codePostal").value,
+        nombreDossiers: document.getElementById("nombreDossiers").value,
+        montantEstime: document.getElementById("montantEstime").value,
+        statut: document.getElementById("statut").value,
+        dateProchaineAction: document.getElementById("dateProchaineAction")
+          .value,
+      };
+
+      try {
+        const response = await fetch(`/api/clients/${clientId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedClient),
+        });
+
+        if (!response.ok) throw new Error("Erreur lors de la mise à jour.");
+        alert("Les données ont été mises à jour avec succès.");
+      } catch (error) {
+        alert(error.message);
+      }
     });
 
-  // Redirection vers la page d'accueil
-  document.getElementById("backToHome").addEventListener("click", () => {
-    window.location.href = "/home.html";
+  // Ajouter un commentaire
+  document.getElementById("addComment").addEventListener("click", async () => {
+    const commentaire = document.getElementById("commentaire").value.trim();
+
+    if (!commentaire) {
+      alert("Veuillez entrer un commentaire valide.");
+      return;
+    }
+
+    const newComment = `[${new Date().toLocaleString("fr-FR")}] ${commentaire}`;
+
+    try {
+      const response = await fetch(`/api/clients/${clientId}/historique`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ commentaire: newComment }),
+      });
+
+      if (!response.ok)
+        throw new Error("Erreur lors de l'ajout du commentaire.");
+
+      // Récupérer les données mises à jour depuis l'API
+      const updatedClient = await response.json();
+      currentHistorique = updatedClient.historique || [];
+
+      // Mettre à jour l'affichage
+      updateHistoriqueDisplay(currentHistorique);
+
+      // Réinitialiser le champ commentaire
+      document.getElementById("commentaire").value = "";
+    } catch (error) {
+      alert(error.message);
+    }
   });
 });
 
-// Fonction pour décoder un token JWT
-function parseJwt(token) {
-  try {
-    const base64Url = token.split(".")[1];
-    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-    return JSON.parse(atob(base64));
-  } catch (error) {
-    console.error("Erreur lors du décodage du token :", error);
-    return null;
-  }
-}
+// Remplir les champs du formulaire
+function populateClientForm(client) {
+  const fieldMapping = {
+    raisonSociale: "raisonSociale",
+    secteurActivite: "secteurActivite",
+    siren: "siren",
+    siret: "siret",
+    typologie: "typologie",
+    civilite: "civilite",
+    nomInterlocuteur: "nomInterlocuteur",
+    prenomInterlocuteur: "prenomInterlocuteur",
+    telephone1: "telephone1",
+    telephone2: "telephone2",
+    mail1: "mail1",
+    mail2: "mail2",
+    adressePostale: "adressePostale",
+    complementAdresse: "complementAdresse",
+    codePostal: "codePostal",
+    nombreDossiers: "nombreDossiers",
+    montantEstime: "montantEstime",
+    statut: "statut",
+    dateProchaineAction: "dateProchaineAction",
+  };
 
-// Charger les utilisateurs et les ajouter au champ matriculeGestionnaire
-async function loadUsers(token, userInfo) {
-  try {
-    const response = await fetch("/api/users", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    if (response.ok) {
-      const users = await response.json();
-      const matriculeSelect = document.getElementById("matriculeGestionnaire");
-      users.forEach((user) => {
-        const option = document.createElement("option");
-        option.value = user.id;
-        option.textContent = `${user.prenom} ${user.nom} (${user.id})`;
-        matriculeSelect.appendChild(option);
-      });
-
-      // Sélectionner l'utilisateur connecté par défaut
-      if (userInfo) {
-        matriculeSelect.value = userInfo.id;
-      }
-    } else {
-      console.error("Erreur lors du chargement des utilisateurs.");
+  for (const [fieldId, clientKey] of Object.entries(fieldMapping)) {
+    const element = document.getElementById(fieldId);
+    if (element && client[clientKey] !== undefined) {
+      element.value = client[clientKey];
     }
-  } catch (error) {
-    console.error("Erreur lors du chargement des utilisateurs :", error);
   }
-}
 
-// Affichage conditionnel pour les champs "Autre"
-function setupConditionalFields() {
-  document.getElementById("nombreDossiers").addEventListener("change", (e) => {
-    document.getElementById("nombreDossiersCustom").style.display =
-      e.target.value === "custom" ? "block" : "none";
-  });
-
-  document.getElementById("montantEstime").addEventListener("change", (e) => {
-    document.getElementById("montantEstimeCustom").style.display =
-      e.target.value === "custom" ? "block" : "none";
-  });
-}
-
-// Gestion de l'historique des commentaires
-function setupHistorique(commentaires) {
-  const historiqueList = document.getElementById("historiqueList");
-  const addCommentButton = document.getElementById("addComment");
-  const commentaireField = document.getElementById("commentaire");
-
-  addCommentButton.addEventListener("click", () => {
-    const commentaire = commentaireField.value.trim();
-    if (commentaire) {
-      const timestamp = new Date().toLocaleString("fr-FR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-      const historiqueEntry = `[${timestamp}] ${commentaire}`;
-      commentaires.unshift(historiqueEntry);
-      updateHistoriqueDisplay(historiqueList, commentaires);
-      commentaireField.value = "";
-    }
-  });
+  // Afficher l'historique
+  updateHistoriqueDisplay(client.historique || []);
 }
 
 // Mettre à jour l'affichage de l'historique
-function updateHistoriqueDisplay(historiqueList, commentaires) {
+function updateHistoriqueDisplay(historique) {
+  const historiqueList = document.getElementById("historiqueList");
   historiqueList.innerHTML = "";
-  commentaires.forEach((entry) => {
-    const li = document.createElement("li");
-    li.textContent = entry;
-    historiqueList.appendChild(li);
-  });
-}
 
-// Gestion de la visibilité du footer
-function setupFooterVisibility(footer) {
-  window.addEventListener("scroll", () => {
-    const scrollPosition = window.scrollY + window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-
-    // Afficher le footer lorsque l'utilisateur est en bas de la page
-    if (scrollPosition >= documentHeight - 50) {
-      footer.classList.add("visible");
-    } else {
-      footer.classList.remove("visible");
-    }
-  });
-}
-
-// Soumission du formulaire
-async function submitForm(e, commentaires, token) {
-  const formData = new FormData(e.target);
-  const clientData = Object.fromEntries(formData.entries());
-
-  // Traiter les champs "Autre"
-  if (clientData.nombreDossiers === "custom") {
-    clientData.nombreDossiers = formData.get("nombreDossiersCustom");
-  }
-  if (clientData.montantEstime === "custom") {
-    clientData.montantEstime = formData.get("montantEstimeCustom");
+  if (!historique || historique.length === 0) {
+    const emptyMessage = document.createElement("li");
+    emptyMessage.textContent = "Aucun commentaire.";
+    historiqueList.appendChild(emptyMessage);
+    return;
   }
 
-  // Ajouter l'historique dans les données du client
-  clientData.historique = commentaires;
-
-  // Génération automatique de l'ID client
-  const date = new Date();
-  clientData.id = `${date.getFullYear()}${(date.getMonth() + 1)
-    .toString()
-    .padStart(2, "0")}${date.getDate().toString().padStart(2, "0")}${date
-    .getHours()
-    .toString()
-    .padStart(2, "0")}${date.getMinutes().toString().padStart(2, "0")}`;
-
-  try {
-    const response = await fetch("/api/clients", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(clientData),
+  historique
+    .slice()
+    .reverse()
+    .forEach((entry) => {
+      const li = document.createElement("li");
+      li.textContent = entry;
+      historiqueList.appendChild(li);
     });
-
-    if (!response.ok) {
-      throw new Error("Erreur lors de la création du client.");
-    }
-
-    document.getElementById("statusMessage").textContent =
-      "Client créé avec succès !";
-    document.getElementById("statusMessage").style.color = "green";
-    e.target.reset();
-  } catch (error) {
-    document.getElementById("statusMessage").textContent =
-      error.message || "Erreur inconnue.";
-    document.getElementById("statusMessage").style.color = "red";
-  }
 }

@@ -1,27 +1,42 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const clientId = urlParams.get("id");
+  let currentHistorique = []; // Historique local pour gérer les commentaires
 
   if (!clientId) {
     alert("Aucun client trouvé.");
-    window.location.href = "/agenda.html"; // Redirection vers l'agenda
+    window.location.href = "/agenda.html";
     return;
   }
 
+  // Charger les données du client
   try {
-    // Récupérer les détails du client
     const response = await fetch(`/api/clients/${clientId}`);
     if (!response.ok)
       throw new Error("Erreur lors de la récupération du client.");
-    const client = await response.json();
 
+    const client = await response.json();
     populateClientForm(client); // Remplir le formulaire avec les données
+    currentHistorique = [...client.historique] || []; // Charger l'historique initial
+    updateHistoriqueDisplay(currentHistorique); // Afficher l'historique
   } catch (error) {
     alert(error.message);
-    window.location.href = "/agenda.html"; // Redirection en cas d'erreur
+    window.location.href = "/agenda.html";
   }
 
-  // Ajouter un événement pour soumettre le formulaire
+  // Charger les gestionnaires
+  try {
+    const response = await fetch(`/api/users`);
+    if (!response.ok)
+      throw new Error("Erreur lors du chargement des gestionnaires.");
+
+    const gestionnaires = await response.json();
+    populateGestionnaires(gestionnaires);
+  } catch (error) {
+    console.error(error.message);
+  }
+
+  // Soumission du formulaire principal
   document
     .getElementById("clientFormDetail")
     .addEventListener("submit", async (e) => {
@@ -59,77 +74,93 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         if (!response.ok) throw new Error("Erreur lors de la mise à jour.");
-
-        // Rediriger vers la page agenda après mise à jour
-        window.location.href = "/agenda.html";
+        alert("Les données ont été mises à jour avec succès.");
       } catch (error) {
         alert(error.message);
       }
     });
 
-  // Ajouter un événement pour ajouter un commentaire
+  // Ajouter un commentaire
   document.getElementById("addComment").addEventListener("click", async () => {
     const commentaire = document.getElementById("commentaire").value.trim();
 
     if (!commentaire) {
-      alert("Veuillez entrer un commentaire.");
+      alert("Veuillez entrer un commentaire valide.");
       return;
     }
+
+    const newComment = `[${new Date().toLocaleString("fr-FR")}] ${commentaire}`;
 
     try {
       const response = await fetch(`/api/clients/${clientId}/historique`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ commentaire }),
+        body: JSON.stringify({ commentaire: newComment }),
       });
 
       if (!response.ok)
         throw new Error("Erreur lors de l'ajout du commentaire.");
 
-      const updatedClient = await response.json();
-      updateHistorique(updatedClient.historique);
-      document.getElementById("commentaire").value = ""; // Réinitialiser le champ
+      // Mettre à jour localement sans recharger tout l'historique
+      currentHistorique.unshift(newComment);
+      updateHistoriqueDisplay(currentHistorique);
+
+      // Réinitialiser le champ commentaire
+      document.getElementById("commentaire").value = "";
     } catch (error) {
       alert(error.message);
     }
   });
 });
 
-// Remplir les champs du formulaire avec les données du client
+// Remplir les champs du formulaire
 function populateClientForm(client) {
-  document.getElementById("raisonSociale").value = client.raisonSociale || "";
-  document.getElementById("secteurActivite").value =
-    client.secteurActivite || "";
-  document.getElementById("siren").value = client.siren || "";
-  document.getElementById("siret").value = client.siret || "";
-  document.getElementById("typologie").value = client.typologie || "B2B";
-  document.getElementById("civilite").value = client.civilite || "M";
-  document.getElementById("nomInterlocuteur").value =
-    client.nomInterlocuteur || "";
-  document.getElementById("prenomInterlocuteur").value =
-    client.prenomInterlocuteur || "";
-  document.getElementById("telephone1").value = client.telephone1 || "";
-  document.getElementById("telephone2").value = client.telephone2 || "";
-  document.getElementById("mail1").value = client.mail1 || "";
-  document.getElementById("mail2").value = client.mail2 || "";
-  document.getElementById("adressePostale").value = client.adressePostale || "";
-  document.getElementById("complementAdresse").value =
-    client.complementAdresse || "";
-  document.getElementById("codePostal").value = client.codePostal || "";
-  document.getElementById("nombreDossiers").value =
-    client.nombreDossiers || "<10";
-  document.getElementById("montantEstime").value =
-    client.montantEstime || "<500";
-  document.getElementById("statut").value =
-    client.statut || "En attente d'appel";
+  const fieldMapping = {
+    raisonSociale: "raisonSociale",
+    secteurActivite: "secteurActivite",
+    siren: "siren",
+    siret: "siret",
+    typologie: "typologie",
+    civilite: "civilite",
+    nomInterlocuteur: "nomInterlocuteur",
+    prenomInterlocuteur: "prenomInterlocuteur",
+    telephone1: "telephone1",
+    telephone2: "telephone2",
+    mail1: "mail1",
+    mail2: "mail2",
+    adressePostale: "adressePostale",
+    complementAdresse: "complementAdresse",
+    codePostal: "codePostal",
+    nombreDossiers: "nombreDossiers",
+    montantEstime: "montantEstime",
+    statut: "statut",
+    dateProchaineAction: "dateProchaineAction",
+  };
 
-  updateHistorique(client.historique);
+  for (const [fieldId, clientKey] of Object.entries(fieldMapping)) {
+    const element = document.getElementById(fieldId);
+    if (element && client[clientKey] !== undefined) {
+      element.value = client[clientKey];
+    }
+  }
 }
 
-// Mettre à jour la liste des commentaires dans la section historique
-function updateHistorique(historique) {
+// Afficher les gestionnaires
+function populateGestionnaires(gestionnaires) {
+  const select = document.getElementById("matriculeGestionnaire");
+  select.innerHTML = ""; // Réinitialiser les options
+  gestionnaires.forEach((gestionnaire) => {
+    const option = document.createElement("option");
+    option.value = gestionnaire.id;
+    option.textContent = `${gestionnaire.prenom} ${gestionnaire.nom}`;
+    select.appendChild(option);
+  });
+}
+
+// Mettre à jour l'affichage de l'historique
+function updateHistoriqueDisplay(historique) {
   const historiqueList = document.getElementById("historiqueList");
-  historiqueList.innerHTML = ""; // Réinitialiser la liste
+  historiqueList.innerHTML = "";
 
   if (!historique || historique.length === 0) {
     const emptyMessage = document.createElement("li");
@@ -138,13 +169,9 @@ function updateHistorique(historique) {
     return;
   }
 
-  historique.forEach((comment) => {
+  historique.forEach((entry) => {
     const li = document.createElement("li");
-    li.textContent = comment;
+    li.textContent = entry;
     historiqueList.appendChild(li);
   });
-}
-
-function navigateToAgenda() {
-  window.location.href = "/agenda.html";
 }
