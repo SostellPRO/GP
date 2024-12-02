@@ -215,8 +215,8 @@
     "codePostal": "75008",
     "nombreDossiers": "<500",
     "montantEstime": "<10000",
-    "statut": "Signé",
-    "dateProchaineAction": "2024-12-31",
+    "statut": "En attente d'appel",
+    "dateProchaineAction": "2024-12-03",
     "matriculeGestionnaire": "a001",
     "historique": [
       "[27/11/2024 01:55] prometteur"
@@ -290,14 +290,18 @@
     "mail1": "john.smith@alphatech.com",
     "mail2": "contact@alphatech.com",
     "commentaire": "Premier contact effectué.",
-    "dateProchaineAction": "1970-01-01",
-    "statut": "En attente d'appel",
+    "dateProchaineAction": "2024-12-18",
+    "statut": "Signé",
     "matriculeGestionnaire": "a001",
-    "historique": [],
+    "historique": [
+      "[02/12/2024 20:50] aaaa",
+      "[02/12/2024 20:50] fdfdfdf",
+      "[02/12/2024 20:50] ffdfdf"
+    ],
     "civilite": "M",
     "prenomInterlocuteur": "",
-    "nombreDossiers": "<10",
-    "montantEstime": "<500"
+    "nombreDossiers": "<500",
+    "montantEstime": "<5000"
   },
   {
     "id": "2024112722364859613",
@@ -367,5 +371,37 @@
     "statut": "En attente d'information",
     "matriculeGestionnaire": "d004",
     "historique": []
+  },
+  {
+    "id": "202412022056",
+    "raisonSociale": "fromsoft",
+    "secteurActivite": "jv",
+    "siren": "123456789",
+    "siret": "12345678900001",
+    "typologie": "B2C",
+    "civilite1": "M",
+    "nomInterlocuteur1": "Miazaki",
+    "prenomInterlocuteur1": "Oda",
+    "adressePostale": "21 osaka street",
+    "complementAdresse": "miamoto",
+    "codePostal": "45001",
+    "telephone1": "0612985612",
+    "telephone2": "0521478745",
+    "mail1": "nagasaki@tokyo.com",
+    "mail2": "chihiro@mel.com",
+    "nombreDossiers": "<500",
+    "nombreDossiersCustom": "",
+    "montantEstime": "<500",
+    "montantEstimeCustom": "",
+    "commentaire": "",
+    "dateProchaineAction": "2024-12-10",
+    "statut": "Signé",
+    "matriculeGestionnaire": "a001",
+    "historique": [
+      "[02/12/2024 20:56] à rappeler très vite"
+    ],
+    "civilite": "M",
+    "nomInterlocuteur": "",
+    "prenomInterlocuteur": ""
   }
 ]
