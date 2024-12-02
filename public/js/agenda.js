@@ -49,11 +49,11 @@ function displayClients(clients) {
       return `
         <div>
           <p><strong>${client.raisonSociale}</strong></p>
-          <p>Statut : ${client.statut}</p>
-          <p>Typologie : ${client.typologie}</p>
+          <p><strong>Statut</strong> : ${client.statut}</p>
+          <p><strong>Typologie</strong> : ${client.typologie}</p>
 
-          <p>Date prochaine action : ${client.dateProchaineAction}</p>
-                    <p>Commentaire : ${client.historique[0]}</p>
+          <p><strong>Date prochaine action</strong> : ${client.dateProchaineAction}</p>
+                    <p><strong>Commentaire</strong> : ${client.historique[0]}</p>
           <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
         </div>`;
     })

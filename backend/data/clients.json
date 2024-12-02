@@ -251,27 +251,28 @@
     "id": "241127011747010",
     "raisonSociale": "raptora",
     "secteurActivite": "papacito",
-    "siren": 748748748,
-    "siret": 74874874800008,
+    "siren": "748748748",
+    "siret": "74874874800008",
     "typologie": "B2B",
     "civilite": "M",
     "nomInterlocuteur": "bourdon",
     "prenomInterlocuteur": "didier",
-    "telephone1": 303030303,
-    "telephone2": 606060606,
+    "telephone1": "303030303",
+    "telephone2": "606060606",
     "mail1": "gl@dupuis.com",
     "adressePostale": "20 rue Dela rue",
     "complementAdresse": "rabbit",
-    "codePostal": 69200,
-    "nombreDossiers": 150,
-    "montantEstime": 2000,
-    "statut": "en attente d'appel",
+    "codePostal": "69200",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500",
+    "statut": "À rappeler",
     "dateProchaineAction": 45624,
     "matriculeGestionnaire": "a001",
     "dateStatut": "2024-11-27T01:17:47.250Z",
     "historique": [
       "[02/12/2024 22:44] cccc"
-    ]
+    ],
+    "mail2": ""
   },
   {
     "id": "2024112722364859611",
@@ -292,9 +293,13 @@
     "mail2": "contact@alphatech.com",
     "commentaire": "Premier contact effectué.",
     "dateProchaineAction": "1970-01-01",
-    "statut": "En attente d'appel",
+    "statut": "Signé",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "prenomInterlocuteur": "",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "2024112722364859613",

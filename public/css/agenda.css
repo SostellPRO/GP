@@ -17,13 +17,16 @@ body {
   overflow: hidden;
 }
 .header_agenda {
+  height: 15vh; /* Aligné avec la page Manage Campaigns */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .title_agenda {
-  font-size: 2.5rem; /* Taille réduite pour correspondre */
+  background-color: rgb(116, 0, 255);
+  font-size: 2.5rem;
   font-weight: bold;
+  margin: 0;
 }
 .container_agenda {
   flex: 1; /* S'étend pour occuper l'espace restant */
@@ -46,27 +49,67 @@ body {
   display: flex;
   /* Centre le contenu verticalement */
 }
+.title_partie2_agenda {
+  text-align: center; /* Centre horizontalement */
+  margin: 20px 0; /* Ajoute de l'espacement vertical */
+  font-size: 1.8rem; /* Ajuste la taille de police */
+  font-weight: bold;
+}
+
 #client-list {
   display: grid; /* Utilise CSS Grid */
   grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes de tailles égales */
   margin-left: 40px;
   margin-top: 40px;
-  gap: 20px; /* Espacement entre les éléments */
+  gap: 35px; /* Espacement entre les éléments */
   justify-items: center; /* Centre les cartes dans chaque colonne */
   max-height: 100%; /* Limite la hauteur à 100% de la zone */
-  overflow-y: auto; /* Permet le défilement si les éléments dépassent */
 }
 
 #client-list > div {
-  width: 350px; /* Taille fixe en largeur */
-  height: 250px; /* Taille fixe en hauteur */
-  background-color: #fff; /* Couleur de fond pour chaque élément */
-  border: 1px solid #ccc; /* Bordure */
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  flex: 1 1 auto; /* Permet de redimensionner selon l'espace disponible */
+  width: 350px; /* Taille fixe */
+  height: 225px; /* Taille fixe */
+  background-color: #fff; /* Fond blanc */
+  border: 1px solid #ccc; /* Bordure grise */
+  padding: 15px; /* Espace intérieur */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre */
+  display: flex; /* Utilise flexbox */
+  flex-direction: column; /* Organise verticalement */
+  justify-content: space-between; /* Espacement vertical uniforme */
+  border: rgb(116, 0, 255) solid;
 }
+#client-list > div:hover {
+  border: rgb(217, 183, 0) solid;
+  transform: scale(1.01);
+}
+
+#client-list > div p {
+  margin: 5px 0; /* Espacement entre les paragraphes */
+  text-align: left; /* Alignement par défaut à gauche */
+}
+
+#client-list > div p:first-child {
+  text-align: center; /* Centre le nom du client */
+  font-weight: bold; /* Met en gras */
+  margin-bottom: 5%;
+  text-transform: uppercase;
+}
+
+#client-list > div p:last-child {
+  text-align: center; /* Centre le lien "Voir les détails" */
+  margin-top: auto; /* Place en bas de la carte */
+}
+
+#client-list > div a {
+  text-decoration: none; /* Supprime le soulignement */
+  color: rgb(116, 0, 255); /* Couleur du lien */
+}
+
+#client-list > div a:hover {
+  color: rgb(217, 183, 0); /* Couleur au survol */
+}
+
 .logoutButton_agenda {
   background-color: rgb(116, 0, 255);
   color: white;
