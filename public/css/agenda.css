@@ -39,9 +39,32 @@ body {
   flex-direction: column;
 }
 
+#user-info p {
+  margin-left: 5%;
+  font-weight: bold;
+}
+
 .nav_agenda {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+.nav_agenda button {
+  margin-bottom: 10%;
+  background-color: rgb(217, 183, 0);
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.nav_agenda button:hover {
+  margin-bottom: 10%;
+  text-decoration: underline solid white 3px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .partie2_agenda {
@@ -108,6 +131,7 @@ body {
 
 #client-list > div a:hover {
   color: rgb(217, 183, 0); /* Couleur au survol */
+  transform: scale(1.1);
 }
 
 .logoutButton_agenda {
