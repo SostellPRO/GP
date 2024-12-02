@@ -22,6 +22,7 @@
     "matriculeGestionnaire": "a001",
     "dateProchaineAction": "2024-11-24T23:09:22.182Z",
     "historique": [
+      "[03/12/2024 00:26] llll",
       "[27/11/2024 00:24] hello",
       "[24/11/2024 23:44] commentaires 5",
       "[24/11/2024 23:35] commentaires 4",
@@ -215,7 +216,7 @@
     "codePostal": "75008",
     "nombreDossiers": "<500",
     "montantEstime": "<10000",
-    "statut": "En attente d'appel",
+    "statut": "Fin de communication",
     "dateProchaineAction": 45624,
     "matriculeGestionnaire": "a001",
     "historique": [

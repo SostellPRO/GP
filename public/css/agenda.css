@@ -56,14 +56,13 @@ body {
   margin-bottom: 10%;
   background-color: rgb(217, 183, 0);
   color: black;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 .nav_agenda button:hover {
   margin-bottom: 10%;
   text-decoration: underline solid white 3px;
   color: white;
-  font-size: 2rem;
   font-weight: bold;
 }
 
