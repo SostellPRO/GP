@@ -1,0 +1,87 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Nécessaire pour que la hauteur soit héritée */
+  overflow: hidden;
+}
+.body_agenda {
+  font-family: "Public", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Assure que le contenu occupe toute la hauteur */
+  overflow: hidden;
+}
+.header_agenda {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title_agenda {
+  font-size: 2.5rem; /* Taille réduite pour correspondre */
+  font-weight: bold;
+}
+.container_agenda {
+  flex: 1; /* S'étend pour occuper l'espace restant */
+  display: flex;
+}
+.partie1_agenda {
+  width: 20%;
+  background-color: rgb(217, 183, 0);
+  display: flex;
+  flex-direction: column;
+}
+
+.nav_agenda {
+  display: flex;
+  flex-direction: column;
+}
+
+.partie2_agenda {
+  width: 80%;
+  display: flex;
+  /* Centre le contenu verticalement */
+}
+#client-list {
+  display: grid; /* Utilise CSS Grid */
+  grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes de tailles égales */
+  margin-left: 40px;
+  margin-top: 40px;
+  gap: 20px; /* Espacement entre les éléments */
+  justify-items: center; /* Centre les cartes dans chaque colonne */
+  max-height: 100%; /* Limite la hauteur à 100% de la zone */
+  overflow-y: auto; /* Permet le défilement si les éléments dépassent */
+}
+
+#client-list > div {
+  width: 350px; /* Taille fixe en largeur */
+  height: 250px; /* Taille fixe en hauteur */
+  background-color: #fff; /* Couleur de fond pour chaque élément */
+  border: 1px solid #ccc; /* Bordure */
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  flex: 1 1 auto; /* Permet de redimensionner selon l'espace disponible */
+}
+.logoutButton_agenda {
+  background-color: rgb(116, 0, 255);
+  color: white;
+  border: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonAgendaLogout {
+  background-color: rgb(116, 0, 255);
+  margin: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  border: white;
+  cursor: pointer;
+}

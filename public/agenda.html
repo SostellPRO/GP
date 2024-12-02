@@ -4,45 +4,61 @@
     <meta charset="UTF-8" />
     <title>Agenda</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/agenda.css" />
     <script src="js/agenda.js" defer></script>
     <script src="js/menu.js" defer></script>
     <script src="js/createProfile.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1>Agenda</h1>
-    </header>
-    <div id="menuContainer" class="menu-container"></div>
-    <div id="user-info">
-      <p>ID Utilisateur : <span id="user-id"></span></p>
-      <p>Nom : <span id="user-name"></span></p>
+    <div class="body_agenda">
+      <header>
+        <h1 class="header_agenda">Agenda</h1>
+        <div id="menuContainer" class="menu-container"></div>
+      </header>
+
+      <div class="container_agenda">
+        <div class="partie1_agenda">
+          <div id="user-info">
+            <p>ID Utilisateur : <span id="user-id"></span></p>
+            <p>Nom : <span id="user-name"></span></p>
+          </div>
+          <nav class="nav_agenda">
+            <button
+              onclick="loadClients('En attente d\'appel', document.getElementById('user-id').textContent)"
+              class="nav_agenda_button"
+            >
+              Lead
+            </button>
+            <button
+              onclick="loadClients('À rappeler', document.getElementById('user-id').textContent)"
+              class="nav_agenda_button"
+            >
+              À rappeler
+            </button>
+            <button
+              onclick="loadClients('Signé', document.getElementById('user-id').textContent)"
+              class="nav_agenda_button"
+            >
+              Signé
+            </button>
+            <button
+              onclick="loadClients('Fin de communication', document.getElementById('user-id').textContent)"
+              class="nav_agenda_button"
+            >
+              Échoué
+            </button>
+          </nav>
+        </div>
+        <div class="part1_agenda">
+          <h2>Liste des clients</h2>
+          <div id="client-list">Chargement...</div>
+        </div>
+      </div>
+      <div class="logoutButton_agenda">
+        <button onclick="navigateToHome()" class="buttonAgendaLogout">
+          Retour à l'accueil
+        </button>
+      </div>
     </div>
-    <nav>
-      <button
-        onclick="loadClients('En attente d\'appel', document.getElementById('user-id').textContent)"
-      >
-        Lead
-      </button>
-      <button
-        onclick="loadClients('À rappeler', document.getElementById('user-id').textContent)"
-      >
-        À rappeler
-      </button>
-      <button
-        onclick="loadClients('Signé', document.getElementById('user-id').textContent)"
-      >
-        Signé
-      </button>
-      <button
-        onclick="loadClients('Fin de communication', document.getElementById('user-id').textContent)"
-      >
-        Échoué
-      </button>
-    </nav>
-    <section>
-      <h2>Liste des clients</h2>
-      <div id="client-list">Chargement...</div>
-    </section>
-    <button onclick="navigateToHome()">Retour à l'accueil</button>
   </body>
 </html>
