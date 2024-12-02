@@ -117,8 +117,10 @@
             <legend>Informations Complémentaires</legend>
             <label for="nombreDossiers">Nombre de Dossiers :</label>
             <select id="nombreDossiers" name="nombreDossiers">
-              <option value="standard">Standard</option>
-              <option value="custom">Autre</option>
+              <option value="<10">Moins de 10</option>
+              <option value="<100">Moins de 100</option>
+              <option value="<500">Moins de 500</option>
+              <option value="+500">Plus de 500</option>
             </select>
             <input
               type="text"
@@ -130,8 +132,11 @@
 
             <label for="montantEstime">Montant Estimé :</label>
             <select id="montantEstime" name="montantEstime">
-              <option value="standard">Standard</option>
-              <option value="custom">Autre</option>
+              <option value="<500">Moins de 500€</option>
+              <option value="<1000">Moins de 1000€</option>
+              <option value="<5000">Moins de 5000€</option>
+              <option value="<10000">Plus de 10000€</option>
+              <option value="+10000">Plus de 10000€</option>
             </select>
             <input
               type="text"
