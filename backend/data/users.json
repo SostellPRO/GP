@@ -75,5 +75,47 @@
     "nom": "Matthias",
     "email": "vm@gayssot.com",
     "role": "Superviseur"
+  },
+  {
+    "id": "k001",
+    "prenom": "Ken",
+    "nom": "Master",
+    "email": "street@figher.com",
+    "role": "Superviseur"
+  },
+  {
+    "id": "j002",
+    "prenom": "Jodi",
+    "nom": "Foster",
+    "email": "jf@may.com",
+    "role": "Gestionnaire"
+  },
+  {
+    "id": "d004",
+    "prenom": "d",
+    "nom": "s",
+    "email": "ds@lp.fr",
+    "role": "Gestionnaire"
+  },
+  {
+    "id": "h001",
+    "prenom": "h",
+    "nom": "f",
+    "email": "hy@hello.com",
+    "role": "Gestionnaire"
+  },
+  {
+    "id": "h002",
+    "prenom": "hgh",
+    "nom": "hghg",
+    "email": "gfhfgh@fg.lk",
+    "role": "Gestionnaire"
+  },
+  {
+    "id": "f001",
+    "prenom": "fdf",
+    "nom": "fdf",
+    "email": "fdfd@ll.gh",
+    "role": "Gestionnaire"
   }
 ]
