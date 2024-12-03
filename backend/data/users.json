@@ -68,5 +68,12 @@
     "nom": "Gallac",
     "email": "mg@example.com",
     "role": "Superviseur"
+  },
+  {
+    "id": "v001",
+    "prenom": "Vitaline",
+    "nom": "Matthias",
+    "email": "vm@gayssot.com",
+    "role": "Superviseur"
   }
 ]
