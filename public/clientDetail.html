@@ -17,71 +17,71 @@
       <div id="menuContainer" class="menu-container"></div>
       <form id="clientForm" class="createDetailForm">
         <div class="section1_detail">
-          <fieldset>
-            <legend>Contact</legend>
-            <label for="raisonSociale">Raison Sociale :</label>
-            <input type="text" id="raisonSociale" required />
+          <div class="field-container">
+            <fieldset>
+              <legend>Contact</legend>
+              <label for="raisonSociale">Raison Sociale :</label>
+              <input type="text" id="raisonSociale" required />
 
-            <label for="secteurActivite">Secteur d'Activité :</label>
-            <input type="text" id="secteurActivite" />
+              <label for="secteurActivite">Secteur d'Activité :</label>
+              <input type="text" id="secteurActivite" />
 
-            <label for="typologie">Typologie :</label>
-            <select id="typologie">
-              <option value="B2B">B2B</option>
-              <option value="B2C">B2C</option>
-              <option value="B2B & B2C">B2B & B2C</option>
-            </select>
+              <label for="typologie">Typologie :</label>
+              <select id="typologie">
+                <option value="B2B">B2B</option>
+                <option value="B2C">B2C</option>
+                <option value="B2B & B2C">B2B & B2C</option>
+              </select>
 
-            <label for="siren">SIREN :</label>
-            <input type="text" id="siren" />
+              <label for="siren">SIREN :</label>
+              <input type="text" id="siren" />
 
-            <label for="siret">SIRET :</label>
-            <input type="text" id="siret" />
+              <label for="siret">SIRET :</label>
+              <input type="text" id="siret" />
 
-            <label for="adressePostale">Adresse Postale :</label>
-            <input type="text" id="adressePostale" />
+              <label for="adressePostale">Adresse Postale :</label>
+              <input type="text" id="adressePostale" />
 
-            <label for="complementAdresse">Complément Adresse :</label>
-            <input type="text" id="complementAdresse" />
+              <label for="complementAdresse">Complément Adresse :</label>
+              <input type="text" id="complementAdresse" />
 
-            <label for="codePostal">Code Postal :</label>
-            <input type="text" id="codePostal" />
-          </fieldset>
+              <label for="codePostal">Code Postal :</label>
+              <input type="text" id="codePostal" />
+            </fieldset>
+          </div>
+          <div class="field-container">
+            <fieldset>
+              <legend>Interlocuteur</legend>
+              <label for="civilite">Civilité :</label>
+              <select id="civilite">
+                <option value="M">M</option>
+                <option value="Mme">Mme</option>
+              </select>
+
+              <label for="nomInterlocuteur">Nom :</label>
+              <input type="text" id="nomInterlocuteur" />
+
+              <label for="prenomInterlocuteur">Prénom :</label>
+              <input type="text" id="prenomInterlocuteur" />
+
+              <label for="telephone1">Téléphone 1 :</label>
+              <input type="text" id="telephone1" />
+
+              <label for="telephone2">Téléphone 2 :</label>
+              <input type="text" id="telephone2" />
+
+              <label for="mail1">Mail 1 :</label>
+              <input type="text" id="mail1" />
+
+              <label for="mail2">Mail 2 :</label>
+              <input type="text" id="mail2" />
+            </fieldset>
+          </div>
         </div>
 
         <div class="section2_detail">
           <fieldset>
-            <legend>Interlocuteur</legend>
-
-            <label for="civilite">Civilité :</label>
-            <select id="civilite">
-              <option value="M">M</option>
-              <option value="Mme">Mme</option>
-            </select>
-
-            <label for="nomInterlocuteur">Nom :</label>
-            <input type="text" id="nomInterlocuteur" />
-
-            <label for="prenomInterlocuteur">Prénom :</label>
-            <input type="text" id="prenomInterlocuteur" />
-
-            <label for="telephone1">Téléphone 1 :</label>
-            <input type="text" id="telephone1" />
-
-            <label for="telephone2">Téléphone 2 :</label>
-            <input type="text" id="telephone2" />
-
-            <label for="mail1">Mail 1 :</label>
-            <input type="text" id="mail1" />
-
-            <label for="mail2">Mail 2 :</label>
-            <input type="text" id="mail2" />
-          </fieldset>
-        </div>
-
-        <div>
-          <fieldset>
-            <legend>Section 2 : Informations supplémentaires</legend>
+            <legend>Informations supplémentaires</legend>
             <label for="nombreDossiers">Nombre de Dossiers :</label>
             <select id="nombreDossiers">
               <option value="<10">Moins de 10</option>
@@ -99,7 +99,6 @@
               <option value="+10000">Plus de 10000€</option>
             </select>
 
-            <legend>Commentaires</legend>
             <label for="commentaire">Ajouter un commentaire :</label>
             <textarea id="commentaire"></textarea>
             <button type="button" id="addComment">Ajouter Commentaire</button>

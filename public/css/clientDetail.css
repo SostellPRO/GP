@@ -22,7 +22,7 @@ body {
   justify-content: center;
   text-align: center;
   align-items: center;
-  padding: 15px; /* Réduction de la hauteur */
+  padding: 15px;
   background-color: rgb(116, 0, 255);
   color: white;
   height: 12.5vh;
@@ -45,24 +45,27 @@ body {
   margin-top: 20px;
 }
 
-/* Organisation des parties principales */
-.part1_client {
+/* Organisation des fieldsets */
+.section1_detail {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
 }
 
-.field1_client,
-.field2_client {
-  flex: 1 1 calc(50% - 20px); /* Largeur égale avec espace */
-  min-width: 300px; /* Largeur minimale pour les petits écrans */
+.section1_detail fieldset {
+  flex: 1 1 calc(50% - 20px); /* Fieldsets côte à côte avec espace */
+  min-width: 300px; /* Largeur minimale */
 }
 
-.part2_client {
+.section2_detail {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.section2_detail fieldset {
+  flex: 1 1 100%; /* Fieldset "Informations supplémentaires" en pleine largeur */
 }
 
 /* Fieldset */
@@ -80,6 +83,7 @@ legend {
   color: rgb(116, 0, 255);
 }
 
+/* Champs et Boutons */
 label {
   display: block;
   font-weight: bold;
@@ -98,7 +102,6 @@ select {
   margin-top: 5px;
 }
 
-/* Boutons */
 button {
   padding: 10px 20px;
   font-size: 1rem;
@@ -114,88 +117,41 @@ button {
 button:hover {
   background-color: rgb(80, 0, 180);
 }
-
-/* Bouton ajouter commentaire */
-#addComment {
-  width: auto;
-  margin-top: 15px;
+/* Organisation des fieldsets */
+.section1_detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Espace entre les colonnes */
+  margin-bottom: 20px; /* Espacement sous les fieldsets */
 }
 
-/* Bouton de soumission */
-.submit_button[type="submit"] {
-  margin-top: 20px;
-  align-self: center;
-  width: 200px;
+.field-container {
+  flex: 1; /* Prend une largeur égale */
 }
 
-/* Footer */
-.footer {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  border-radius: 5px;
-  background-color: rgb(116, 0, 255);
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+.field-container fieldset {
+  height: 100%; /* Assure une hauteur uniforme */
+  display: flex;
+  flex-direction: column; /* Organise les contenus verticalement */
+  justify-content: space-between; /* Distribution des éléments */
 }
 
-.footer.visible {
-  opacity: 1;
-  visibility: visible;
+.section2_detail fieldset {
+  width: 100%; /* Prend toute la largeur */
+  margin-top: 20px; /* Ajoute un espace par rapport au dessus */
 }
 
-.buttonManageLogout {
+/* Fieldset global styles */
+fieldset {
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid rgb(116, 0, 255);
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+  font-size: 1.2rem;
   font-weight: bold;
-  font-size: 1.5rem;
-  color: white;
-  padding: 10px 20px;
-  background-color: rgb(116, 0, 255);
-  border: none;
-  cursor: pointer;
-}
-
-.logoutButton {
-  background-color: rgb(116, 0, 255);
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-}
-
-/* Historique */
-#historiqueList {
-  list-style-type: none;
-  margin: 10px 0;
-  padding: 0;
-}
-
-#historiqueList li {
-  padding: 5px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  margin-bottom: 5px;
-  border-radius: 5px;
-}
-
-/* Responsivité */
-@media (max-width: 768px) {
-  .part1_client {
-    flex-direction: column;
-  }
-
-  .field1_client,
-  .field2_client {
-    flex: 1 1 100%;
-  }
-
-  .submit_button[type="submit"] {
-    width: 100%;
-  }
+  color: rgb(116, 0, 255);
 }
