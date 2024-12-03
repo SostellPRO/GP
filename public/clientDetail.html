@@ -4,111 +4,122 @@
     <meta charset="UTF-8" />
     <title>Fiche Client</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/clientDetail.css" />
     <script src="js/clientDetail.js" defer></script>
     <script src="js/menu.js" defer></script>
     <script src="js/createProfile.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1>Fiche Client</h1>
-    </header>
-    <div id="menuContainer" class="menu-container"></div>
-    <form id="clientForm">
-      <div>
-        <h2>Section 1 : Contact</h2>
-        <label for="raisonSociale">Raison Sociale :</label>
-        <input type="text" id="raisonSociale" required />
+    <div>
+      <header class="header_detail">
+        <h1 class="title_detail">FICHE CLIENT</h1>
+      </header>
+      <div id="menuContainer" class="menu-container"></div>
+      <form id="clientForm" class="createDetailForm">
+        <div class="section1_detail">
+          <fieldset>
+            <legend>Contact</legend>
+            <label for="raisonSociale">Raison Sociale :</label>
+            <input type="text" id="raisonSociale" required />
 
-        <label for="secteurActivite">Secteur d'Activité :</label>
-        <input type="text" id="secteurActivite" />
+            <label for="secteurActivite">Secteur d'Activité :</label>
+            <input type="text" id="secteurActivite" />
 
-        <label for="siren">SIREN :</label>
-        <input type="text" id="siren" />
+            <label for="typologie">Typologie :</label>
+            <select id="typologie">
+              <option value="B2B">B2B</option>
+              <option value="B2C">B2C</option>
+              <option value="B2B & B2C">B2B & B2C</option>
+            </select>
 
-        <label for="siret">SIRET :</label>
-        <input type="text" id="siret" />
+            <label for="siren">SIREN :</label>
+            <input type="text" id="siren" />
 
-        <label for="typologie">Typologie :</label>
-        <select id="typologie">
-          <option value="B2B">B2B</option>
-          <option value="B2C">B2C</option>
-          <option value="B2B & B2C">B2B & B2C</option>
-        </select>
+            <label for="siret">SIRET :</label>
+            <input type="text" id="siret" />
 
-        <label for="civilite">Civilité :</label>
-        <select id="civilite">
-          <option value="M">M</option>
-          <option value="Mme">Mme</option>
-        </select>
+            <label for="adressePostale">Adresse Postale :</label>
+            <input type="text" id="adressePostale" />
 
-        <label for="nomInterlocuteur">Nom :</label>
-        <input type="text" id="nomInterlocuteur" />
+            <label for="complementAdresse">Complément Adresse :</label>
+            <input type="text" id="complementAdresse" />
 
-        <label for="prenomInterlocuteur">Prénom :</label>
-        <input type="text" id="prenomInterlocuteur" />
+            <label for="codePostal">Code Postal :</label>
+            <input type="text" id="codePostal" />
+          </fieldset>
+        </div>
 
-        <label for="telephone1">Téléphone 1 :</label>
-        <input type="text" id="telephone1" />
+        <div class="section2_detail">
+          <fieldset>
+            <legend>Interlocuteur</legend>
 
-        <label for="telephone2">Téléphone 2 :</label>
-        <input type="text" id="telephone2" />
+            <label for="civilite">Civilité :</label>
+            <select id="civilite">
+              <option value="M">M</option>
+              <option value="Mme">Mme</option>
+            </select>
 
-        <label for="mail1">Mail 1 :</label>
-        <input type="text" id="mail1" />
+            <label for="nomInterlocuteur">Nom :</label>
+            <input type="text" id="nomInterlocuteur" />
 
-        <label for="mail2">Mail 2 :</label>
-        <input type="text" id="mail2" />
+            <label for="prenomInterlocuteur">Prénom :</label>
+            <input type="text" id="prenomInterlocuteur" />
 
-        <label for="adressePostale">Adresse Postale :</label>
-        <input type="text" id="adressePostale" />
+            <label for="telephone1">Téléphone 1 :</label>
+            <input type="text" id="telephone1" />
 
-        <label for="complementAdresse">Complément Adresse :</label>
-        <input type="text" id="complementAdresse" />
+            <label for="telephone2">Téléphone 2 :</label>
+            <input type="text" id="telephone2" />
 
-        <label for="codePostal">Code Postal :</label>
-        <input type="text" id="codePostal" />
-      </div>
+            <label for="mail1">Mail 1 :</label>
+            <input type="text" id="mail1" />
 
-      <div>
-        <h2>Section 2 : Informations supplémentaires</h2>
-        <label for="nombreDossiers">Nombre de Dossiers :</label>
-        <select id="nombreDossiers">
-          <option value="<10">Moins de 10</option>
-          <option value="<100">Moins de 100</option>
-          <option value="<500">Moins de 500</option>
-          <option value="+500">Plus de 500</option>
-        </select>
+            <label for="mail2">Mail 2 :</label>
+            <input type="text" id="mail2" />
+          </fieldset>
+        </div>
 
-        <label for="montantEstime">Montant Estimé :</label>
-        <select id="montantEstime">
-          <option value="<500">Moins de 500€</option>
-          <option value="<1000">Moins de 1000€</option>
-          <option value="<5000">Moins de 5000€</option>
-          <option value="<10000">Plus de 10000€</option>
-          <option value="+10000">Plus de 10000€</option>
-        </select>
+        <div>
+          <fieldset>
+            <legend>Section 2 : Informations supplémentaires</legend>
+            <label for="nombreDossiers">Nombre de Dossiers :</label>
+            <select id="nombreDossiers">
+              <option value="<10">Moins de 10</option>
+              <option value="<100">Moins de 100</option>
+              <option value="<500">Moins de 500</option>
+              <option value="+500">Plus de 500</option>
+            </select>
 
-        <fieldset>
-          <legend>Commentaires</legend>
-          <label for="commentaire">Ajouter un commentaire :</label>
-          <textarea id="commentaire"></textarea>
-          <button type="button" id="addComment">Ajouter Commentaire</button>
-          <div id="historique">
-            <h3>Historique :</h3>
-            <ul id="historiqueList"></ul>
-          </div>
-        </fieldset>
+            <label for="montantEstime">Montant Estimé :</label>
+            <select id="montantEstime">
+              <option value="<500">Moins de 500€</option>
+              <option value="<1000">Moins de 1000€</option>
+              <option value="<5000">Moins de 5000€</option>
+              <option value="<10000">Plus de 10000€</option>
+              <option value="+10000">Plus de 10000€</option>
+            </select>
 
-        <label for="statut">Statut :</label>
-        <select id="statut">
-          <option value="En attente d'appel">En attente d'appel</option>
-          <option value="À rappeler">À rappeler</option>
-          <option value="Signé">Signé</option>
-          <option value="Fin de communication">Fin de communication</option>
-        </select>
-      </div>
-      <button type="submit">Enregistrer</button>
-    </form>
-    <button onclick="navigateToAgenda()">Retour à l'Agenda</button>
+            <legend>Commentaires</legend>
+            <label for="commentaire">Ajouter un commentaire :</label>
+            <textarea id="commentaire"></textarea>
+            <button type="button" id="addComment">Ajouter Commentaire</button>
+            <div id="historique">
+              <h3>Historique :</h3>
+              <ul id="historiqueList"></ul>
+            </div>
+
+            <label for="statut">Statut :</label>
+            <select id="statut">
+              <option value="En attente d'appel">En attente d'appel</option>
+              <option value="À rappeler">À rappeler</option>
+              <option value="Signé">Signé</option>
+              <option value="Fin de communication">Fin de communication</option>
+            </select>
+            <button type="submit">Enregistrer</button>
+          </fieldset>
+        </div>
+      </form>
+      <button onclick="navigateToAgenda()">Retour à l'Agenda</button>
+    </div>
   </body>
 </html>

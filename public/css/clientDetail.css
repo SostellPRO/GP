@@ -1,0 +1,201 @@
+/* Réinitialisation et styles de base */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f4f9;
+  font-family: "Public", sans-serif;
+  color: #333;
+}
+
+.body_detail {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f9;
+}
+
+.header_detail {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 15px; /* Réduction de la hauteur */
+  background-color: rgb(116, 0, 255);
+  color: white;
+  height: 12.5vh;
+}
+
+.title_detail {
+  background-color: rgb(116, 0, 255);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Formulaire */
+.createDetailForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+/* Organisation des parties principales */
+.part1_client {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.field1_client,
+.field2_client {
+  flex: 1 1 calc(50% - 20px); /* Largeur égale avec espace */
+  min-width: 300px; /* Largeur minimale pour les petits écrans */
+}
+
+.part2_client {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Fieldset */
+fieldset {
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgb(116, 0, 255);
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(116, 0, 255);
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+/* Boutons */
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(116, 0, 255);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(80, 0, 180);
+}
+
+/* Bouton ajouter commentaire */
+#addComment {
+  width: auto;
+  margin-top: 15px;
+}
+
+/* Bouton de soumission */
+.submit_button[type="submit"] {
+  margin-top: 20px;
+  align-self: center;
+  width: 200px;
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 5px;
+  background-color: rgb(116, 0, 255);
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.footer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.buttonManageLogout {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+  padding: 10px 20px;
+  background-color: rgb(116, 0, 255);
+  border: none;
+  cursor: pointer;
+}
+
+.logoutButton {
+  background-color: rgb(116, 0, 255);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Historique */
+#historiqueList {
+  list-style-type: none;
+  margin: 10px 0;
+  padding: 0;
+}
+
+#historiqueList li {
+  padding: 5px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+  .part1_client {
+    flex-direction: column;
+  }
+
+  .field1_client,
+  .field2_client {
+    flex: 1 1 100%;
+  }
+
+  .submit_button[type="submit"] {
+    width: 100%;
+  }
+}
