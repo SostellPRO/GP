@@ -1,0 +1,157 @@
+/* Réinitialisation et styles de base */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f4f9;
+  font-family: "Public", sans-serif;
+  color: #333;
+}
+
+.body_detail {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f9;
+}
+
+.header_detail {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 15px;
+  background-color: rgb(116, 0, 255);
+  color: white;
+  height: 12.5vh;
+}
+
+.title_detail {
+  background-color: rgb(116, 0, 255);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Formulaire */
+.createDetailForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+/* Organisation des fieldsets */
+.section1_detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.section1_detail fieldset {
+  flex: 1 1 calc(50% - 20px); /* Fieldsets côte à côte avec espace */
+  min-width: 300px; /* Largeur minimale */
+}
+
+.section2_detail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section2_detail fieldset {
+  flex: 1 1 100%; /* Fieldset "Informations supplémentaires" en pleine largeur */
+}
+
+/* Fieldset */
+fieldset {
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgb(116, 0, 255);
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(116, 0, 255);
+}
+
+/* Champs et Boutons */
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(116, 0, 255);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(80, 0, 180);
+}
+/* Organisation des fieldsets */
+.section1_detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Espace entre les colonnes */
+  margin-bottom: 20px; /* Espacement sous les fieldsets */
+}
+
+.field-container {
+  flex: 1; /* Prend une largeur égale */
+}
+
+.field-container fieldset {
+  height: 100%; /* Assure une hauteur uniforme */
+  display: flex;
+  flex-direction: column; /* Organise les contenus verticalement */
+  justify-content: space-between; /* Distribution des éléments */
+}
+
+.section2_detail fieldset {
+  width: 100%; /* Prend toute la largeur */
+  margin-top: 20px; /* Ajoute un espace par rapport au dessus */
+}
+
+/* Fieldset global styles */
+fieldset {
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid rgb(116, 0, 255);
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(116, 0, 255);
+}

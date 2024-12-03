@@ -68,3 +68,13 @@ body {
 .button_profil:hover {
   background-color: rgb(51, 0, 153);
 }
+
+.buttonProfileLogout {
+  background-color: rgb(116, 0, 255);
+  margin: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  border: white;
+  cursor: pointer;
+}
