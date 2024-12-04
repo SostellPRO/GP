@@ -525,9 +525,12 @@
     "mail2": "info22@societe22.com",
     "commentaire": "Commentaire sur la société 22.",
     "dateProchaineAction": "2024-04-23",
-    "statut": "En attente d'appel",
+    "statut": "Signé",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "202412041531",
@@ -571,9 +574,12 @@
     "mail2": "info24@societe24.com",
     "commentaire": "Commentaire sur la société 24.",
     "dateProchaineAction": "2024-12-15",
-    "statut": "En attente d'appel",
+    "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "202412041533",
@@ -617,9 +623,12 @@
     "mail2": "info26@societe26.com",
     "commentaire": "Commentaire sur la société 26.",
     "dateProchaineAction": "2024-03-19",
-    "statut": "En attente d'appel",
+    "statut": "Signé",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "202412041535",

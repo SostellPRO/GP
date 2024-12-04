@@ -93,7 +93,7 @@ body {
 #client-list {
   display: grid; /* Utilise CSS Grid */
   grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes de tailles égales */
-  margin-left: 40px;
+  margin-left: 25px;
   margin-top: 40px;
   gap: 35px; /* Espacement entre les éléments */
   justify-items: center; /* Centre les cartes dans chaque colonne */
@@ -229,63 +229,46 @@ body {
   flex-direction: column;
   width: 100%; /* S'assurer que le tableau occupe tout l'espace disponible */
 }
-
 /* Table */
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 10px; /* Espacement horizontal et vertical */
   margin-top: 10px;
   background-color: #ffffff;
 }
-
 /* En-têtes du tableau */
 .table-header {
   background-color: #f4f4f4;
   border: 1px solid #ddd;
-  padding: 15px;
+  padding: 30px;
   text-align: left;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 2rem;
 }
-
-.table-raison {
-  flex: 2; /* Large colonne pour Raison Sociale */
-}
-
-.table-statut,
-.table-typologie,
-.table-date {
-  flex: 1; /* Colonnes de largeur égale */
-}
-
-.table-detail {
-  flex: 1.5; /* Détail légèrement plus large */
-}
-
 /* Lignes du tableau */
 .table-row {
-  border: 1px solid #ddd;
+  background-color: #fff;
   transition: background-color 0.2s ease;
 }
-
 .table-row:hover {
   background-color: #f9f9f9;
 }
-
 /* Cellules */
 .table-td {
-  padding: 15px;
+  padding: 20%;
   text-align: left;
-  word-wrap: break-word; /* Gestion des longues chaînes */
+  border-right: 10px solid #f4f4f4; /* Espacement entre colonnes */
 }
-
+.table-td:last-child {
+  border-right: none;
+}
 /* Lien dans les cellules */
 .table-td a {
   color: #007bff;
   text-decoration: none;
   font-weight: bold;
 }
-
 .table-td a:hover {
   text-decoration: underline;
 }

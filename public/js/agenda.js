@@ -55,7 +55,7 @@ async function loadClients(status, userId) {
 function displayClients(clients) {
   const clientList = document.getElementById("client-list");
   const paginationContainer = document.getElementById("pagination-container");
-  const cardsPerPage = 6; // Nombre de clients par page
+  const cardsPerPage = 8; // Nombre de clients par page
   let currentPage = 0;
 
   // Récupérer le titre actuel pour déterminer l'affichage
