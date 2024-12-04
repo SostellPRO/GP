@@ -8,12 +8,15 @@ const csvParser = require("csv-parser");
 const router = express.Router();
 const clientsFilePath = path.join(__dirname, "../data/clients.json");
 
-// Configuration de multer pour gérer les fichiers téléchargés
-const upload = multer({
-  dest: "uploads/",
-});
+// Configuration multer
+const upload = multer({ dest: "uploads/" });
 
-// Fonction pour lire les clients existants
+// Vérifie et crée le fichier clients.json s'il est manquant
+if (!fs.existsSync(clientsFilePath)) {
+  fs.writeFileSync(clientsFilePath, JSON.stringify([]));
+}
+
+// Fonction pour lire les clients
 const readClients = () => {
   try {
     const data = fs.readFileSync(clientsFilePath, "utf8");
@@ -24,7 +27,7 @@ const readClients = () => {
   }
 };
 
-// Fonction pour écrire dans le fichier des clients
+// Fonction pour écrire les clients
 const writeClients = (clients) => {
   try {
     fs.writeFileSync(clientsFilePath, JSON.stringify(clients, null, 2));
@@ -34,7 +37,7 @@ const writeClients = (clients) => {
   }
 };
 
-// Fonction pour traiter un fichier CSV
+// Fonction pour traiter les fichiers CSV
 const processCSVFile = async (filePath) => {
   const results = [];
   return new Promise((resolve, reject) => {
@@ -46,7 +49,25 @@ const processCSVFile = async (filePath) => {
   });
 };
 
-// Route : Importer un fichier (Excel ou CSV)
+// Normalise les en-têtes
+const normalizeHeaders = (headers) =>
+  headers.map((h) => h.trim().toLowerCase());
+
+// Nettoie les valeurs des lignes
+const cleanRow = (row) => {
+  Object.keys(row).forEach((key) => {
+    if (row[key] === undefined || row[key] === null) {
+      row[key] = ""; // Remplace les valeurs nulles ou undefined par une chaîne vide
+    } else if (typeof row[key] !== "string") {
+      row[key] = String(row[key]).trim(); // Convertit les valeurs non chaînes en chaînes et supprime les espaces
+    } else {
+      row[key] = row[key].trim(); // Supprime les espaces pour les chaînes
+    }
+  });
+  return row;
+};
+
+// Route pour l'importation des clients
 router.post("/import", upload.single("campaignFile"), async (req, res) => {
   const file = req.file;
 
@@ -58,6 +79,7 @@ router.post("/import", upload.single("campaignFile"), async (req, res) => {
     const extension = path.extname(file.originalname).toLowerCase();
     let jsonData = [];
 
+    // Lecture des fichiers Excel ou CSV
     if (extension === ".xlsx" || extension === ".xls") {
       const workbook = xlsx.readFile(file.path);
       const sheetName = workbook.SheetNames[0];
@@ -68,98 +90,114 @@ router.post("/import", upload.single("campaignFile"), async (req, res) => {
     } else {
       return res
         .status(400)
-        .json({ error: "Seuls les fichiers Excel ou CSV sont supportés." });
+        .json({ error: "Format de fichier non pris en charge." });
+    }
+
+    // Nettoyage des données
+    jsonData = jsonData.map(cleanRow);
+    console.log("Données brutes reçues :", jsonData);
+
+    // Validation des en-têtes obligatoires
+    const requiredHeaders = ["raisonSociale", "siren", "nomInterlocuteur"]; // En-têtes obligatoires seulement
+
+    const actualHeaders = normalizeHeaders(Object.keys(jsonData[0] || {}));
+    const expectedHeaders = normalizeHeaders(requiredHeaders);
+    const missingHeaders = expectedHeaders.filter(
+      (header) => !actualHeaders.includes(header)
+    );
+
+    if (missingHeaders.length > 0) {
+      return res.status(400).json({
+        error: `Colonnes manquantes ou mal nommées : ${missingHeaders.join(", ")}`,
+      });
     }
 
     const clients = readClients();
-
-    const requiredHeaders = [
-      "raisonSociale",
-      "secteurActivite",
-      "siren",
-      "siret",
-      "typologie",
-      "civilite1",
-      "nomInterlocuteur",
-      "prenomInterlocuteur1",
-      "adressePostale",
-      "complementAdresse",
-      "codePostal",
-      "telephone1",
-      "telephone2",
-      "mail1",
-      "mail2",
-      "commentaire",
-      "dateProchaineAction",
-      "statut",
-      "matriculeGestionnaire",
-    ];
-
     const invalidRows = [];
     let addedCount = 0;
 
     jsonData.forEach((row, index) => {
-      const missingHeaders = requiredHeaders.filter(
-        (header) => !(header in row)
-      );
+      try {
+        // Ajout d'un log pour déboguer la ligne en cours d'analyse
+        console.log(`Analyse de la ligne ${index + 1} :`, row);
 
-      if (missingHeaders.length > 0) {
+        // Vérification sécurisée des champs obligatoires
+        const missingData = requiredHeaders.filter((header) => {
+          const value = row[header]; // Récupère la valeur du champ
+          return (
+            value === undefined || value === null || String(value).trim() === ""
+          ); // Vérifie si vide
+        });
+
+        if (missingData.length > 0) {
+          console.log(
+            `Ligne ${index + 2} ignorée. Champs manquants : ${missingData}`
+          );
+          invalidRows.push({
+            row: index + 2,
+            missingHeaders: missingData,
+          });
+          return; // Ignorer cette ligne
+        }
+
+        // Vérifie les doublons uniquement pour les champs obligatoires
+        const exists = clients.some((client) => client.siren === row.siren);
+        if (exists) {
+          console.log(
+            `Ligne ${index + 2} ignorée. Doublon détecté pour SIREN ${row.siren}`
+          );
+          invalidRows.push({
+            row: index + 2,
+            error: `Doublon détecté pour SIREN: ${row.siren}.`,
+          });
+          return;
+        }
+
+        // Ajoute le client
+        const client = {
+          id: `${new Date().getTime()}_${addedCount}`,
+          ...row, // Inclut toutes les données de la ligne
+          historique: [], // Historique initialisé à vide
+        };
+
+        clients.push(client);
+        addedCount++;
+      } catch (error) {
+        console.error(
+          `Erreur lors de l'analyse de la ligne ${index + 1} :`,
+          error
+        );
         invalidRows.push({
           row: index + 2,
-          missingHeaders,
+          error: `Erreur inattendue lors du traitement de cette ligne.`,
         });
-        return;
       }
-
-      const id = `${new Date()
-        .toISOString()
-        .replace(/[-:.TZ]/g, "")}${clients.length + addedCount + 1}`;
-      const dateProchaineAction = row.dateProchaineAction
-        ? new Date(row.dateProchaineAction).toISOString().split("T")[0]
-        : null;
-
-      const client = {
-        id,
-        raisonSociale: row.raisonSociale,
-        secteurActivite: row.secteurActivite,
-        siren: row.siren,
-        siret: row.siret,
-        typologie: row.typologie,
-        civilite1: row.civilite1,
-        nomInterlocuteur: row.nomInterlocuteur,
-        prenomInterlocuteur1: row.prenomInterlocuteur1,
-        adressePostale: row.adressePostale,
-        complementAdresse: row.complementAdresse,
-        codePostal: row.codePostal,
-        telephone1: row.telephone1,
-        telephone2: row.telephone2,
-        mail1: row.mail1,
-        mail2: row.mail2,
-        commentaire: row.commentaire,
-        dateProchaineAction,
-        statut: row.statut || "En attente d'appel",
-        matriculeGestionnaire: row.matriculeGestionnaire,
-        historique: [],
-      };
-
-      clients.push(client);
-      addedCount++;
     });
 
     writeClients(clients);
-
     fs.unlinkSync(file.path);
 
     res.json({
-      message: "Importation terminée.",
       addedCount,
       invalidRows,
+      details: invalidRows.map(
+        (row) =>
+          `Ligne ${row.row} ignorée. ${
+            row.missingHeaders
+              ? `Champs manquants : ${row.missingHeaders.join(", ")}`
+              : row.error
+          }`
+      ),
     });
   } catch (error) {
     console.error("Erreur lors de l'importation :", error);
     res
       .status(500)
       .json({ error: "Erreur lors de l'importation des données." });
+  } finally {
+    if (file && fs.existsSync(file.path)) {
+      fs.unlinkSync(file.path);
+    }
   }
 });
 
