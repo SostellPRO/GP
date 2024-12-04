@@ -82,3 +82,80 @@ function parseJwt(token) {
     return null;
   }
 }
+
+// Fonction pour afficher les clients avec pagination et suppression
+function displayClients(clients) {
+  const clientList = document.getElementById("client-list");
+  const paginationContainer = document.getElementById("pagination-container");
+  const cardsPerPage = 6;
+  let currentPage = 0;
+
+  // Calcul du nombre total de pages
+  const totalPages = Math.ceil(clients.length / cardsPerPage);
+
+  // Affichage des clients par page
+  const displayPage = () => {
+    const start = currentPage * cardsPerPage;
+    const end = start + cardsPerPage;
+    const visibleClients = clients.slice(start, end);
+
+    // Afficher les cartes de la page actuelle
+    clientList.innerHTML = visibleClients
+      .map(
+        (client) => `
+        <div class="client-card">
+          <p><strong>${client.raisonSociale}</strong></p>
+          <p><strong>Statut</strong> : ${client.statut}</p>
+          <p><strong>Typologie</strong> : ${client.typologie}</p>
+          <p><strong>Date prochaine action</strong> : ${client.dateProchaineAction || "Non définie"}</p>
+          <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
+          <button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>
+        </div>`
+      )
+      .join("");
+
+    // Ajouter les contrôles de pagination
+    paginationContainer.innerHTML = `
+      <div class="pagination-controls">
+        <button ${currentPage === 0 ? "disabled" : ""} onclick="changePage(-1)">←</button>
+        <span>Page ${currentPage + 1} / ${totalPages}</span>
+        <button ${
+          currentPage === totalPages - 1 ? "disabled" : ""
+        } onclick="changePage(1)">→</button>
+      </div>`;
+  };
+
+  // Fonction pour changer de page
+  window.changePage = (direction) => {
+    currentPage += direction;
+    displayPage();
+  };
+
+  displayPage();
+}
+
+// Fonction pour supprimer un client
+async function deleteClient(clientId) {
+  const confirmDelete = confirm(
+    "Êtes-vous sûr de vouloir supprimer ce client ?"
+  );
+  if (!confirmDelete) return;
+
+  const token = localStorage.getItem("token");
+  try {
+    const response = await fetch(`/api/clients/${clientId}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (response.ok) {
+      alert("Client supprimé avec succès.");
+      location.reload(); // Recharger les données après suppression
+    } else {
+      alert("Erreur lors de la suppression du client.");
+    }
+  } catch (error) {
+    console.error("Erreur :", error);
+    alert("Erreur lors de la suppression du client.");
+  }
+}

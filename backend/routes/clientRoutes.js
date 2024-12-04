@@ -191,4 +191,23 @@ router.delete("/:id", (req, res) => {
   }
 });
 
+// Route : Supprimer un client
+router.delete("/:id", (req, res) => {
+  try {
+    const { id } = req.params;
+    const clients = readClients();
+    const updatedClients = clients.filter((client) => client.id !== id);
+
+    if (clients.length === updatedClients.length) {
+      return res.status(404).json({ error: "Client non trouvé." });
+    }
+
+    writeClients(updatedClients);
+    res.sendStatus(204); // Succès sans contenu
+  } catch (error) {
+    console.error("Erreur lors de la suppression d'un client :", error);
+    res.status(500).json({ error: "Erreur interne du serveur." });
+  }
+});
+
 module.exports = router;
