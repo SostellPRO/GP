@@ -18,9 +18,11 @@
     "mail2": "info1@societe1.com",
     "commentaire": "Commentaire sur la société 1.",
     "dateProchaineAction": "2024-06-18",
-    "statut": "Signé",
+    "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
-    "historique": [],
+    "historique": [
+      "[05/12/2024 00:27] pas réglo"
+    ],
     "civilite": "M",
     "nombreDossiers": "<10",
     "montantEstime": "<500"
@@ -369,9 +371,14 @@
     "mail2": "info17@societe17.com",
     "commentaire": "Commentaire sur la société 17.",
     "dateProchaineAction": "2024-06-06",
-    "statut": "Signé",
+    "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
-    "historique": [],
+    "historique": [
+      "[05/12/2024 00:30] lol",
+      "[05/12/2024 00:29] c'est une feinte",
+      "[05/12/2024 00:29] genial",
+      "[05/12/2024 00:28] a rappeler"
+    ],
     "civilite": "M",
     "nombreDossiers": "<10",
     "montantEstime": "<500"
@@ -477,6 +484,9 @@
     "statut": "Fin de communication",
     "matriculeGestionnaire": "a001",
     "historique": [
+      "[05/12/2024 00:28] dddd",
+      "[05/12/2024 00:16] ici",
+      "[05/12/2024 00:11] hello wold",
       "[04/12/2024 15:28] doom eternal"
     ],
     "civilite": "M",

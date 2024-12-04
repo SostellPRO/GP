@@ -93,7 +93,7 @@ body {
 #client-list {
   display: grid; /* Utilise CSS Grid */
   grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes de tailles égales */
-  margin-left: 25px;
+  margin-left: 15px;
   margin-top: 40px;
   gap: 35px; /* Espacement entre les éléments */
   justify-items: center; /* Centre les cartes dans chaque colonne */

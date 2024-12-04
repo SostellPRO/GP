@@ -37,6 +37,7 @@ async function loadClients(status, userId) {
     }
 
     const clients = await response.json();
+    console.log(clients);
 
     // Filtrer les clients selon le matriculeGestionnaire
     const filteredClients = clients.filter(
@@ -74,51 +75,72 @@ function displayClients(clients) {
       // Mode cartes
       clientList.classList.remove("table-mode");
       clientList.innerHTML = visibleClients
-        .map(
-          (client) => `
-          <div class="client-card">
-            <p><strong>${client.raisonSociale}</strong></p>
-            <p><strong>Statut</strong> : ${client.statut}</p>
-            <p><strong>Typologie</strong> : ${client.typologie}</p>
-            <p><strong>Date prochaine action</strong> : ${
-              client.dateProchaineAction || "Non définie"
-            }</p>
-            <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
-            <button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>
-          </div>`
-        )
+        .map((client) => {
+          const lastComment =
+            client.historique && client.historique.length > 0
+              ? client.historique[client.historique.length - 1]
+              : "Aucun commentaire";
+          const truncatedComment =
+            lastComment.length > 50
+              ? `${lastComment.slice(0, 50)}...`
+              : lastComment;
+
+          return `
+            <div class="client-card">
+              <p><strong>${client.raisonSociale}</strong></p>
+              <p><strong>Statut</strong> : ${client.statut}</p>
+              <p><strong>Typologie</strong> : ${client.typologie}</p>
+              <p><strong>Commentaires</strong> : ${truncatedComment}</p>
+              <p><strong>Date prochaine action</strong> : ${
+                client.dateProchaineAction || "Non définie"
+              }</p>
+              <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
+              <button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>
+            </div>`;
+        })
         .join("");
     } else {
       // Mode tableau
       clientList.classList.add("table-mode");
       clientList.innerHTML = `
-      <table>
-        <thead>
-          <tr>
-            <th class="table-cell">Raison Sociale</th>
-            <th class="table-cell">Statut</th>
-            <th class="table-cell">Typologie</th>
-            <th class="table-cell">Date Prochaine Action</th>
-            <th class="table-cell">Détail</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${visibleClients
-            .map(
-              (client) => `
-              <tr class="table-row">
-                <td class="table-cell">${client.raisonSociale}</td>
-                <td class="table-cell">${client.statut}</td>
-                <td class="table-cell">${client.typologie}</td>
-                <td class="table-cell">${
-                  client.dateProchaineAction || "Non définie"
-                }</td>
-                <td class="table-cell"><a href="clientDetail.html?id=${client.id}">Voir les détails</a></td>
-              </tr>`
-            )
-            .join("")}
-        </tbody>
-      </table>`;
+        <table>
+          <thead>
+            <tr>
+              <th class="table-cell">Raison Sociale</th>
+              <th class="table-cell">Statut</th>
+              <th class="table-cell">Typologie</th>
+              <th class="table-cell">Dernier Commentaire</th>
+              <th class="table-cell">Date Prochaine Action</th>
+              <th class="table-cell">Détail</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${visibleClients
+              .map((client) => {
+                const lastComment =
+                  client.historique && client.historique.length > 0
+                    ? client.historique[client.historique.length - 1]
+                    : "Aucun commentaire";
+                const truncatedComment =
+                  lastComment.length > 50
+                    ? `${lastComment.slice(0, 50)}...`
+                    : lastComment;
+
+                return `
+                  <tr class="table-row">
+                    <td class="table-cell">${client.raisonSociale}</td>
+                    <td class="table-cell">${client.statut}</td>
+                    <td class="table-cell">${client.typologie}</td>
+                    <td class="table-cell">${truncatedComment}</td>
+                    <td class="table-cell">${
+                      client.dateProchaineAction || "Non définie"
+                    }</td>
+                    <td class="table-cell"><a href="clientDetail.html?id=${client.id}">Voir les détails</a></td>
+                  </tr>`;
+              })
+              .join("")}
+          </tbody>
+        </table>`;
     }
 
     // Ajouter les contrôles de pagination
