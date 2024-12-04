@@ -25,7 +25,7 @@ async function loadClients(status, userId) {
 
   // Met à jour le titre avec le texte du bouton cliqué
   const titleElement = document.querySelector(".title_partie2_agenda");
-  titleElement.textContent = status; // Met à jour le titre avec le statut sélectionné
+  titleElement.textContent = status.toUpperCase(); // Met à jour le titre avec le statut sélectionné
 
   try {
     const response = await fetch(`/api/clients?status=${status}`, {
@@ -87,7 +87,7 @@ function parseJwt(token) {
 function displayClients(clients) {
   const clientList = document.getElementById("client-list");
   const paginationContainer = document.getElementById("pagination-container");
-  const cardsPerPage = 6;
+  const cardsPerPage = 8;
   let currentPage = 0;
 
   // Calcul du nombre total de pages
