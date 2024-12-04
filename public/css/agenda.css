@@ -29,14 +29,15 @@ body {
   margin: 0;
 }
 .container_agenda {
-  flex: 1; /* S'étend pour occuper l'espace restant */
   display: flex;
+  height: calc(100vh - 15vh); /* Hauteur totale moins le header */
 }
 .partie1_agenda {
-  width: 20%;
+  flex: 0 0 20%; /* Largeur fixe à 20% */
   background-color: rgb(217, 183, 0);
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 #user-info_agenda {
@@ -76,9 +77,11 @@ body {
 }
 
 .partie2_agenda {
-  width: 80%;
+  flex: 1; /* Prend le reste de l'espace */
   display: flex;
-  /* Centre le contenu verticalement */
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto; /* Permet un défilement si le contenu dépasse */
 }
 .title_partie2_agenda {
   text-align: center; /* Centre horizontalement */
@@ -219,4 +222,70 @@ body {
 .pagination-controls span {
   margin: 0 10px;
   font-weight: bold;
+}
+
+#client-list.table-mode {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* S'assurer que le tableau occupe tout l'espace disponible */
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #ffffff;
+}
+
+/* En-têtes du tableau */
+.table-header {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.table-raison {
+  flex: 2; /* Large colonne pour Raison Sociale */
+}
+
+.table-statut,
+.table-typologie,
+.table-date {
+  flex: 1; /* Colonnes de largeur égale */
+}
+
+.table-detail {
+  flex: 1.5; /* Détail légèrement plus large */
+}
+
+/* Lignes du tableau */
+.table-row {
+  border: 1px solid #ddd;
+  transition: background-color 0.2s ease;
+}
+
+.table-row:hover {
+  background-color: #f9f9f9;
+}
+
+/* Cellules */
+.table-td {
+  padding: 15px;
+  text-align: left;
+  word-wrap: break-word; /* Gestion des longues chaînes */
+}
+
+/* Lien dans les cellules */
+.table-td a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.table-td a:hover {
+  text-decoration: underline;
 }

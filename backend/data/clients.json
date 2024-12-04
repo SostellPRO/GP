@@ -18,9 +18,12 @@
     "mail2": "info1@societe1.com",
     "commentaire": "Commentaire sur la société 1.",
     "dateProchaineAction": "2024-06-18",
-    "statut": "En attente d'appel",
+    "statut": "Signé",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "2024110003",
@@ -366,9 +369,12 @@
     "mail2": "info17@societe17.com",
     "commentaire": "Commentaire sur la société 17.",
     "dateProchaineAction": "2024-06-06",
-    "statut": "En attente d'appel",
+    "statut": "Signé",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "2024110018",
@@ -389,9 +395,12 @@
     "mail2": "info18@societe18.com",
     "commentaire": "Commentaire sur la société 18.",
     "dateProchaineAction": "2024-02-01",
-    "statut": "En attente d'appel",
+    "statut": "Signé",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "2024110019",
@@ -412,9 +421,12 @@
     "mail2": "info19@societe19.com",
     "commentaire": "Commentaire sur la société 19.",
     "dateProchaineAction": "2024-11-17",
-    "statut": "En attente d'appel",
+    "statut": "Fin de communication",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "2024110020",
@@ -462,9 +474,14 @@
     "montantEstimeCustom": "",
     "commentaire": "",
     "dateProchaineAction": "2025-01-06",
-    "statut": "En attente d'appel",
+    "statut": "Fin de communication",
     "matriculeGestionnaire": "a001",
-    "historique": ["[04/12/2024 15:28] doom eternal"]
+    "historique": [
+      "[04/12/2024 15:28] doom eternal"
+    ],
+    "civilite": "M",
+    "nomInterlocuteur": "",
+    "prenomInterlocuteur": ""
   },
   {
     "id": "202412041529",

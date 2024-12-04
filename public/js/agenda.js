@@ -51,68 +51,75 @@ async function loadClients(status, userId) {
   }
 }
 
-function displayClients(clients) {
-  const clientList = document.getElementById("client-list");
-  clientList.innerHTML = clients
-    .map((client) => {
-      console.log(client.id); // Affiche l'ID du client dans la console
-      return `
-        <div>
-          <p><strong>${client.raisonSociale}</strong></p>
-          <p><strong>Statut</strong> : ${client.statut}</p>
-          <p><strong>Typologie</strong> : ${client.typologie}</p>
-          <p><strong>Date prochaine action</strong> : ${client.dateProchaineAction}</p>
-          <p><strong>Commentaire</strong> : ${
-            client.historique?.[0] || "Aucun commentaire"
-          }</p>
-          <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
-        </div>`;
-    })
-    .join(""); // Joindre les éléments générés pour obtenir une chaîne unique
-}
-
-// Fonction pour décoder un JWT
-function parseJwt(token) {
-  try {
-    const base64Url = token.split(".")[1];
-    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-    return JSON.parse(atob(base64));
-  } catch (error) {
-    console.error("Erreur lors du décodage du token :", error);
-    return null;
-  }
-}
-
-// Fonction pour afficher les clients avec pagination et suppression
+// Fonction unique pour afficher les clients avec pagination et suppression
 function displayClients(clients) {
   const clientList = document.getElementById("client-list");
   const paginationContainer = document.getElementById("pagination-container");
-  const cardsPerPage = 8;
+  const cardsPerPage = 6; // Nombre de clients par page
   let currentPage = 0;
+
+  // Récupérer le titre actuel pour déterminer l'affichage
+  const title = document.querySelector(".title_partie2_agenda").textContent;
+  const isCardMode = title === "EN ATTENTE D'APPEL" || title === "À RAPPELER";
 
   // Calcul du nombre total de pages
   const totalPages = Math.ceil(clients.length / cardsPerPage);
 
-  // Affichage des clients par page
   const displayPage = () => {
     const start = currentPage * cardsPerPage;
     const end = start + cardsPerPage;
     const visibleClients = clients.slice(start, end);
 
-    // Afficher les cartes de la page actuelle
-    clientList.innerHTML = visibleClients
-      .map(
-        (client) => `
-        <div class="client-card">
-          <p><strong>${client.raisonSociale}</strong></p>
-          <p><strong>Statut</strong> : ${client.statut}</p>
-          <p><strong>Typologie</strong> : ${client.typologie}</p>
-          <p><strong>Date prochaine action</strong> : ${client.dateProchaineAction || "Non définie"}</p>
-          <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
-          <button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>
-        </div>`
-      )
-      .join("");
+    if (isCardMode) {
+      // Mode cartes
+      clientList.classList.remove("table-mode");
+      clientList.innerHTML = visibleClients
+        .map(
+          (client) => `
+          <div class="client-card">
+            <p><strong>${client.raisonSociale}</strong></p>
+            <p><strong>Statut</strong> : ${client.statut}</p>
+            <p><strong>Typologie</strong> : ${client.typologie}</p>
+            <p><strong>Date prochaine action</strong> : ${
+              client.dateProchaineAction || "Non définie"
+            }</p>
+            <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
+            <button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>
+          </div>`
+        )
+        .join("");
+    } else {
+      // Mode tableau
+      clientList.classList.add("table-mode");
+      clientList.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th class="table-cell">Raison Sociale</th>
+            <th class="table-cell">Statut</th>
+            <th class="table-cell">Typologie</th>
+            <th class="table-cell">Date Prochaine Action</th>
+            <th class="table-cell">Détail</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${visibleClients
+            .map(
+              (client) => `
+              <tr class="table-row">
+                <td class="table-cell">${client.raisonSociale}</td>
+                <td class="table-cell">${client.statut}</td>
+                <td class="table-cell">${client.typologie}</td>
+                <td class="table-cell">${
+                  client.dateProchaineAction || "Non définie"
+                }</td>
+                <td class="table-cell"><a href="clientDetail.html?id=${client.id}">Voir les détails</a></td>
+              </tr>`
+            )
+            .join("")}
+        </tbody>
+      </table>`;
+    }
 
     // Ajouter les contrôles de pagination
     paginationContainer.innerHTML = `
@@ -157,5 +164,17 @@ async function deleteClient(clientId) {
   } catch (error) {
     console.error("Erreur :", error);
     alert("Erreur lors de la suppression du client.");
+  }
+}
+
+// Fonction pour décoder un JWT
+function parseJwt(token) {
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    return JSON.parse(atob(base64));
+  } catch (error) {
+    console.error("Erreur lors du décodage du token :", error);
+    return null;
   }
 }
