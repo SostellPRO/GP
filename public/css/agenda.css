@@ -39,7 +39,16 @@ body {
   flex-direction: column;
 }
 
-#user-info p {
+#user-info_agenda {
+  margin-left: 10%;
+  margin-top: 22.5%;
+  border: solid black;
+  width: 80%;
+  font-size: 1.5rem;
+  border-radius: 7.5px;
+}
+
+#user-info_agenda p {
   margin-left: 5%;
   font-weight: bold;
 }

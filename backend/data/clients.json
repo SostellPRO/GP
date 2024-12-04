@@ -64,9 +64,12 @@
     "mail2": "info3@societe3.com",
     "commentaire": "Commentaire sur la société 3.",
     "dateProchaineAction": "2024-07-07",
-    "statut": "En attente d'appel",
+    "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "2024110004",
