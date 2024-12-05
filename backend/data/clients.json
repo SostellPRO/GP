@@ -404,7 +404,9 @@
     "dateProchaineAction": "2024-02-01",
     "statut": "Signé",
     "matriculeGestionnaire": "a001",
-    "historique": [],
+    "historique": [
+      "[05/12/2024 15:18] poe2"
+    ],
     "civilite": "M",
     "nombreDossiers": "<10",
     "montantEstime": "<500"
@@ -481,7 +483,7 @@
     "montantEstimeCustom": "",
     "commentaire": "",
     "dateProchaineAction": "2025-01-06",
-    "statut": "Fin de communication",
+    "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
     "historique": [
       "[05/12/2024 00:28] dddd",
@@ -563,7 +565,10 @@
     "dateProchaineAction": "2024-04-08",
     "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "202412041532",
