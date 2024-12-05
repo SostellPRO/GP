@@ -59,6 +59,9 @@ function displayClients(clients) {
   const cardsPerPage = 8; // Nombre de clients par page
   let currentPage = 0;
 
+  // Récupération du rôle utilisateur depuis le JWT
+  const userRole = parseJwt(localStorage.getItem("token")).role;
+
   // Récupérer le titre actuel pour déterminer l'affichage
   const title = document.querySelector(".title_partie2_agenda").textContent;
   const isCardMode = title === "EN ATTENTE D'APPEL" || title === "À RAPPELER";
@@ -95,7 +98,11 @@ function displayClients(clients) {
                 client.dateProchaineAction || "Non définie"
               }</p>
               <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
-              <button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>
+              ${
+                userRole === "Administrateur" || userRole === "Superviseur"
+                  ? `<button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>`
+                  : ""
+              }
             </div>`;
         })
         .join("");
@@ -112,6 +119,11 @@ function displayClients(clients) {
               <th class="table-cell">Dernier Commentaire</th>
               <th class="table-cell">Date Prochaine Action</th>
               <th class="table-cell">Détail</th>
+              ${
+                userRole === "Administrateur" || userRole === "Superviseur"
+                  ? `<th class="table-cell">Action</th>`
+                  : ""
+              }
             </tr>
           </thead>
           <tbody>
@@ -136,6 +148,14 @@ function displayClients(clients) {
                       client.dateProchaineAction || "Non définie"
                     }</td>
                     <td class="table-cell"><a href="clientDetail.html?id=${client.id}">Voir les détails</a></td>
+                    ${
+                      userRole === "administrateur" ||
+                      userRole === "superviseur"
+                        ? `<td class="table-cell">
+                            <button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>
+                          </td>`
+                        : ""
+                    }
                   </tr>`;
               })
               .join("")}
