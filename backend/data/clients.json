@@ -483,7 +483,7 @@
     "montantEstimeCustom": "",
     "commentaire": "",
     "dateProchaineAction": "2025-01-06",
-    "statut": "À rappeler",
+    "statut": "Signé",
     "matriculeGestionnaire": "a001",
     "historique": [
       "[05/12/2024 00:28] dddd",
@@ -496,27 +496,32 @@
     "prenomInterlocuteur": ""
   },
   {
-    "id": "202412041529",
+    "id": "202412041553",
     "raisonSociale": "Société 21",
     "secteurActivite": "Manufacturing",
     "siren": "138590019",
-    "siret": "31923267568512",
+    "siret": "13859001900004",
     "typologie": "B2C",
     "civilite1": "Mme",
-    "nomInterlocuteur": "Moreau",
-    "prenomInterlocuteur": "Sophie",
+    "nomInterlocuteur": "Moreaud",
+    "prenomInterlocuteur": "Sophiel",
     "adressePostale": "45 Rue Exemple",
     "complementAdresse": "Bureau 202",
     "codePostal": "16097",
     "telephone1": "0148622877",
     "telephone2": "0657266567",
-    "mail1": "contact21@societe21.com",
-    "mail2": "info21@societe21.com",
+    "mail1": "contact21@societe212.com",
+    "mail2": "info21@societe213.com",
     "commentaire": "Commentaire sur la société 21.",
     "dateProchaineAction": "2024-04-02",
-    "statut": "En attente d'appel",
+    "statut": "Fin de communication",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [
+      "[05/12/2024 21:31] yo"
+    ],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "202412041530",

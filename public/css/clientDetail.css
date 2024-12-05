@@ -102,8 +102,20 @@ select {
   margin-top: 5px;
 }
 
-button {
-  padding: 10px 20px;
+.button_detail {
+  width: 20%;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(116, 0, 255);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button_detail2 {
+  width: 20%;
   font-size: 1rem;
   font-weight: bold;
   color: white;

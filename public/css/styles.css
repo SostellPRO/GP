@@ -114,12 +114,6 @@ header {
   margin-bottom: 5px;
 }
 
-button[type="submit"] {
-  margin-top: 20px;
-  align-self: center;
-  width: 30%;
-}
-
 fieldset {
   flex: 1;
   padding: 15px;
