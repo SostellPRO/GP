@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+let currentSort = "raisonSociale"; // Tri par défaut
+
 async function loadClients(status, userId) {
   const token = localStorage.getItem("token");
 
@@ -52,6 +54,17 @@ async function loadClients(status, userId) {
   }
 }
 
+function sortClients() {
+  const sortSelect = document.getElementById("sort-select");
+  currentSort = sortSelect.value;
+
+  // Recharger les clients triés
+  loadClients(
+    document.querySelector(".title_partie2_agenda").textContent,
+    document.getElementById("user-id").textContent
+  );
+}
+
 // Fonction unique pour afficher les clients avec pagination et suppression
 function displayClients(clients) {
   const clientList = document.getElementById("client-list");
@@ -61,6 +74,19 @@ function displayClients(clients) {
 
   // Récupération du rôle utilisateur depuis le JWT
   const userRole = parseJwt(localStorage.getItem("token")).role;
+
+  // Tri des clients en fonction du choix
+  clients.sort((a, b) => {
+    if (currentSort === "raisonSociale") {
+      return a.raisonSociale.localeCompare(b.raisonSociale);
+    }
+    if (currentSort === "dateProchaineAction") {
+      if (!a.dateProchaineAction) return 1;
+      if (!b.dateProchaineAction) return -1;
+      return new Date(a.dateProchaineAction) - new Date(b.dateProchaineAction);
+    }
+    return 0;
+  });
 
   // Récupérer le titre actuel pour déterminer l'affichage
   const title = document.querySelector(".title_partie2_agenda").textContent;

@@ -51,6 +51,17 @@
         </div>
         <div class="part1_agenda">
           <h2 class="title_partie2_agenda">LISTE DES CLIENTS</h2>
+
+          <!-- Ajout du sélecteur de tri -->
+          <div class="sort-controls">
+            <label for="sort-select">Trier par :</label>
+            <select id="sort-select" onchange="sortClients()">
+              <option value="raisonSociale">Raison Sociale</option>
+              <option value="dateProchaineAction">Date Prochaine Action</option>
+            </select>
+          </div>
+          <!-- Fin du sélecteur de tri -->
+
           <div id="client-list">Chargement...</div>
           <div id="pagination-container"></div>
         </div>
