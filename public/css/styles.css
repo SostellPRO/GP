@@ -338,14 +338,10 @@ button:hover {
     z-index: 1000;
   }
   #menuButton {
-    background-color: rgb(255, 231, 0);
-    color: black;
-    border: solid black;
     padding: 4px 7.5px; /* Réduction de padding */
     cursor: pointer;
     border-radius: 2.5px;
     font-size: 0.75rem; /* Réduction de la taille */
-    font-weight: bold;
   }
   #navigation-links li {
     margin-bottom: 30%;

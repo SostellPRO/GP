@@ -99,3 +99,54 @@ body {
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
 }
+
+/*RESPONSIVE*/
+
+@media (max-width: 1430px) {
+  .button_profil {
+    font-size: 0.95rem;
+    margin-top: 15px;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  .menu-container {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 1000;
+  }
+
+  #menuButton {
+    padding: 4px 7.5px; /* Réduction de padding */
+    cursor: pointer;
+    border-radius: 2.5px;
+    font-size: 0.75rem; /* Réduction de la taille */
+  }
+}
+
+@media (max-width: 780px) {
+  .button_profil {
+    font-size: 0.75rem;
+    margin-top: 10px;
+  }
+  .input_profil {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 524px) {
+  .header_home {
+    height: auto; /* Permet au header de s'adapter à la hauteur de son contenu */
+    flex-direction: column; /* Change l'orientation en colonne */
+    align-items: flex-start; /* Aligne les éléments au début */
+    padding: 10px; /* Ajoute un peu de marge pour aérer */
+  }
+  .button_profil {
+    font-size: 0.5rem;
+    margin-top: 7px;
+  }
+  .input_profil {
+    font-size: 0.95rem;
+  }
+}
