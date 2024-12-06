@@ -102,3 +102,75 @@ body {
   border: white;
   cursor: pointer;
 }
+
+/* RESPONSIVE*/
+
+@media (max-width: 1120px) {
+  .campaignFile {
+    font-size: 1rem;
+  }
+  .button_manage {
+    font-size: 0.9rem;
+    height: 2rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .button_manage {
+    font-size: 0.7rem;
+    height: 2rem;
+  }
+  .campaignFile {
+    font-size: 0.85rem;
+  }
+  .menu-container {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 1000;
+  }
+  #menuButton {
+    padding: 4px 7.5px; /* Réduction de padding */
+    cursor: pointer;
+    border-radius: 2.5px;
+    font-size: 0.75rem; /* Réduction de la taille */
+  }
+  h1.title_manage {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 668px) {
+  button.button_manage {
+    h1.title_manage {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 524px) {
+    h1.title_manage {
+      font-size: 1.25rem;
+    }
+    .menu-container {
+      position: fixed;
+      top: 3.5px;
+      right: 3.5px;
+      z-index: 1000;
+    }
+    #menuButton {
+      padding: 2px 3.5px; /* Réduction de padding */
+      cursor: pointer;
+      border-radius: 1.5px;
+      font-size: 0.35rem; /* Réduction de la taille */
+    }
+  }
+
+  @media (max-width: 450px) {
+    button.button_manage {
+      font-size: 0.5rem;
+      height: 1.5rem;
+    }
+    h1.title_manage {
+      font-size: 1rem;
+    }
+  }
+}
