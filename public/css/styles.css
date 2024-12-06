@@ -95,10 +95,6 @@ header {
   align-items: center;
 }
 
-/*CREATE USER*/
-
-/*CREATE CLIENT*/
-
 /* HISTORIQUE */
 #historique {
   margin-top: 10px;
@@ -324,4 +320,34 @@ button:hover {
   color: #721c24;
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
+}
+@media (max-width: 1040px) {
+  #user-info {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 524px) {
+  #user-info {
+    font-size: 0.75rem;
+  }
+  .menu-container {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 1000;
+  }
+  #menuButton {
+    background-color: rgb(255, 231, 0);
+    color: black;
+    border: solid black;
+    padding: 4px 7.5px; /* Réduction de padding */
+    cursor: pointer;
+    border-radius: 2.5px;
+    font-size: 0.75rem; /* Réduction de la taille */
+    font-weight: bold;
+  }
+  #navigation-links li {
+    margin-bottom: 30%;
+  }
 }

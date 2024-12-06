@@ -62,3 +62,26 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 524px) {
+  .header_home {
+    height: auto; /* Permet au header de s'adapter à la hauteur de son contenu */
+    flex-direction: column; /* Change l'orientation en colonne */
+    align-items: flex-start; /* Aligne les éléments au début */
+    padding: 10px; /* Ajoute un peu de marge pour aérer */
+  }
+
+  .title_home {
+    font-size: 2rem; /* Taille ajustée pour mobile */
+    margin-bottom: 10px; /* Espacement sous le titre */
+  }
+
+  #navigation-links {
+    font-size: 1.5rem; /* Taille ajustée pour mobile */
+    margin: 0; /* Supprime les marges inutiles */
+  }
+
+  .partie1 {
+    background-color: #f4f4f9;
+  }
+}
