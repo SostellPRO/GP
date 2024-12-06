@@ -93,7 +93,7 @@ body {
 #client-list {
   display: grid; /* Utilise CSS Grid */
   grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes de tailles égales */
-  margin-left: 15px;
+  margin-left: 1%;
   margin-top: 40px;
   gap: 35px; /* Espacement entre les éléments */
   justify-items: center; /* Centre les cartes dans chaque colonne */
@@ -271,4 +271,32 @@ tbody tr:hover {
 th,
 td {
   text-align: left;
+}
+.fieldset-sort {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-left: 1%;
+  width: 47.5%;
+}
+
+.fieldset-sort legend {
+  font-weight: bold;
+}
+
+.sort-options {
+  display: flex;
+  gap: 20px;
+}
+
+.sort-group button {
+  padding: 5px 10px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.client-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
 }

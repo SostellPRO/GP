@@ -3,31 +3,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const userInfo = parseJwt(token);
 
   if (userInfo) {
-    // Afficher l'ID utilisateur et le nom dans la zone utilisateur
+    // Afficher les informations de l'utilisateur
     document.getElementById("user-id").textContent = userInfo.id;
     document.getElementById("user-name").textContent =
       `${userInfo.prenom} ${userInfo.nom}`;
 
-    // Définir le titre par défaut comme "Lead"
-    const defaultTitle = "Lead";
+    // Définir le titre par défaut et charger les clients
+    const defaultTitle = "En attente d'appel";
     document.querySelector(".title_partie2_agenda").textContent = defaultTitle;
-
-    // Charger les clients par défaut pour le statut "Lead"
-    loadClients("En attente d'appel", userInfo.id);
+    loadClients(defaultTitle, userInfo.id);
   } else {
     alert("Erreur d'authentification. Veuillez vous reconnecter.");
     window.location.href = "/login.html";
   }
 });
 
-let currentSort = "raisonSociale"; // Tri par défaut
+let currentSort = { criterion: "raisonSociale", order: "asc" };
 
+// Charger les clients selon le statut sélectionné
 async function loadClients(status, userId) {
   const token = localStorage.getItem("token");
 
-  // Met à jour le titre avec le texte du bouton cliqué
+  // Met à jour le titre de la section
   const titleElement = document.querySelector(".title_partie2_agenda");
-  titleElement.textContent = status.toUpperCase(); // Met à jour le titre avec le statut sélectionné
+  titleElement.textContent = status.toUpperCase();
 
   try {
     const response = await fetch(`/api/clients?status=${status}`, {
@@ -39,9 +38,8 @@ async function loadClients(status, userId) {
     }
 
     const clients = await response.json();
-    console.log(clients);
 
-    // Filtrer les clients selon le matriculeGestionnaire
+    // Filtrer les clients selon l'utilisateur
     const filteredClients = clients.filter(
       (client) => client.matriculeGestionnaire === userId
     );
@@ -54,142 +52,64 @@ async function loadClients(status, userId) {
   }
 }
 
-function sortClients() {
-  const sortSelect = document.getElementById("sort-select");
-  currentSort = sortSelect.value;
-
-  // Recharger les clients triés
-  loadClients(
-    document.querySelector(".title_partie2_agenda").textContent,
-    document.getElementById("user-id").textContent
-  );
+// Fonction pour trier les clients
+function sortClients(criterion, order) {
+  currentSort = { criterion, order };
+  const status = document.querySelector(".title_partie2_agenda").textContent;
+  const userId = document.getElementById("user-id").textContent;
+  loadClients(status, userId);
 }
 
-// Fonction unique pour afficher les clients avec pagination et suppression
+// Afficher les clients avec pagination
 function displayClients(clients) {
   const clientList = document.getElementById("client-list");
   const paginationContainer = document.getElementById("pagination-container");
   const cardsPerPage = 8; // Nombre de clients par page
   let currentPage = 0;
 
-  // Récupération du rôle utilisateur depuis le JWT
-  const userRole = parseJwt(localStorage.getItem("token")).role;
-
-  // Tri des clients en fonction du choix
+  // Tri des clients selon le critère et l'ordre
   clients.sort((a, b) => {
-    if (currentSort === "raisonSociale") {
-      return a.raisonSociale.localeCompare(b.raisonSociale);
+    if (currentSort.criterion === "raisonSociale") {
+      return currentSort.order === "asc"
+        ? a.raisonSociale.localeCompare(b.raisonSociale)
+        : b.raisonSociale.localeCompare(a.raisonSociale);
+    } else if (currentSort.criterion === "dateProchaineAction") {
+      const dateA = new Date(a.dateProchaineAction || 0);
+      const dateB = new Date(b.dateProchaineAction || 0);
+      return currentSort.order === "asc" ? dateA - dateB : dateB - dateA;
     }
-    if (currentSort === "dateProchaineAction") {
-      if (!a.dateProchaineAction) return 1;
-      if (!b.dateProchaineAction) return -1;
-      return new Date(a.dateProchaineAction) - new Date(b.dateProchaineAction);
-    }
-    return 0;
   });
-
-  // Récupérer le titre actuel pour déterminer l'affichage
-  const title = document.querySelector(".title_partie2_agenda").textContent;
-  const isCardMode = title === "EN ATTENTE D'APPEL" || title === "À RAPPELER";
-
-  // Calcul du nombre total de pages
-  const totalPages = Math.ceil(clients.length / cardsPerPage);
 
   const displayPage = () => {
     const start = currentPage * cardsPerPage;
     const end = start + cardsPerPage;
     const visibleClients = clients.slice(start, end);
 
-    if (isCardMode) {
-      // Mode cartes
-      clientList.classList.remove("table-mode");
-      clientList.innerHTML = visibleClients
-        .map((client) => {
-          const lastComment =
-            client.historique && client.historique.length > 0
-              ? client.historique[client.historique.length - 1]
-              : "Aucun commentaire";
-          const truncatedComment =
-            lastComment.length > 50
-              ? `${lastComment.slice(0, 50)}...`
-              : lastComment;
+    clientList.innerHTML = visibleClients
+      .map(
+        (client) => `
+      <div class="client-card">
+        <p><strong>Raison Sociale:</strong> ${client.raisonSociale}</p>
+        <p><strong>Typologie:</strong> ${client.typologie}</p>
+        <p><strong>Secteur:</strong> ${client.secteurActivite}</p>
+        <p><strong>Nombre de Dossiers:</strong> ${client.nombreDossiers}</p>
+        
+        <p><strong>Date Prochaine Action:</strong> ${
+          client.dateProchaineAction || "Non définie"
+        }</p>
+        <p><strong>Dernier commentaire:</strong> ${client.historique[0]}</p>
+        <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
+        ${
+          client.role === "Administrateur" || client.role === "Superviseur"
+            ? `<button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>`
+            : ""
+        }
+      </div>`
+      )
+      .join("");
 
-          return `
-            <div class="client-card">
-              <p><strong>${client.raisonSociale}</strong></p>
-              <p><strong>Statut</strong> : ${client.statut}</p>
-              <p><strong>Typologie</strong> : ${client.typologie}</p>
-              <p><strong>Commentaires</strong> : ${truncatedComment}</p>
-              <p><strong>Date prochaine action</strong> : ${
-                client.dateProchaineAction || "Non définie"
-              }</p>
-              <p><a href="clientDetail.html?id=${client.id}">Voir les détails</a></p>
-              ${
-                userRole === "Administrateur" || userRole === "Superviseur"
-                  ? `<button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>`
-                  : ""
-              }
-            </div>`;
-        })
-        .join("");
-    } else {
-      // Mode tableau
-      clientList.classList.add("table-mode");
-      clientList.innerHTML = `
-        <table>
-          <thead>
-            <tr>
-              <th class="table-cell">Raison Sociale</th>
-              <th class="table-cell">Statut</th>
-              <th class="table-cell">Typologie</th>
-              <th class="table-cell">Dernier Commentaire</th>
-              <th class="table-cell">Date Prochaine Action</th>
-              <th class="table-cell">Détail</th>
-              ${
-                userRole === "Administrateur" || userRole === "Superviseur"
-                  ? `<th class="table-cell">Action</th>`
-                  : ""
-              }
-            </tr>
-          </thead>
-          <tbody>
-            ${visibleClients
-              .map((client) => {
-                const lastComment =
-                  client.historique && client.historique.length > 0
-                    ? client.historique[client.historique.length - 1]
-                    : "Aucun commentaire";
-                const truncatedComment =
-                  lastComment.length > 50
-                    ? `${lastComment.slice(0, 50)}...`
-                    : lastComment;
-
-                return `
-                  <tr class="table-row">
-                    <td class="table-cell">${client.raisonSociale}</td>
-                    <td class="table-cell">${client.statut}</td>
-                    <td class="table-cell">${client.typologie}</td>
-                    <td class="table-cell">${truncatedComment}</td>
-                    <td class="table-cell">${
-                      client.dateProchaineAction || "Non définie"
-                    }</td>
-                    <td class="table-cell"><a href="clientDetail.html?id=${client.id}">Voir les détails</a></td>
-                    ${
-                      userRole === "administrateur" ||
-                      userRole === "superviseur"
-                        ? `<td class="table-cell">
-                            <button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>
-                          </td>`
-                        : ""
-                    }
-                  </tr>`;
-              })
-              .join("")}
-          </tbody>
-        </table>`;
-    }
-
-    // Ajouter les contrôles de pagination
+    // Pagination
+    const totalPages = Math.ceil(clients.length / cardsPerPage);
     paginationContainer.innerHTML = `
       <div class="pagination-controls">
         <button ${currentPage === 0 ? "disabled" : ""} onclick="changePage(-1)">←</button>
@@ -200,7 +120,7 @@ function displayClients(clients) {
       </div>`;
   };
 
-  // Fonction pour changer de page
+  // Change la page courante
   window.changePage = (direction) => {
     currentPage += direction;
     displayPage();
@@ -209,7 +129,7 @@ function displayClients(clients) {
   displayPage();
 }
 
-// Fonction pour supprimer un client
+// Supprimer un client
 async function deleteClient(clientId) {
   const confirmDelete = confirm(
     "Êtes-vous sûr de vouloir supprimer ce client ?"
@@ -225,7 +145,7 @@ async function deleteClient(clientId) {
 
     if (response.ok) {
       alert("Client supprimé avec succès.");
-      location.reload(); // Recharger les données après suppression
+      location.reload();
     } else {
       alert("Erreur lors de la suppression du client.");
     }
@@ -235,7 +155,7 @@ async function deleteClient(clientId) {
   }
 }
 
-// Fonction pour décoder un JWT
+// Décoder un JWT
 function parseJwt(token) {
   try {
     const base64Url = token.split(".")[1];

@@ -24,25 +24,22 @@
           </div>
           <nav class="nav_agenda">
             <button
-              onclick="loadClients('En attente d\'appel', document.getElementById('user-id').textContent)"
+              onclick="loadClients('En attente d\'appel')"
               class="nav_agenda_button"
             >
               EN ATTENTE D'APPEL
             </button>
             <button
-              onclick="loadClients('À rappeler', document.getElementById('user-id').textContent)"
+              onclick="loadClients('À rappeler')"
               class="nav_agenda_button"
             >
-              A RAPPELER
+              À RAPPELER
+            </button>
+            <button onclick="loadClients('Signé')" class="nav_agenda_button">
+              SIGNÉ
             </button>
             <button
-              onclick="loadClients('Signé', document.getElementById('user-id').textContent)"
-              class="nav_agenda_button"
-            >
-              SIGNE
-            </button>
-            <button
-              onclick="loadClients('Fin de communication', document.getElementById('user-id').textContent)"
+              onclick="loadClients('Fin de communication')"
               class="nav_agenda_button"
             >
               FIN DE COMMUNICATION
@@ -51,17 +48,29 @@
         </div>
         <div class="part1_agenda">
           <h2 class="title_partie2_agenda">LISTE DES CLIENTS</h2>
-
-          <!-- Ajout du sélecteur de tri -->
-          <div class="sort-controls">
-            <label for="sort-select">Trier par :</label>
-            <select id="sort-select" onchange="sortClients()">
-              <option value="raisonSociale">Raison Sociale</option>
-              <option value="dateProchaineAction">Date Prochaine Action</option>
-            </select>
-          </div>
-          <!-- Fin du sélecteur de tri -->
-
+          <fieldset class="fieldset-sort">
+            <legend>Options de tri</legend>
+            <div class="sort-options">
+              <div class="sort-group">
+                <span>Raison Sociale</span>
+                <button onclick="sortClients('raisonSociale', 'asc')">
+                  A → Z
+                </button>
+                <button onclick="sortClients('raisonSociale', 'desc')">
+                  Z → A
+                </button>
+              </div>
+              <div class="sort-group">
+                <span>Date Prochaine Action</span>
+                <button onclick="sortClients('dateProchaineAction', 'asc')">
+                  Chronologique
+                </button>
+                <button onclick="sortClients('dateProchaineAction', 'desc')">
+                  Anti-chronologique
+                </button>
+              </div>
+            </div>
+          </fieldset>
           <div id="client-list">Chargement...</div>
           <div id="pagination-container"></div>
         </div>
