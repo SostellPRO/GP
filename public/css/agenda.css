@@ -93,7 +93,7 @@ body {
 #client-list {
   display: grid; /* Utilise CSS Grid */
   grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes de tailles égales */
-  margin-left: 15px;
+  margin-left: 1.5%;
   margin-top: 40px;
   gap: 35px; /* Espacement entre les éléments */
   justify-items: center; /* Centre les cartes dans chaque colonne */
@@ -234,7 +234,6 @@ table {
   border-collapse: collapse;
   font-family: Arial, sans-serif;
   font-size: 1.25rem;
-  margin-left: 5%;
 }
 
 thead {
@@ -271,4 +270,19 @@ tbody tr:hover {
 th,
 td {
   text-align: left;
+}
+
+.sort-label {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.sort-controls {
+  margin-left: 1.5%;
+  width: 23.5%;
+}
+
+#sort-select {
+  font-size: 1.25rem;
+  font-style: italic;
 }
