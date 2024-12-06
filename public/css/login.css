@@ -61,3 +61,25 @@ body {
 .button_login:hover {
   background-color: rgb(51, 0, 153);
 }
+
+/* RESPONSIVE*/
+
+@media (max-width: 630px) {
+  .button_login {
+    font-size: 0.8rem;
+  }
+
+  .input_login {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .button_login {
+    font-size: 0.5rem;
+  }
+
+  .input_login {
+    font-size: 0.7rem;
+  }
+}
