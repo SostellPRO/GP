@@ -1,4 +1,4 @@
-html,
+Create profile css html,
 body {
   margin: 0;
   padding: 0;
@@ -41,7 +41,7 @@ body {
   display: flex; /* Active Flexbox */
   flex-direction: column; /* Les éléments s'empilent verticalement */
   align-items: center;
-  border: solid rgb(217, 183, 0);
+  border: solidrgb(217, 183, 0);
 }
 
 .input_profil {
@@ -63,6 +63,7 @@ body {
   cursor: pointer;
   border-radius: 5px;
   margin-top: 20px;
+  margin-bottom: 20pxs;
 }
 
 .button_profil:hover {
@@ -107,31 +108,20 @@ body {
     font-size: 0.95rem;
     margin-top: 15px;
   }
-  h1 {
-    font-size: 20px;
-  }
-  .menu-container {
-    position: fixed;
-    top: 5px;
-    right: 5px;
-    z-index: 1000;
-  }
-
-  #menuButton {
-    padding: 4px 7.5px; /* Réduction de padding */
-    cursor: pointer;
-    border-radius: 2.5px;
-    font-size: 0.75rem; /* Réduction de la taille */
-  }
 }
 
 @media (max-width: 780px) {
+  h1 {
+    font-size: 20px;
+  }
   .button_profil {
     font-size: 0.75rem;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
   .input_profil {
     font-size: 1rem;
+    text-align: center;
   }
 }
 
@@ -145,6 +135,7 @@ body {
   .button_profil {
     font-size: 0.5rem;
     margin-top: 7px;
+    margin-bottom: 7px;
   }
   .input_profil {
     font-size: 0.95rem;

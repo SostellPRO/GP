@@ -60,7 +60,8 @@ body {
   display: flex; /* Active Flexbox */
   flex-direction: column; /* Les éléments s'empilent verticalement */
   align-items: center;
-  border: solid rgb(217, 183, 0);
+  border: solidrgb(217, 183, 0);
+  justify-content: center;
 }
 
 .label_campaign {
@@ -74,7 +75,7 @@ body {
   width: 80%; /* Réduction de la largeur pour un meilleur rendu */
   height: 3rem;
   margin: 5px; /* Espacement entre les champs */
-  border: solid grey 2px;
+  border: solidgrey 2px;
 }
 
 .button_manage {
@@ -86,7 +87,7 @@ body {
   color: white;
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 15px;
+  margin: auto; /* Centre automatiquement dans l'espace disponible */
 }
 
 .button_manage:hover {
@@ -117,8 +118,10 @@ body {
 
 @media (max-width: 950px) {
   .button_manage {
-    font-size: 0.7rem;
-    height: 2rem;
+    font-size: 0.8rem; /* Ajuste la taille du texte */
+    padding: 0.5rem 1rem; /* Réduit les marges internes */
+    width: auto; /* Laisse la largeur s'adapter */
+    margin: auto; /* Toujours centré */
   }
   .campaignFile {
     font-size: 0.85rem;
@@ -139,38 +142,35 @@ body {
     font-size: 2rem;
   }
 }
+@media (max-width: 750px) {
+  h1.title_manage {
+    font-size: 1.5rem;
+  }
+  .button_manage {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
 @media (max-width: 668px) {
-  button.button_manage {
-    h1.title_manage {
-      font-size: 1.5rem;
-    }
+  h1.title_manage {
+    font-size: 1.25rem;
   }
-
-  @media (max-width: 524px) {
-    h1.title_manage {
-      font-size: 1.25rem;
-    }
-    .menu-container {
-      position: fixed;
-      top: 3.5px;
-      right: 3.5px;
-      z-index: 1000;
-    }
-    #menuButton {
-      padding: 2px 3.5px; /* Réduction de padding */
-      cursor: pointer;
-      border-radius: 1.5px;
-      font-size: 0.35rem; /* Réduction de la taille */
-    }
+  .menu-container {
+    position: fixed;
+    top: 3.5px;
+    right: 3.5px;
+    z-index: 1000;
   }
+  #menuButton {
+    padding: 2px 3.5px; /* Réduction de padding */
+    cursor: pointer;
+    border-radius: 1.5px;
+    font-size: 0.35rem; /* Réduction de la taille */
+  }
+}
 
-  @media (max-width: 450px) {
-    button.button_manage {
-      font-size: 0.5rem;
-      height: 1.5rem;
-    }
-    h1.title_manage {
-      font-size: 1rem;
-    }
+@media (max-width: 524px) {
+  h1.title_manage {
+    font-size: 1rem;
   }
 }

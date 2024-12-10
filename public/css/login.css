@@ -27,7 +27,7 @@ body {
   display: flex; /* Active Flexbox */
   flex-direction: column; /* Les éléments s'empilent verticalement */
   align-items: center;
-  border: solid rgb(217, 183, 0);
+  border: solidrgb(217, 183, 0);
 } /* Centre horizontalement les éléments enfants */
 
 .img_login {
@@ -71,6 +71,7 @@ body {
 
   .input_login {
     font-size: 0.8rem;
+    text-align: center;
   }
 }
 
