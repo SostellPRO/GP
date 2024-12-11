@@ -17,17 +17,6 @@ body {
   background-color: #f4f4f9;
 }
 
-.header_detail {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  padding: 15px;
-  background-color: rgb(116, 0, 255);
-  color: white;
-  height: 12.5vh;
-}
-
 .title_detail {
   background-color: rgb(116, 0, 255);
   font-size: 2.5rem;

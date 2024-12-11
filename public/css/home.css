@@ -16,13 +16,6 @@ body {
   height: 100%; /* Assure que le contenu occupe toute la hauteur */
 }
 
-.header_home {
-  height: 15vh; /* Aligné avec la page Manage Campaigns */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .title_home {
   font-size: 2.5rem; /* Taille réduite pour correspondre */
   font-weight: bold;
@@ -61,4 +54,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 524px) {
+  .title_home {
+    font-size: 2rem; /* Taille ajustée pour mobile */
+    margin-bottom: 10px; /* Espacement sous le titre */
+  }
+
+  #navigation-links {
+    font-size: 1.5rem; /* Taille ajustée pour mobile */
+    margin: 0; /* Supprime les marges inutiles */
+  }
+
+  .partie1 {
+    background-color: #f4f4f9;
+  }
 }

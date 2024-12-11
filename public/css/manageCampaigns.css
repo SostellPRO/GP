@@ -23,24 +23,6 @@ body {
   flex-direction: column;
 }
 
-.header_manage {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  padding: 15px; /* Réduction de la hauteur */
-  background-color: rgb(116, 0, 255);
-  color: white;
-  height: 12.5vh;
-}
-
-.title_manage {
-  background-color: rgb(116, 0, 255);
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0;
-}
-
 .container_campaign {
   width: 100vw;
   flex: 1;
@@ -60,7 +42,8 @@ body {
   display: flex; /* Active Flexbox */
   flex-direction: column; /* Les éléments s'empilent verticalement */
   align-items: center;
-  border: solid rgb(217, 183, 0);
+  border: solidrgb(217, 183, 0);
+  justify-content: center;
 }
 
 .label_campaign {
@@ -74,7 +57,7 @@ body {
   width: 80%; /* Réduction de la largeur pour un meilleur rendu */
   height: 3rem;
   margin: 5px; /* Espacement entre les champs */
-  border: solid grey 2px;
+  border: solidgrey 2px;
 }
 
 .button_manage {
@@ -86,7 +69,7 @@ body {
   color: white;
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 15px;
+  margin: auto; /* Centre automatiquement dans l'espace disponible */
 }
 
 .button_manage:hover {
@@ -101,4 +84,48 @@ body {
   color: white;
   border: white;
   cursor: pointer;
+}
+
+/* RESPONSIVE*/
+
+@media (max-width: 1120px) {
+  .campaignFile {
+    font-size: 1rem;
+  }
+  .button_manage {
+    font-size: 0.9rem;
+    height: 2rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .button_manage {
+    font-size: 0.8rem; /* Ajuste la taille du texte */
+    padding: 0.5rem 1rem; /* Réduit les marges internes */
+    width: auto; /* Laisse la largeur s'adapter */
+    margin: auto; /* Toujours centré */
+  }
+  .campaignFile {
+    font-size: 0.85rem;
+  }
+  .menu-container {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 1000;
+  }
+}
+@media (max-width: 750px) {
+  .button_manage {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+@media (max-width: 668px) {
+  .menu-container {
+    position: fixed;
+    top: 3.5px;
+    right: 3.5px;
+    z-index: 1000;
+  }
 }

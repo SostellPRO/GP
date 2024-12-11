@@ -27,7 +27,7 @@ body {
   display: flex; /* Active Flexbox */
   flex-direction: column; /* Les éléments s'empilent verticalement */
   align-items: center;
-  border: solid rgb(217, 183, 0);
+  border: solidrgb(217, 183, 0);
 } /* Centre horizontalement les éléments enfants */
 
 .img_login {
@@ -60,4 +60,27 @@ body {
 
 .button_login:hover {
   background-color: rgb(51, 0, 153);
+}
+
+/* RESPONSIVE*/
+
+@media (max-width: 630px) {
+  .button_login {
+    font-size: 0.8rem;
+  }
+
+  .input_login {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .button_login {
+    font-size: 0.5rem;
+  }
+
+  .input_login {
+    font-size: 0.7rem;
+  }
 }

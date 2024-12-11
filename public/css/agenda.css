@@ -16,12 +16,7 @@ body {
   height: 100vh; /* Assure que le contenu occupe toute la hauteur */
   overflow: hidden;
 }
-.header_agenda {
-  height: 15vh; /* Aligné avec la page Manage Campaigns */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .title_agenda {
   background-color: rgb(116, 0, 255);
   font-size: 2.5rem;
@@ -285,4 +280,19 @@ td {
 #sort-select {
   font-size: 1.25rem;
   font-style: italic;
+}
+
+/*responsive navigation*/
+
+@media (max-width: 1400px) {
+  .nav_agenda button {
+    font-size: 1rem;
+    margin-bottom: 40%;
+  }
+}
+@media (max-width: 950px) {
+  .nav_agenda {
+    margin-top: 20%;
+    margin-left: 5%;
+  }
 }
