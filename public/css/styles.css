@@ -63,12 +63,6 @@ header {
   margin-bottom: 3%;
 }
 
-.title_page {
-  background-color: rgb(116, 0, 255);
-  font-size: 3rem;
-  font-weight: bold;
-}
-
 #logoutButton {
   background-color: rgb(116, 0, 255);
   margin: 10px;
@@ -317,6 +311,15 @@ button:hover {
   }
 }
 
+@media (max-width: 950px) {
+  #menuButton {
+    padding: 4px 7.5px; /* Réduction de padding */
+    cursor: pointer;
+    border-radius: 2.5px;
+    font-size: 1rem; /* Réduction de la taille */
+  }
+}
+
 @media (max-width: 850px) {
   #user-info {
     font-size: 1rem;
@@ -339,5 +342,40 @@ button:hover {
 
   #navigation-links li {
     margin-bottom: 30%;
+  }
+}
+
+/*Title page responsive*/
+.title_page {
+  background-color: rgb(116, 0, 255);
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0;
+}
+@media (max-width: 1350px) {
+  .title_page {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 1250px) {
+  .title_page {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .title_page {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .title_page {
+    font-size: 1.25rem;
+  }
+}
+@media (max-width: 668px) {
+  .title_page {
+    font-size: 1rem;
   }
 }

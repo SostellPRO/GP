@@ -34,13 +34,6 @@ body {
   height: 12.5vh;
 }
 
-.title_manage {
-  background-color: rgb(116, 0, 255);
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0;
-}
-
 .container_campaign {
   width: 100vw;
   flex: 1;
@@ -132,45 +125,18 @@ body {
     right: 5px;
     z-index: 1000;
   }
-  #menuButton {
-    padding: 4px 7.5px; /* Réduction de padding */
-    cursor: pointer;
-    border-radius: 2.5px;
-    font-size: 0.75rem; /* Réduction de la taille */
-  }
-  h1.title_manage {
-    font-size: 2rem;
-  }
 }
 @media (max-width: 750px) {
-  h1.title_manage {
-    font-size: 1.5rem;
-  }
   .button_manage {
     font-size: 0.7rem;
     padding: 0.4rem 0.8rem;
   }
 }
 @media (max-width: 668px) {
-  h1.title_manage {
-    font-size: 1.25rem;
-  }
   .menu-container {
     position: fixed;
     top: 3.5px;
     right: 3.5px;
     z-index: 1000;
-  }
-  #menuButton {
-    padding: 2px 3.5px; /* Réduction de padding */
-    cursor: pointer;
-    border-radius: 1.5px;
-    font-size: 0.35rem; /* Réduction de la taille */
-  }
-}
-
-@media (max-width: 524px) {
-  h1.title_manage {
-    font-size: 1rem;
   }
 }
