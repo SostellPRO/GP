@@ -56,14 +56,13 @@ body {
 .button_profil {
   width: 30%; /* Largeur ajustée */
   height: 3rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   background-color: rgb(116, 0, 255);
   color: white;
   cursor: pointer;
   border-radius: 5px;
-  margin-top: 20px;
-  margin-bottom: 20pxs;
+  margin: auto; /* Centre automatiquement dans l'espace disponible */
 }
 
 .button_profil:hover {
@@ -103,22 +102,17 @@ body {
 
 /*RESPONSIVE*/
 
-@media (max-width: 1430px) {
+@media (max-width: 1120px) {
   .button_profil {
-    font-size: 0.95rem;
-    margin-top: 15px;
+    font-size: 0.8rem; /* Ajuste la taille du texte */
+    padding: 0.5rem 1rem; /* Réduit les marges internes */
+    width: auto; /* Laisse la largeur s'adapter */
+    margin: auto; /* Toujours centré */
+    height: 2rem;
   }
 }
 
 @media (max-width: 780px) {
-  h1 {
-    font-size: 20px;
-  }
-  .button_profil {
-    font-size: 0.75rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
   .input_profil {
     font-size: 1rem;
     text-align: center;
@@ -132,11 +126,7 @@ body {
     align-items: flex-start; /* Aligne les éléments au début */
     padding: 10px; /* Ajoute un peu de marge pour aérer */
   }
-  .button_profil {
-    font-size: 0.5rem;
-    margin-top: 7px;
-    margin-bottom: 7px;
-  }
+
   .input_profil {
     font-size: 0.95rem;
   }
