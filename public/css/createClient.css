@@ -17,13 +17,6 @@ body {
   min-height: 100vh;
 }
 
-.header_client {
-  text-align: center;
-  padding: 15px;
-  background-color: rgb(116, 0, 255);
-  color: white;
-}
-
 .title_create {
   background-color: rgb(116, 0, 255);
   font-size: 4rem;

@@ -5,13 +5,6 @@
   src: url("../fonts/Public_Sans/PublicSans-VariableFont_wght.ttf");
 }
 
-header {
-  text-align: center;
-  padding: 15px; /* Réduction de la hauteur */
-  background-color: rgb(116, 0, 255);
-  color: white;
-}
-
 /*MENU*/
 
 .menu-container {
@@ -378,4 +371,16 @@ button:hover {
   .title_page {
     font-size: 1rem;
   }
+}
+
+/* responsive header */
+.header_page {
+  height: 15vh; /* Aligné avec la page Manage Campaigns */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(116, 0, 255);
+  text-align: center;
+  padding: 15px; /* Réduction de la hauteur */
+  color: white;
 }

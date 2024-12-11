@@ -23,17 +23,6 @@ body {
   flex-direction: column;
 }
 
-.header_manage {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  padding: 15px; /* Réduction de la hauteur */
-  background-color: rgb(116, 0, 255);
-  color: white;
-  height: 12.5vh;
-}
-
 .container_campaign {
   width: 100vw;
   flex: 1;

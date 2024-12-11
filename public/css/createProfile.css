@@ -16,13 +16,6 @@ body {
   height: 100vh;
 }
 
-.header_profil {
-  height: 15vh; /* Aligné avec la page Manage Campaigns */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .form_profil_container {
   width: 100vw;
   flex: 1;
@@ -120,13 +113,6 @@ body {
 }
 
 @media (max-width: 524px) {
-  .header_home {
-    height: auto; /* Permet au header de s'adapter à la hauteur de son contenu */
-    flex-direction: column; /* Change l'orientation en colonne */
-    align-items: flex-start; /* Aligne les éléments au début */
-    padding: 10px; /* Ajoute un peu de marge pour aérer */
-  }
-
   .input_profil {
     font-size: 0.95rem;
   }
