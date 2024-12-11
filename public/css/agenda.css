@@ -281,3 +281,18 @@ td {
   font-size: 1.25rem;
   font-style: italic;
 }
+
+/*responsive navigation*/
+
+@media (max-width: 1400px) {
+  .nav_agenda button {
+    font-size: 1rem;
+    margin-bottom: 40%;
+  }
+}
+@media (max-width: 950px) {
+  .nav_agenda {
+    margin-top: 20%;
+    margin-left: 5%;
+  }
+}
