@@ -17,7 +17,7 @@
     "mail1": "contact1@societe1.com",
     "mail2": "info1@societe1.com",
     "commentaire": "Commentaire sur la société 1.",
-    "dateProchaineAction": "2024-06-18",
+    "dateProchaineAction": "2024-12-18",
     "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
     "historique": [
@@ -482,7 +482,7 @@
     "montantEstime": "<10000",
     "montantEstimeCustom": "",
     "commentaire": "",
-    "dateProchaineAction": "2025-01-06",
+    "dateProchaineAction": "2024-12-20",
     "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
     "historique": [
@@ -776,9 +776,14 @@
     "mail2": "info21@societe21.com",
     "commentaire": "Commentaire sur la société 21.",
     "dateProchaineAction": "2024-04-02",
-    "statut": "En attente d'appel",
+    "statut": "À rappeler",
     "matriculeGestionnaire": "a002",
-    "historique": []
+    "historique": [
+      "[12/12/2024 15:51] tester date prochaine action au 18"
+    ],
+    "civilite": "M",
+    "nombreDossiers": "<10",
+    "montantEstime": "<500"
   },
   {
     "id": "202412041551",
