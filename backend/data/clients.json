@@ -1024,5 +1024,35 @@
     "civilite": "M",
     "nomInterlocuteur": "",
     "prenomInterlocuteur": ""
+  },
+  {
+    "id": "202412121544",
+    "raisonSociale": "JV télé",
+    "secteurActivite": "télévision",
+    "siren": "333222111",
+    "siret": "33322211100005",
+    "typologie": "B2C",
+    "civilite1": "M",
+    "nomInterlocuteur": "Chieze",
+    "prenomInterlocuteur": "Carole",
+    "adressePostale": "21 rue de Paris",
+    "complementAdresse": "",
+    "codePostal": "750021",
+    "telephone1": "0775757575",
+    "telephone2": "0625252525hotmail.com",
+    "mail1": "jc@hotmail.com",
+    "mail2": "",
+    "nombreDossiers": "<500",
+    "nombreDossiersCustom": "",
+    "montantEstime": "+10000",
+    "montantEstimeCustom": "",
+    "commentaire": "",
+    "dateProchaineAction": "2024-12-26",
+    "statut": "Fin de communication",
+    "matriculeGestionnaire": "a002",
+    "historique": [
+      "[12/12/2024 15:43] tv jv"
+    ],
+    "civilite": "Mme"
   }
 ]
