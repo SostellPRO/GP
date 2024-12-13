@@ -46,6 +46,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         codePostal: document.getElementById("codePostal").value,
         nombreDossiers: document.getElementById("nombreDossiers").value,
         montantEstime: document.getElementById("montantEstime").value,
+        dateProchaineAction: document.getElementById("dateProchaineAction")
+          .value,
+
         statut: document.getElementById("statut").value,
       };
 

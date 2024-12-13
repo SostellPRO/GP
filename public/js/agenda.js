@@ -175,8 +175,8 @@ function displayClients(clients) {
                     }</td>
                     <td class="table-cell"><a href="clientDetail.html?id=${client.id}">Voir les détails</a></td>
                     ${
-                      userRole === "administrateur" ||
-                      userRole === "superviseur"
+                      userRole === "Administrateur" ||
+                      userRole === "Superviseur"
                         ? `<td class="table-cell">
                             <button class="delete-btn" onclick="deleteClient('${client.id}')">🗑️</button>
                           </td>`
