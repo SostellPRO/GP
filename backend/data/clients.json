@@ -401,7 +401,7 @@
     "mail1": "contact18@societe18.com",
     "mail2": "info18@societe18.com",
     "commentaire": "Commentaire sur la société 18.",
-    "dateProchaineAction": "2024-02-01",
+    "dateProchaineAction": "2024-12-27",
     "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
     "historique": [
@@ -482,8 +482,8 @@
     "montantEstime": "<10000",
     "montantEstimeCustom": "",
     "commentaire": "",
-    "dateProchaineAction": "2025-02-24",
-    "statut": "En attente d'appel",
+    "dateProchaineAction": "2024-12-14",
+    "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
     "historique": [
       "[05/12/2024 00:28] dddd",
@@ -1059,7 +1059,7 @@
     "montantEstime": "<5000",
     "montantEstimeCustom": "",
     "commentaire": "mangaka",
-    "dateProchaineAction": "2024-12-25",
+    "dateProchaineAction": "2024-12-27",
     "statut": "En attente d'appel",
     "matriculeGestionnaire": "a001",
     "historique": [],
