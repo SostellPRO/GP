@@ -138,6 +138,9 @@ async function submitForm(e, commentaires, token) {
   const formData = new FormData(e.target);
   const clientData = Object.fromEntries(formData.entries());
 
+  // Vérifier et inclure la date prochaine action
+  clientData.dateProchaineAction = formData.get("dateProchaineAction");
+
   // Traiter les champs "Autre"
   if (clientData.nombreDossiers === "custom") {
     clientData.nombreDossiers = formData.get("nombreDossiersCustom");

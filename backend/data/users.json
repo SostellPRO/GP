@@ -117,5 +117,12 @@
     "nom": "fdf",
     "email": "fdfd@ll.gh",
     "role": "Gestionnaire"
+  },
+  {
+    "id": "a002",
+    "prenom": "Alpha",
+    "nom": "Beta",
+    "email": "alphabeta@example.com",
+    "role": "Superviseur"
   }
 ]

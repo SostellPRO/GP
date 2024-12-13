@@ -4,8 +4,8 @@ document.getElementById("profileForm").addEventListener("submit", async (e) => {
   // Récupération des valeurs des champs du formulaire
   const prenom = document.getElementById("prenom").value.trim();
   const nom = document.getElementById("nom").value.trim();
-  const email = document.getElementById("email").value.trim();
   const role = document.getElementById("role").value;
+  const email = document.getElementById("email").value.trim();
 
   // Référence au conteneur de message
   const statusMessage = document.getElementById("statusMessage");
@@ -20,7 +20,7 @@ document.getElementById("profileForm").addEventListener("submit", async (e) => {
     const response = await fetch("/api/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prenom, nom, email, role }),
+      body: JSON.stringify({ prenom, nom, role, email }),
     });
 
     // Vérification de la réponse
