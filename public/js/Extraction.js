@@ -117,3 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     link.click();
   });
 });
+
+function navigateToAgenda() {
+  window.location.href = "/home.html";
+}

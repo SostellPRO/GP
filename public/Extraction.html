@@ -64,13 +64,13 @@
           </select>
 
           <button type="submit" class="button_filtre">
-            Appliquer les filtres
-          </button>
+            FILTRER
         </fieldset>
       </form>
 
       <div id="tablePreview" class="table-preview">
         <h2>Prévisualisation</h2>
+        <button id="exportButton">EXPORTER</button>
         <table id="clientTable">
           <thead>
             <tr>
@@ -92,8 +92,10 @@
           </thead>
           <tbody></tbody>
         </table>
-        <button id="exportButton">Exporter</button>
       </div>
+      <button onclick="navigateToAgenda()" class="retour_extraction">
+        RETOUR
+      </button>
     </div>
   </body>
 </html>

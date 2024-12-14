@@ -78,6 +78,13 @@ button {
   padding: 0.75rem;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+.retour_extraction {
+  margin-left: 0.9%;
+  width: 9.75%;
+  font-weight: bold;
 }
 
 button:hover {
