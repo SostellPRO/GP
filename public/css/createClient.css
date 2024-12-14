@@ -89,16 +89,20 @@ body {
   visibility: visible;
 }
 
-.buttonManageLogout,
-.logoutButtonClient {
+.buttonManageLogout {
+  position: fixed; /* Positionnement fixe pour le garder visible */
+  bottom: 20px; /* Espace depuis le bas */
+  left: 20px; /* Espace depuis la gauche */
+  padding: 10px 20px;
+  font-size: 1rem;
   font-weight: bold;
-  font-size: 1.5rem;
   color: white;
   background-color: rgb(116, 0, 255);
   border: none;
-  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  z-index: 10; /* Assurez-vous que le bouton reste au-dessus */
 }
 
 /* Responsive bouton accueil */
