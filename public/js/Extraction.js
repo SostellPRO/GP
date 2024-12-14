@@ -117,3 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
     link.click();
   });
 });
+
+// Fonction pour naviguer vers la page d'accueil
+function navigateToAgenda() {
+  window.location.href = "/home.html";
+}
