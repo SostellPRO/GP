@@ -26,24 +26,85 @@ const writeClients = (clients) => {
   }
 };
 
-// Route : Récupérer tous les clients ou filtrer par statut
+// Route : Récupérer tous les clients ou appliquer des filtres
 router.get("/", (req, res) => {
   try {
-    const { status, userId } = req.query;
     const clients = readClients();
+    let {
+      typologie,
+      dateAvant,
+      dateApres,
+      statut,
+      matriculeGestionnaire,
+      nombreDossiers,
+      montantEstime,
+    } = req.query;
 
     let filteredClients = clients;
 
-    if (status) {
+    // Filtrer par typologie
+    if (typologie && typologie !== "Tous") {
       filteredClients = filteredClients.filter(
-        (client) => client.statut.toLowerCase() === status.toLowerCase()
+        (client) => client.typologie === typologie
       );
     }
 
-    if (userId) {
+    // Filtrer par dateAvant
+    if (dateAvant) {
       filteredClients = filteredClients.filter(
-        (client) => client.matriculeGestionnaire === userId
+        (client) => new Date(client.dateProchaineAction) <= new Date(dateAvant)
       );
+    }
+
+    // Filtrer par dateApres
+    if (dateApres) {
+      filteredClients = filteredClients.filter(
+        (client) => new Date(client.dateProchaineAction) >= new Date(dateApres)
+      );
+    }
+
+    // Filtrer par statut
+    if (statut && statut !== "Tous") {
+      filteredClients = filteredClients.filter(
+        (client) => client.statut === statut
+      );
+    }
+
+    // Filtrer par matriculeGestionnaire
+    if (matriculeGestionnaire && matriculeGestionnaire !== "Tous") {
+      filteredClients = filteredClients.filter(
+        (client) => client.matriculeGestionnaire === matriculeGestionnaire
+      );
+    }
+
+    // Filtrer par nombre de dossiers
+    if (nombreDossiers && nombreDossiers !== "Tous") {
+      const dossierLimit = parseInt(nombreDossiers.replace(/[<+>]/g, ""), 10);
+      if (nombreDossiers.startsWith("<")) {
+        filteredClients = filteredClients.filter(
+          (client) => parseInt(client.nombreDossiers) < dossierLimit
+        );
+      } else if (nombreDossiers.startsWith("+")) {
+        filteredClients = filteredClients.filter(
+          (client) => parseInt(client.nombreDossiers) > dossierLimit
+        );
+      }
+    }
+
+    // Filtrer par montant estimé
+    if (montantEstime && montantEstime !== "Tous") {
+      const montantLimit = parseInt(montantEstime.replace(/[<+>€]/g, ""), 10);
+      if (montantEstime.startsWith("<")) {
+        filteredClients = filteredClients.filter(
+          (client) =>
+            parseInt(client.montantEstime.replace(/[<+>€]/g, "")) < montantLimit
+        );
+      } else if (montantEstime.startsWith("+")) {
+        filteredClients = filteredClients.filter(
+          (client) =>
+            parseInt(client.montantEstime.replace(/[<+>€]/g, "")) > montantLimit
+        );
+      }
     }
 
     res.json(filteredClients);
@@ -59,7 +120,7 @@ router.post("/", (req, res) => {
     const client = req.body;
     const clients = readClients();
 
-    // Valider les données du client
+    // Validation des données
     if (!client.raisonSociale || !client.secteurActivite || !client.siren) {
       return res.status(400).json({
         error:
@@ -67,7 +128,7 @@ router.post("/", (req, res) => {
       });
     }
 
-    // Générer un ID unique pour le client
+    // Générer un ID unique
     const id = `${new Date().toISOString().replace(/[-:.TZ]/g, "")}${clients.length + 1}`;
     const newClient = {
       id,
@@ -126,7 +187,7 @@ router.put("/:id", (req, res) => {
 
     writeClients(clients);
 
-    res.sendStatus(204); // Succès sans contenu
+    res.sendStatus(204);
   } catch (error) {
     console.error("Erreur lors de la mise à jour d'un client :", error);
     res.status(500).json({ error: "Erreur interne du serveur." });
@@ -177,25 +238,6 @@ router.delete("/:id", (req, res) => {
   try {
     const { id } = req.params;
     const clients = readClients();
-    const filteredClients = clients.filter((client) => client.id !== id);
-
-    if (clients.length === filteredClients.length) {
-      return res.status(404).json({ error: "Client non trouvé." });
-    }
-
-    writeClients(filteredClients);
-    res.sendStatus(204); // Succès sans contenu
-  } catch (error) {
-    console.error("Erreur lors de la suppression d'un client :", error);
-    res.status(500).json({ error: "Erreur interne du serveur." });
-  }
-});
-
-// Route : Supprimer un client
-router.delete("/:id", (req, res) => {
-  try {
-    const { id } = req.params;
-    const clients = readClients();
     const updatedClients = clients.filter((client) => client.id !== id);
 
     if (clients.length === updatedClients.length) {
@@ -203,7 +245,7 @@ router.delete("/:id", (req, res) => {
     }
 
     writeClients(updatedClients);
-    res.sendStatus(204); // Succès sans contenu
+    res.sendStatus(204);
   } catch (error) {
     console.error("Erreur lors de la suppression d'un client :", error);
     res.status(500).json({ error: "Erreur interne du serveur." });
