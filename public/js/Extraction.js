@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       clients.forEach((client) => {
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td>${client.id}</td>
+          <td><a href="/clientDetail.html?id=${client.id}" class="client-link">${client.id}</a></td>
           <td>${client.raisonSociale}</td>
           <td>${client.secteurActivite}</td>
           <td>${client.siren}</td>
@@ -117,7 +117,3 @@ document.addEventListener("DOMContentLoaded", () => {
     link.click();
   });
 });
-
-function navigateToAgenda() {
-  window.location.href = "/home.html";
-}

@@ -95,3 +95,10 @@ button:hover {
   font-weight: bold;
   color: #ff0000;
 }
+.client-link {
+  color: rgb(116, 0, 255);
+  text-decoration: none;
+}
+.client-link:hover {
+  text-decoration: underline;
+}
