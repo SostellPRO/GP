@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Liens selon le rôle de l'utilisateur
     navLinks.innerHTML += `<li><a href="agenda.html">Agenda</a></li>`;
     navLinks.innerHTML += `<li><a href="createClient.html">Créer un client</a></li>`;
+    navLinks.innerHTML += `<li><a href="Extraction.html">Extraction</a></li>`;
 
     if (["Superviseur", "Administrateur"].includes(userInfo.role)) {
       navLinks.innerHTML += `<li><a href="manageCampaigns.html">Gérer les campagnes</a></li>`;

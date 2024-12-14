@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Extraction</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/Extraction.css" />
+    <script src="js/Extraction.js" defer></script>
+  </head>
+  <body>
+    <header class="header_page">
+      <h1 class="title_page">EXTRACTION DES DONNÉES</h1>
+    </header>
+    <div class="container">
+      <form id="filterForm" class="filter-form">
+        <fieldset>
+          <legend>Filtres</legend>
+          <label for="typologie">Typologie :</label>
+          <select id="typologie" name="typologie">
+            <option value="Tous">Tous</option>
+            <option value="B2B">B2B</option>
+            <option value="B2C">B2C</option>
+            <option value="B2B & B2C">B2B & B2C</option>
+          </select>
+
+          <label for="dateAvant">Date avant :</label>
+          <input type="date" id="dateAvant" name="dateAvant" />
+
+          <label for="dateApres">Date après :</label>
+          <input type="date" id="dateApres" name="dateApres" />
+
+          <label for="statut">Statut :</label>
+          <select id="statut" name="statut">
+            <option value="Tous">Tous</option>
+            <option value="En attente d'appel">En attente d'appel</option>
+            <option value="À rappeler">À rappeler</option>
+            <option value="Signé">Signé</option>
+            <option value="Fin de communication">Fin de communication</option>
+          </select>
+
+          <label for="matriculeGestionnaire">Gestionnaire :</label>
+          <select id="matriculeGestionnaire" name="matriculeGestionnaire">
+            <option value="Tous">Tous</option>
+          </select>
+
+          <label for="nombreDossiers">Nombre de dossiers :</label>
+          <select id="nombreDossiers" name="nombreDossiers">
+            <option value="Tous">Tous</option>
+            <option value="<10">Moins de 10</option>
+            <option value="<100">Moins de 100</option>
+            <option value="<500">Moins de 500</option>
+            <option value="+500">Plus de 500</option>
+          </select>
+
+          <label for="montantEstime">Montant estimé :</label>
+          <select id="montantEstime" name="montantEstime">
+            <option value="Tous">Tous</option>
+            <option value="<500">Moins de 500€</option>
+            <option value="<1000">Moins de 1000€</option>
+            <option value="<5000">Moins de 5000€</option>
+            <option value="+5000">Plus de 5000€</option>
+          </select>
+
+          <button type="submit">Appliquer les filtres</button>
+        </fieldset>
+      </form>
+
+      <div id="tablePreview" class="table-preview">
+        <h2>Prévisualisation</h2>
+        <table id="clientTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Raison Sociale</th>
+              <th>Secteur Activité</th>
+              <th>SIREN</th>
+              <th>SIRET</th>
+              <th>Typologie</th>
+              <th>Nom Interlocuteur</th>
+              <th>Prénom Interlocuteur</th>
+              <th>Adresse</th>
+              <th>Code Postal</th>
+              <th>Téléphone</th>
+              <th>E-mail</th>
+              <th>Date Prochaine Action</th>
+              <th>Statut</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button id="exportButton">Exporter</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,55 +1,52 @@
-document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+// Écouteur d'événement pour le formulaire de connexion
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const fileInput = document.getElementById("campaignFile");
-  const file = fileInput.files[0]; // Récupère le fichier sélectionné
-
-  if (!file) {
-    document.getElementById("importStatus").textContent =
-      "Veuillez sélectionner un fichier.";
-    return;
-  }
-
-  const allowedExtensions = /(\.csv|\.xlsx)$/i;
-  if (!allowedExtensions.exec(file.name)) {
-    document.getElementById("importStatus").textContent =
-      "Seuls les fichiers CSV ou Excel sont acceptés.";
-    return;
-  }
-
-  const formData = new FormData(); // Crée une instance de FormData
-  formData.append("campaignFile", file); // Ajoute le fichier au FormData
-  console.log("FormData keys:", Array.from(formData.keys())); // Vérifie le contenu du FormData
+  // Récupère les valeurs des champs
+  const email = document.getElementById("email").value.trim();
+  const id = document.getElementById("id").value.trim();
 
   try {
-    const response = await fetch("/api/clients/import", {
+    // Envoie une requête POST au backend pour tenter la connexion
+    const response = await fetch("/api/auth/login", {
       method: "POST",
-      body: formData,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, id }),
     });
-    console.log("Réponse brute du serveur :", response);
 
+    // Vérifie si la réponse est valide
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || "Erreur lors de l'importation.");
+      const errorData = await response.json();
+      throw new Error(errorData.error || "Connexion échouée.");
     }
 
-    const result = await response.json();
-    console.log("Résultat du traitement :", result);
-    if (response.ok) {
-      const invalidCount = result.invalidRows.length;
-      const successMessage = `Importation réussie : ${result.addedCount} clients ajoutés.`;
-      const errorMessage =
-        invalidCount > 0
-          ? ` ${invalidCount} lignes ignorées en raison de données manquantes.`
-          : "";
-      document.getElementById("importStatus").textContent =
-        successMessage + errorMessage;
-    } else {
-      document.getElementById("importStatus").textContent = result.error;
-    }
+    // Récupère les données de la réponse
+    const data = await response.json();
+
+    // Stocke le token dans le localStorage
+    localStorage.setItem("token", data.token);
+
+    // Décodage du token pour afficher des informations si nécessaire
+    const userInfo = parseJwt(data.token);
+    console.log("Utilisateur connecté :", userInfo);
+
+    // Redirige vers la page d'accueil
+    window.location.href = "/home.html";
   } catch (error) {
-    document.getElementById("importStatus").textContent =
-      "Erreur lors de l'importation.";
-    console.error(error);
+    console.error("Erreur lors de la connexion :", error);
+    document.getElementById("errorMessage").textContent =
+      error.message || "Une erreur inconnue s'est produite.";
   }
 });
+
+// Fonction pour décoder un token JWT
+function parseJwt(token) {
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    return JSON.parse(atob(base64));
+  } catch (error) {
+    console.error("Erreur lors du décodage du token :", error);
+    return null;
+  }
+}
