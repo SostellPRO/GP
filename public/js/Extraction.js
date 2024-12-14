@@ -8,10 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   async function loadUsers() {
     try {
       const response = await fetch("/api/users");
-      if (!response.ok)
+      if (!response.ok) {
         throw new Error("Erreur lors du chargement des gestionnaires.");
+      }
       const users = await response.json();
 
+      // Ajouter les gestionnaires au champ de sélection
+      matriculeSelect.innerHTML = `<option value="Tous">Tous</option>`;
       users.forEach((user) => {
         const option = document.createElement("option");
         option.value = user.id;
@@ -19,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         matriculeSelect.appendChild(option);
       });
     } catch (error) {
-      console.error(error);
+      console.error("Erreur lors du chargement des utilisateurs :", error);
     }
   }
 
@@ -42,14 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const queryParams = new URLSearchParams(filters).toString();
       const response = await fetch(`/api/clients?${queryParams}`);
-      if (!response.ok)
+      if (!response.ok) {
         throw new Error("Erreur lors de la récupération des clients.");
+      }
       const clients = await response.json();
 
-      // Afficher les résultats dans le tableau
+      // Vérification et affichage des données
       clientTableBody.innerHTML = "";
       if (clients.length === 0) {
-        clientTableBody.innerHTML = `<tr><td colspan="14">Aucun résultat trouvé pour les filtres sélectionnés.</td></tr>`;
+        clientTableBody.innerHTML = `<tr><td colspan="17">Aucun résultat trouvé pour les filtres sélectionnés.</td></tr>`;
         return;
       }
 
@@ -68,13 +72,17 @@ document.addEventListener("DOMContentLoaded", () => {
           <td>${client.codePostal}</td>
           <td>${client.telephone1}</td>
           <td>${client.mail1}</td>
+          <td>${client.nombreDossiers || "Non défini"}</td>
+          <td>${formatMontant(client.montantEstime)}</td>
+          <td>${client.historique?.[0] || "Aucun commentaire"}</td>
           <td>${client.dateProchaineAction || "Non définie"}</td>
           <td>${client.statut}</td>
         `;
         clientTableBody.appendChild(row);
       });
     } catch (error) {
-      console.error(error);
+      console.error("Erreur lors du chargement des clients :", error);
+      clientTableBody.innerHTML = `<tr><td colspan="17">Erreur lors du chargement des clients : ${error.message}</td></tr>`;
     }
   });
 
@@ -97,6 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "Code Postal",
       "Téléphone",
       "E-mail",
+      "Volumétrie",
+      "Montant Estimé",
+      "Commentaire",
       "Date Prochaine Action",
       "Statut",
     ];
@@ -113,12 +124,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `export_client_${new Date().toISOString().replace(/[-:]/g, "").slice(0, 15)}.xlsx`;
+    link.download = `export_client_${new Date()
+      .toISOString()
+      .replace(/[-:]/g, "")
+      .slice(0, 15)}.xlsx`;
     link.click();
   });
-});
 
-// Fonction pour naviguer vers la page d'accueil
-function navigateToAgenda() {
-  window.location.href = "/home.html";
-}
+  // Fonction pour formater les montants
+  function formatMontant(montant) {
+    if (!montant || montant === "Non défini") {
+      return "Non défini";
+    }
+    const formatted = Number(montant.replace(/[^\d.-]/g, "")).toLocaleString(
+      "fr-FR",
+      { style: "currency", currency: "EUR" }
+    );
+    return formatted || montant;
+  }
+
+  // Navigation vers la page d'accueil
+  function navigateToAgenda() {
+    window.location.href = "/home.html";
+  }
+});
