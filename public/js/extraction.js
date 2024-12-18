@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const clientTableBody = document.querySelector("#clientTable tbody");
   const exportButton = document.getElementById("exportButton");
   const matriculeSelect = document.getElementById("matriculeGestionnaire");
+  const retour = document.getElementById("retourButton");
   // Charger les gestionnaires
   async function loadUsers() {
     try {
@@ -129,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return formatted || montant;
   }
   // Navigation vers la page d'accueil
+  retour.addEventListener("click", navigateToAgenda);
   function navigateToAgenda() {
     window.location.href = "/home.html";
   }
