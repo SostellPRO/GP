@@ -482,7 +482,7 @@
     "montantEstime": "<10000",
     "montantEstimeCustom": "",
     "commentaire": "",
-    "dateProchaineAction": "2024-12-14",
+    "dateProchaineAction": "2025-01-01",
     "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
     "historique": [
@@ -1059,8 +1059,8 @@
     "montantEstime": "<5000",
     "montantEstimeCustom": "",
     "commentaire": "mangaka",
-    "dateProchaineAction": "2024-12-27",
-    "statut": "En attente d'appel",
+    "dateProchaineAction": "2024-12-20",
+    "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
     "historique": [],
     "civilite": "M"
