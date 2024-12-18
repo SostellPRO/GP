@@ -593,8 +593,8 @@
     "mail1": "contact24@societe24.com",
     "mail2": "info24@societe24.com",
     "commentaire": "Commentaire sur la société 24.",
-    "dateProchaineAction": "2024-12-15",
-    "statut": "À rappeler",
+    "dateProchaineAction": "2025-01-30",
+    "statut": "Fin de communication",
     "matriculeGestionnaire": "a001",
     "historique": [],
     "civilite": "M",
@@ -1064,5 +1064,34 @@
     "matriculeGestionnaire": "a001",
     "historique": [],
     "civilite": "M"
+  },
+  {
+    "id": "202412182323",
+    "raisonSociale": "Exserv",
+    "secteurActivite": "jeu vidéo",
+    "siren": "147258369",
+    "siret": "14725836900005",
+    "typologie": "B2C",
+    "civilite1": "M",
+    "nomInterlocuteur": "Serv",
+    "prenomInterlocuteur": "Ex",
+    "adressePostale": "100 rue de Lordran",
+    "complementAdresse": "",
+    "codePostal": "14000",
+    "telephone1": "0789456512",
+    "telephone2": "",
+    "mail1": "serv@ataln.com",
+    "mail2": "",
+    "nombreDossiers": "<500",
+    "nombreDossiersCustom": "",
+    "montantEstime": "<10000",
+    "montantEstimeCustom": "",
+    "commentaire": "",
+    "dateProchaineAction": "2025-02-15",
+    "statut": "En attente d'appel",
+    "matriculeGestionnaire": "a001",
+    "historique": [
+      "[18/12/2024 23:23] asso de jv"
+    ]
   }
 ]
