@@ -30,25 +30,29 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const formData = new FormData(filterForm);
     const filters = Object.fromEntries(formData.entries());
+
     // Nettoyage des filtres inutiles
     Object.keys(filters).forEach((key) => {
       if (filters[key] === "Tous" || filters[key] === "") {
         delete filters[key];
       }
     });
+
     try {
       const queryParams = new URLSearchParams(filters).toString();
       const response = await fetch(`/api/clients?${queryParams}`);
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération des clients.");
       }
+
       const clients = await response.json();
-      // Vérification et affichage des données
-      clientTableBody.innerHTML = "";
+      clientTableBody.innerHTML = ""; // Vider le tableau avant de le remplir
+
       if (clients.length === 0) {
         clientTableBody.innerHTML = `<tr><td colspan="17">Aucun résultat trouvé pour les filtres sélectionnés.</td></tr>`;
         return;
       }
+
       clients.forEach((client) => {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -74,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } catch (error) {
       console.error("Erreur lors du chargement des clients :", error);
-      clientTableBody.innerHTML = `<tr><td colspan="17">Erreur lors du chargement des clients : ${error.message}</td></tr>`;
+      clientTableBody.innerHTML = `<tr><td colspan="17">Erreur : ${error.message}</td></tr>`;
     }
   });
   // Exporter les données au format Excel

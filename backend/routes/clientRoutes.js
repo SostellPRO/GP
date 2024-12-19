@@ -29,7 +29,8 @@ const writeClients = (clients) => {
 // Route : Récupérer tous les clients ou filtrer par statut
 router.get("/", (req, res) => {
   try {
-    const { status, userId } = req.query;
+    const { status, userId, typologie, nombreDossiers, montantEstime } =
+      req.query;
     const clients = readClients();
 
     let filteredClients = clients;
@@ -44,6 +45,42 @@ router.get("/", (req, res) => {
       filteredClients = filteredClients.filter(
         (client) => client.matriculeGestionnaire === userId
       );
+    }
+
+    if (typologie) {
+      filteredClients = filteredClients.filter(
+        (client) => client.typologie.toLowerCase() === typologie.toLowerCase()
+      );
+    }
+
+    if (nombreDossiers) {
+      const compare = parseInt(nombreDossiers.replace(/[^\d]/g, ""));
+      if (nombreDossiers.startsWith("<")) {
+        filteredClients = filteredClients.filter(
+          (client) =>
+            parseInt(client.nombreDossiers.replace(/[^\d]/g, "")) < compare
+        );
+      } else if (nombreDossiers.startsWith("+")) {
+        filteredClients = filteredClients.filter(
+          (client) =>
+            parseInt(client.nombreDossiers.replace(/[^\d]/g, "")) > compare
+        );
+      }
+    }
+
+    if (montantEstime) {
+      const compare = parseInt(montantEstime.replace(/[^\d]/g, ""));
+      if (montantEstime.startsWith("<")) {
+        filteredClients = filteredClients.filter(
+          (client) =>
+            parseInt(client.montantEstime.replace(/[^\d]/g, "")) < compare
+        );
+      } else if (montantEstime.startsWith("+")) {
+        filteredClients = filteredClients.filter(
+          (client) =>
+            parseInt(client.montantEstime.replace(/[^\d]/g, "")) > compare
+        );
+      }
     }
 
     res.json(filteredClients);
