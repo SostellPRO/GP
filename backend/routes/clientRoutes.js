@@ -54,32 +54,66 @@ router.get("/", (req, res) => {
     }
 
     if (nombreDossiers) {
+      console.log("Filtrage par nombreDossiers : ", nombreDossiers); // Log pour la valeur brute
       const compare = parseInt(nombreDossiers.replace(/[^\d]/g, ""));
+      console.log("Valeur à comparer (nombreDossiers) : ", compare);
+
       if (nombreDossiers.startsWith("<")) {
-        filteredClients = filteredClients.filter(
-          (client) =>
-            parseInt(client.nombreDossiers.replace(/[^\d]/g, "")) < compare
-        );
+        filteredClients = filteredClients.filter((client) => {
+          console.log(
+            "Client actuel (avant filtrage) : ",
+            client.nombreDossiers
+          );
+          const dossiers = client.nombreDossiers
+            ? parseInt(client.nombreDossiers.replace(/[^\d]/g, ""))
+            : 0;
+          console.log("Nombre de dossiers client : ", dossiers);
+          return dossiers < compare;
+        });
       } else if (nombreDossiers.startsWith("+")) {
-        filteredClients = filteredClients.filter(
-          (client) =>
-            parseInt(client.nombreDossiers.replace(/[^\d]/g, "")) > compare
-        );
+        filteredClients = filteredClients.filter((client) => {
+          console.log(
+            "Client actuel (avant filtrage) : ",
+            client.nombreDossiers
+          );
+          const dossiers = client.nombreDossiers
+            ? parseInt(client.nombreDossiers.replace(/[^\d]/g, ""))
+            : 0;
+          console.log("Nombre de dossiers client : ", dossiers);
+          return dossiers > compare;
+        });
       }
     }
 
     if (montantEstime) {
+      console.log("Filtrage par montantEstime : ", montantEstime); // Log pour la valeur brute
       const compare = parseInt(montantEstime.replace(/[^\d]/g, ""));
+      console.log("Valeur à comparer (montantEstime) : ", compare);
+
       if (montantEstime.startsWith("<")) {
-        filteredClients = filteredClients.filter(
-          (client) =>
-            parseInt(client.montantEstime.replace(/[^\d]/g, "")) < compare
-        );
+        filteredClients = filteredClients.filter((client) => {
+          console.log(
+            "Client actuel (avant filtrage) : ",
+            client.montantEstime
+          );
+          const montant = client.montantEstime
+            ? parseInt(client.montantEstime.replace(/[^\d]/g, ""))
+            : 0;
+          console.log("Montant estimé du client : ", montant);
+          return montant < compare;
+        });
       } else if (montantEstime.startsWith("+")) {
-        filteredClients = filteredClients.filter(
-          (client) =>
-            parseInt(client.montantEstime.replace(/[^\d]/g, "")) > compare
-        );
+        filteredClients = filteredClients.filter((client) => {
+          console.log(
+            "Client actuel (avant filtrage) : ",
+            client.montantEstime
+          );
+          const montant = client.montantEstime
+            ? parseInt(client.montantEstime.replace(/[^\d]/g, ""))
+            : 0;
+          console.log("Montant estimé du client : ", montant);
+          return montant > compare;
+        });
       }
     }
 
