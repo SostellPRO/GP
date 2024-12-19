@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const exportButton = document.getElementById("exportButton");
   const matriculeSelect = document.getElementById("matriculeGestionnaire");
   const retour = document.getElementById("retourButton");
+
   // Charger les gestionnaires
   async function loadUsers() {
     try {
@@ -12,11 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("Erreur lors du chargement des gestionnaires.");
       }
       const users = await response.json();
+
       // Ajouter les gestionnaires au champ de sélection
       matriculeSelect.innerHTML = `<option value="Tous">Tous</option>`;
       users.forEach((user) => {
         const option = document.createElement("option");
-        option.value = user.id;
+        option.value = user.id; // Utilise l'ID comme valeur
         option.textContent = `${user.prenom} ${user.nom} (${user.id})`;
         matriculeSelect.appendChild(option);
       });
@@ -24,7 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Erreur lors du chargement des utilisateurs :", error);
     }
   }
+
   loadUsers();
+
   // Appliquer les filtres
   filterForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -38,9 +42,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    // Ajouter le filtre matriculeGestionnaire si sélectionné
+    const selectedMatricule = matriculeSelect.value;
+    if (selectedMatricule !== "Tous") {
+      filters["matriculeGestionnaire"] = selectedMatricule;
+    }
+
     try {
       const queryParams = new URLSearchParams(filters).toString();
       const response = await fetch(`/api/clients?${queryParams}`);
+
       if (!response.ok) {
         throw new Error("Erreur lors de la récupération des clients.");
       }
@@ -81,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       clientTableBody.innerHTML = `<tr><td colspan="17">Erreur : ${error.message}</td></tr>`;
     }
   });
+
   // Exporter les données au format Excel
   exportButton.addEventListener("click", () => {
     const rows = Array.from(clientTableBody.querySelectorAll("tr")).map((row) =>
@@ -122,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .slice(0, 15)}.xlsx`;
     link.click();
   });
+
   // Fonction pour formater les montants
   function formatMontant(montant) {
     if (!montant || montant === "Non défini") {
@@ -133,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     return formatted || montant;
   }
+
   // Navigation vers la page d'accueil
   retour.addEventListener("click", navigateToAgenda);
   function navigateToAgenda() {

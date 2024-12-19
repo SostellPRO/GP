@@ -19,10 +19,11 @@
     "nombreDossiers": "<10",
     "montantEstime": "<500",
     "commentaire": "Commentaire sur la société 21.",
-    "dateProchaineAction": "2024-04-02",
-    "statut": "En attente d'appel",
+    "dateProchaineAction": "2025-01-01",
+    "statut": "Signé",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M"
   },
   {
     "id": "20241912235702",
