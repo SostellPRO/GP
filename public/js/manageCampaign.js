@@ -2,7 +2,7 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const fileInput = document.getElementById("campaignFile");
-  const file = fileInput.files[0]; // Récupère le fichier sélectionné
+  const file = fileInput.files[0];
 
   if (!file) {
     document.getElementById("importStatus").textContent =
@@ -17,16 +17,14 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
     return;
   }
 
-  const formData = new FormData(); // Crée une instance de FormData
-  formData.append("campaignFile", file); // Ajoute le fichier au FormData
-  console.log("FormData keys:", Array.from(formData.keys())); // Vérifie le contenu du FormData
+  const formData = new FormData();
+  formData.append("campaignFile", file);
 
   try {
     const response = await fetch("/api/clients/import", {
       method: "POST",
       body: formData,
     });
-    console.log("Réponse brute du serveur :", response);
 
     if (!response.ok) {
       const error = await response.json();
@@ -34,22 +32,43 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
     }
 
     const result = await response.json();
-    console.log("Résultat du traitement :", result);
-    if (response.ok) {
-      const invalidCount = result.invalidRows.length;
-      const successMessage = `Importation réussie : ${result.addedCount} clients ajoutés.`;
-      const errorMessage =
-        invalidCount > 0
-          ? ` ${invalidCount} lignes ignorées en raison de données manquantes.`
-          : "";
-      document.getElementById("importStatus").textContent =
-        successMessage + errorMessage;
-    } else {
-      document.getElementById("importStatus").textContent = result.error;
-    }
+    let importedClients = result.addedClients;
+
+    // Générer les IDs localement pour chaque client
+    importedClients = importedClients.map((client) => ({
+      ...client,
+      id: generateClientId(), // Ajout de l'ID unique pour chaque client
+    }));
+
+    console.log("Clients importés avec IDs générés :", importedClients);
+
+    const successMessage = `Importation réussie : ${result.addedCount} clients ajoutés.`;
+    const invalidCount = result.invalidRows.length;
+    const errorMessage =
+      invalidCount > 0
+        ? ` ${invalidCount} lignes ignorées en raison de données incorrectes.`
+        : "";
+    document.getElementById("importStatus").textContent =
+      successMessage + errorMessage;
   } catch (error) {
     document.getElementById("importStatus").textContent =
       "Erreur lors de l'importation.";
     console.error(error);
   }
 });
+
+// Fonction pour générer un ID unique
+function generateClientId() {
+  const date = new Date();
+  return `${date.getFullYear()}${(date.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}${date.getDate().toString().padStart(2, "0")}${date
+    .getHours()
+    .toString()
+    .padStart(2, "0")}${date.getMinutes().toString().padStart(2, "0")}${date
+    .getSeconds()
+    .toString()
+    .padStart(2, "0")}${Math.floor(Math.random() * 1000)
+    .toString()
+    .padStart(3, "0")}`;
+}
