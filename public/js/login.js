@@ -28,7 +28,6 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
     // Décodage du token pour afficher des informations si nécessaire
     const userInfo = parseJwt(data.token);
-    console.log("Utilisateur connecté :", userInfo);
 
     // Redirige vers la page d'accueil
     window.location.href = "/home.html";

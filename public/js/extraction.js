@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function loadUsers() {
     try {
       const response = await fetch("/api/users");
+
       if (!response.ok) {
         throw new Error("Erreur lors du chargement des gestionnaires.");
       }
@@ -44,6 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Ajouter le filtre matriculeGestionnaire si sélectionné
     const selectedMatricule = matriculeSelect.value;
+    console.log(selectedMatricule);
+
     if (selectedMatricule !== "Tous") {
       filters["matriculeGestionnaire"] = selectedMatricule;
     }
@@ -84,8 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <td>${client.historique?.[0] || "Aucun commentaire"}</td>
           <td>${client.dateProchaineAction || "Non définie"}</td>
           <td>${client.statut}</td>
+          <td>${client.matriculeGestionnaire}</td>
         `;
         clientTableBody.appendChild(row);
+        console.log(clientTableBody);
       });
     } catch (error) {
       console.error("Erreur lors du chargement des clients :", error);
@@ -116,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "Commentaire",
       "Date Prochaine Action",
       "Statut",
+      "Matricule",
     ];
     const worksheetData = [headers, ...rows];
     const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);

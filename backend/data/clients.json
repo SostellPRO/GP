@@ -45,10 +45,13 @@
     "nombreDossiers": "<10",
     "montantEstime": "<500",
     "commentaire": "Commentaire sur la société 22.",
-    "dateProchaineAction": "2024-04-23",
-    "statut": "En attente d'appel",
+    "dateProchaineAction": "2025-01-03",
+    "statut": "Fin de communication",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [
+      "[21/12/2024 23:14] quiche"
+    ],
+    "civilite": "M"
   },
   {
     "id": "20241912235703",

@@ -7,10 +7,7 @@ const SECRET_KEY = "votre_clé_secrète";
 
 // Route pour l'authentification
 router.post("/login", (req, res) => {
-  console.log("Requête reçue :", req.body);
   const { email, id } = req.body;
-  console.log("Email :", email);
-  console.log("ID :", id);
   // Vérifiez si l'email et l'ID sont fournis
   if (!email || !id) {
     return res.status(400).json({ error: "Email et ID utilisateur requis." });
@@ -18,7 +15,6 @@ router.post("/login", (req, res) => {
 
   // Recherche de l'utilisateur
   const user = users.find((u) => u.email === email && u.id === id);
-  console.log("Utilisateur trouvé :", user);
   if (!user) {
     return res.status(401).json({ error: "Email ou ID incorrect." });
   }

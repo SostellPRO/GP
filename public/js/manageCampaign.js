@@ -40,8 +40,6 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
       id: generateClientId(), // Ajout de l'ID unique pour chaque client
     }));
 
-    console.log("Clients importés avec IDs générés :", importedClients);
-
     const successMessage = `Importation réussie : ${result.addedCount} clients ajoutés.`;
     const invalidCount = result.invalidRows.length;
     const errorMessage =
