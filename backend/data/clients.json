@@ -1002,5 +1002,32 @@
     "statut": "En attente d'appel",
     "matriculeGestionnaire": "c003",
     "historique": []
+  },
+  {
+    "id": "202412221641",
+    "raisonSociale": "ABC SARL",
+    "secteurActivite": "Manufacturing",
+    "siren": "666333667",
+    "siret": "12345678900008",
+    "typologie": "B2B",
+    "civilite1": "M",
+    "nomInterlocuteur": "Toda",
+    "prenomInterlocuteur": "Sostelltoda",
+    "adressePostale": "5 Rue de la Quarantaine",
+    "complementAdresse": "",
+    "codePostal": "69005",
+    "telephone1": "0659932740",
+    "telephone2": "",
+    "mail1": "jean.dupont@abc.com",
+    "mail2": "",
+    "nombreDossiers": "2000",
+    "montantEstime": "30000",
+    "commentaire": "",
+    "dateProchaineAction": "2024-12-29",
+    "statut": "En attente d'appel",
+    "matriculeGestionnaire": "a001",
+    "historique": [
+      "[22/12/2024 16:41] dddd"
+    ]
   }
 ]
