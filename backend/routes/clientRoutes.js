@@ -60,41 +60,56 @@ router.get("/", (req, res) => {
     }
 
     if (nombreDossiers) {
-      const compare = parseInt(nombreDossiers.replace(/[^\d]/g, ""));
+      const compare = nombreDossiers.match(/(\d+)/g); // Récupère les chiffres dans la chaîne
 
       if (nombreDossiers.startsWith("<")) {
         filteredClients = filteredClients.filter((client) => {
           const dossiers = client.nombreDossiers
             ? parseInt(client.nombreDossiers.replace(/[^\d]/g, ""))
             : 0;
-          return dossiers < compare;
+          return dossiers < parseInt(compare[0]);
         });
-      } else if (nombreDossiers.startsWith("+")) {
+      } else if (nombreDossiers.startsWith(">")) {
         filteredClients = filteredClients.filter((client) => {
           const dossiers = client.nombreDossiers
             ? parseInt(client.nombreDossiers.replace(/[^\d]/g, ""))
             : 0;
-          return dossiers > compare;
+          return dossiers > parseInt(compare[0]);
+        });
+      } else if (nombreDossiers.includes("-")) {
+        const [min, max] = compare.map((val) => parseInt(val));
+        filteredClients = filteredClients.filter((client) => {
+          const dossiers = client.nombreDossiers
+            ? parseInt(client.nombreDossiers.replace(/[^\d]/g, ""))
+            : 0;
+          return dossiers >= min && dossiers <= max;
         });
       }
     }
 
     if (montantEstime) {
-      const compare = parseInt(montantEstime.replace(/[^\d]/g, ""));
-
+      const compare = montantEstime.match(/(\d+)/g); // Récupère les chiffres de la valeur
       if (montantEstime.startsWith("<")) {
         filteredClients = filteredClients.filter((client) => {
           const montant = client.montantEstime
             ? parseInt(client.montantEstime.replace(/[^\d]/g, ""))
             : 0;
-          return montant < compare;
+          return montant < parseInt(compare[0]);
         });
-      } else if (montantEstime.startsWith("+")) {
+      } else if (montantEstime.startsWith(">")) {
         filteredClients = filteredClients.filter((client) => {
           const montant = client.montantEstime
             ? parseInt(client.montantEstime.replace(/[^\d]/g, ""))
             : 0;
-          return montant > compare;
+          return montant > parseInt(compare[0]);
+        });
+      } else if (montantEstime.includes("-")) {
+        const [min, max] = compare.map((val) => parseInt(val));
+        filteredClients = filteredClients.filter((client) => {
+          const montant = client.montantEstime
+            ? parseInt(client.montantEstime.replace(/[^\d]/g, ""))
+            : 0;
+          return montant >= min && montant <= max;
         });
       }
     }
