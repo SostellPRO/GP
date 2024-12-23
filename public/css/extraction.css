@@ -1,0 +1,100 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Public", sans-serif;
+}
+.header_page {
+  background-color: rgb(116, 0, 255);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+.container {
+  padding: 2rem;
+}
+.filter-form fieldset {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background-color: #fff;
+}
+.filter-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.filter-form input,
+.filter-form select {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.table-preview {
+  background-color: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+table th {
+  background-color: #f4f4f4;
+}
+.button_filtre {
+  display: block;
+  width: 10%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+button {
+  background-color: rgb(116, 0, 255);
+  width: 10%;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.retour_extraction {
+  margin-left: 0.9%;
+  width: 9.75%;
+  font-weight: bold;
+}
+button:hover {
+  transform: scale(1.05);
+}
+.table-preview tbody tr td[colspan="14"] {
+  text-align: center;
+  font-weight: bold;
+  color: #ff0000;
+}
+.client-link {
+  color: rgb(116, 0, 255);
+  text-decoration: none;
+}
+.client-link:hover {
+  text-decoration: underline;
+}
+.fieldset__tri {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.tri {
+  width: 30%;
+}

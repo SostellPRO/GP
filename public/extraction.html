@@ -1,0 +1,186 @@
+<!doctype html>
+
+<html lang="fr">
+
+  <head>
+
+    <meta charset="UTF-8" />
+
+    <title>Extraction</title>
+
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <link rel="stylesheet" href="css/extraction.css" />
+
+    <script src="js/extraction.js" defer></script>
+
+  </head>
+
+  <body>
+
+    <header class="header_page">
+
+      <h1 class="title_page">EXTRACTION DES DONNÉES</h1>
+
+    </header>
+
+    <div class="container">
+
+      <form id="filterForm" class="filter-form">
+
+        <fieldset>
+
+          <legend>Filtres</legend>
+
+          <div class="fieldset__tri">
+
+<div class="tri">
+
+  <label for="typologie">Typologie :</label>
+
+  <select id="typologie" name="typologie">
+
+    <option value="Tous">Tous</option>
+
+    <option value="B2B">B2B</option>
+
+    <option value="B2C">B2C</option>
+
+    <option value="B2B & B2C">B2B & B2C</option>
+
+  </select>
+
+  <label for="dateAvant">Date avant :</label>
+
+  <input type="date" id="dateAvant" name="dateAvant" />
+
+  <label for="dateApres">Date après :</label>
+
+  <input type="date" id="dateApres" name="dateApres" />
+
+</div>
+
+<div class="tri">
+
+  <label for="statut">Statut :</label>
+
+  <select id="statut" name="statut">
+
+    <option value="Tous">Tous</option>
+
+    <option value="En attente d'appel">En attente d'appel</option>
+
+    <option value="À rappeler">À rappeler</option>
+
+    <option value="Signé">Signé</option>
+
+    <option value="Fin de communication">Fin de communication</option>
+
+  </select>
+
+  <label for="matriculeGestionnaire">Gestionnaire :</label>
+
+  <select id="matriculeGestionnaire" name="matriculeGestionnaire">
+
+    <option value="Tous">Tous</option>
+
+  </select>
+
+</div>
+
+<div class="tri">
+          <label for="nombreDossiers">Nombre de dossiers :</label>
+          <select id="nombreDossiers" name="nombreDossiers">
+            <option value="Tous">Tous</option>
+            <option value="<10">Moins de 10</option>
+            <option value="10-100">Entre 10 et 100</option>
+            <option value="101-500">Entre 101 et 500</option>
+            <option value=">501">Plus de 500</option>
+          </select>
+          <label for="montantEstime">Montant estimé :</label>
+          <select id="montantEstime" name="montantEstime">
+            <option value="Tous">Tous</option>
+            <option value="<500">Moins de 500€</option>
+            <option value="500-1000">Entre 500€ et 1000€</option>
+            <option value="1001-5000">Entre 1001€ et 5000€</option>
+            <option value=">5000">Plus de 5000€</option> 
+          </select>
+        </div>
+
+      </div>
+
+      <button type="submit" class="button_filtre">
+
+        FILTRER
+
+    </fieldset>
+
+  </form>
+
+  <div id="tablePreview" class="table-preview">
+
+    <h2>Prévisualisation</h2>
+
+    <button id="exportButton">EXPORTER</button>
+
+    <table id="clientTable">
+
+      <thead>
+
+        <tr>
+
+          <th>ID</th>
+
+          <th>Raison Sociale</th>
+
+          <th>Secteur Activité</th>
+
+          <th>SIRET</th>
+
+          <th>Typologie</th>
+
+          <th>Nom</th>
+
+          <th>Prénom</th>
+
+          <th>Téléphone</th>
+
+          <th>E-mail</th>
+
+          <th>Volumétrie</th>
+
+          <th>Montant Estimé</th>
+
+          <th>Commentaire</th>
+
+          <th>Date Prochaine Action</th>
+
+          <th>Statut</th>
+
+          <th>Matricule</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody></tbody>
+
+    </table>
+
+  </div>
+
+  <button onclick="navigateToAgenda()" class="retour_extraction" id="retourButton">
+
+    RETOUR
+
+  </button>
+
+</div>
+
+</body>
+
+</html>
+
+

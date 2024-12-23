@@ -67,6 +67,20 @@ const cleanRow = (row) => {
   return row;
 };
 
+// Génère un ID unique pour un client
+const generateClientId = (count) => {
+  const date = new Date();
+  return `${date.getFullYear()}${(date.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}${date.getDate().toString().padStart(2, "0")}${date
+    .getHours()
+    .toString()
+    .padStart(2, "0")}${date.getMinutes().toString().padStart(2, "0")}${date
+    .getSeconds()
+    .toString()
+    .padStart(2, "0")}_${count}`;
+};
+
 // Route pour l'importation des clients
 router.post("/import", upload.single("campaignFile"), async (req, res) => {
   const file = req.file;
@@ -95,7 +109,6 @@ router.post("/import", upload.single("campaignFile"), async (req, res) => {
 
     // Nettoyage des données
     jsonData = jsonData.map(cleanRow);
-    console.log("Données brutes reçues :", jsonData);
 
     // Validation des en-têtes obligatoires
     const requiredHeaders = ["raisonSociale", "siren", "nomInterlocuteur"]; // En-têtes obligatoires seulement
@@ -118,9 +131,6 @@ router.post("/import", upload.single("campaignFile"), async (req, res) => {
 
     jsonData.forEach((row, index) => {
       try {
-        // Ajout d'un log pour déboguer la ligne en cours d'analyse
-        console.log(`Analyse de la ligne ${index + 1} :`, row);
-
         // Vérification sécurisée des champs obligatoires
         const missingData = requiredHeaders.filter((header) => {
           const value = row[header]; // Récupère la valeur du champ
@@ -130,9 +140,6 @@ router.post("/import", upload.single("campaignFile"), async (req, res) => {
         });
 
         if (missingData.length > 0) {
-          console.log(
-            `Ligne ${index + 2} ignorée. Champs manquants : ${missingData}`
-          );
           invalidRows.push({
             row: index + 2,
             missingHeaders: missingData,
@@ -143,9 +150,6 @@ router.post("/import", upload.single("campaignFile"), async (req, res) => {
         // Vérifie les doublons uniquement pour les champs obligatoires
         const exists = clients.some((client) => client.siren === row.siren);
         if (exists) {
-          console.log(
-            `Ligne ${index + 2} ignorée. Doublon détecté pour SIREN ${row.siren}`
-          );
           invalidRows.push({
             row: index + 2,
             error: `Doublon détecté pour SIREN: ${row.siren}.`,

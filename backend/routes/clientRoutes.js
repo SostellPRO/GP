@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const { body, validationResult } = require("express-validator");
 
 const clientsFilePath = path.join(__dirname, "../data/clients.json");
 const router = express.Router();
@@ -29,21 +30,107 @@ const writeClients = (clients) => {
 // Route : Récupérer tous les clients ou filtrer par statut
 router.get("/", (req, res) => {
   try {
-    const { status, userId } = req.query;
-    const clients = readClients();
+    const {
+      status,
+      matriculeGestionnaire,
+      typologie,
+      nombreDossiers,
+      montantEstime,
+      dateAvant,
+      dateApres,
+    } = req.query;
 
-    let filteredClients = clients;
+    // Initialisation des clients filtrés
+    let filteredClients = readClients();
 
+    // Appliquer les filtres
     if (status) {
       filteredClients = filteredClients.filter(
         (client) => client.statut.toLowerCase() === status.toLowerCase()
       );
     }
 
-    if (userId) {
+    if (matriculeGestionnaire) {
       filteredClients = filteredClients.filter(
-        (client) => client.matriculeGestionnaire === userId
+        (client) => client.matriculeGestionnaire === matriculeGestionnaire
       );
+    }
+
+    if (typologie) {
+      filteredClients = filteredClients.filter(
+        (client) => client.typologie.toLowerCase() === typologie.toLowerCase()
+      );
+    }
+
+    if (nombreDossiers) {
+      const compare = nombreDossiers.match(/(\d+)/g); // Récupère les chiffres dans la chaîne
+
+      if (nombreDossiers.startsWith("<")) {
+        filteredClients = filteredClients.filter((client) => {
+          const dossiers = client.nombreDossiers
+            ? parseInt(client.nombreDossiers.replace(/[^\d]/g, ""))
+            : 0;
+          return dossiers < parseInt(compare[0]);
+        });
+      } else if (nombreDossiers.startsWith(">")) {
+        filteredClients = filteredClients.filter((client) => {
+          const dossiers = client.nombreDossiers
+            ? parseInt(client.nombreDossiers.replace(/[^\d]/g, ""))
+            : 0;
+          return dossiers > parseInt(compare[0]);
+        });
+      } else if (nombreDossiers.includes("-")) {
+        const [min, max] = compare.map((val) => parseInt(val));
+        filteredClients = filteredClients.filter((client) => {
+          const dossiers = client.nombreDossiers
+            ? parseInt(client.nombreDossiers.replace(/[^\d]/g, ""))
+            : 0;
+          return dossiers >= min && dossiers <= max;
+        });
+      }
+    }
+
+    if (montantEstime) {
+      const compare = montantEstime.match(/(\d+)/g); // Récupère les chiffres de la valeur
+      if (montantEstime.startsWith("<")) {
+        filteredClients = filteredClients.filter((client) => {
+          const montant = client.montantEstime
+            ? parseInt(client.montantEstime.replace(/[^\d]/g, ""))
+            : 0;
+          return montant < parseInt(compare[0]);
+        });
+      } else if (montantEstime.startsWith(">")) {
+        filteredClients = filteredClients.filter((client) => {
+          const montant = client.montantEstime
+            ? parseInt(client.montantEstime.replace(/[^\d]/g, ""))
+            : 0;
+          return montant > parseInt(compare[0]);
+        });
+      } else if (montantEstime.includes("-")) {
+        const [min, max] = compare.map((val) => parseInt(val));
+        filteredClients = filteredClients.filter((client) => {
+          const montant = client.montantEstime
+            ? parseInt(client.montantEstime.replace(/[^\d]/g, ""))
+            : 0;
+          return montant >= min && montant <= max;
+        });
+      }
+    }
+
+    if (dateAvant) {
+      const dateLimit = new Date(dateAvant);
+      filteredClients = filteredClients.filter((client) => {
+        const clientDate = new Date(client.dateProchaineAction);
+        return clientDate <= dateLimit;
+      });
+    }
+
+    if (dateApres) {
+      const dateLimit = new Date(dateApres);
+      filteredClients = filteredClients.filter((client) => {
+        const clientDate = new Date(client.dateProchaineAction);
+        return clientDate >= dateLimit;
+      });
     }
 
     res.json(filteredClients);
@@ -54,37 +141,48 @@ router.get("/", (req, res) => {
 });
 
 // Route : Ajouter un nouveau client
-router.post("/", (req, res) => {
-  try {
-    const client = req.body;
-    const clients = readClients();
-
-    // Valider les données du client
-    if (!client.raisonSociale || !client.secteurActivite || !client.siren) {
-      return res.status(400).json({
-        error:
-          "Les champs 'raisonSociale', 'secteurActivite' et 'siren' sont requis.",
-      });
+router.post(
+  "/",
+  [
+    body("raisonSociale")
+      .notEmpty()
+      .withMessage("La raison sociale est requise."),
+    body("secteurActivite")
+      .notEmpty()
+      .withMessage("Le secteur d'activité est requis."),
+    body("siren")
+      .isLength({ min: 9, max: 9 })
+      .withMessage("Le SIREN doit comporter exactement 9 chiffres."),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
     }
 
-    // Générer un ID unique pour le client
-    const id = `${new Date().toISOString().replace(/[-:.TZ]/g, "")}${clients.length + 1}`;
-    const newClient = {
-      id,
-      ...client,
-      historique: client.historique || [],
-      statut: client.statut || "En attente d'appel",
-    };
+    try {
+      const client = req.body;
+      const clients = readClients();
 
-    clients.push(newClient);
-    writeClients(clients);
+      // Générer un ID unique pour le client
+      const id = `${new Date().toISOString().replace(/[-:.TZ]/g, "")}${clients.length + 1}`;
+      const newClient = {
+        id,
+        ...client,
+        historique: client.historique || [],
+        statut: client.statut || "En attente d'appel",
+      };
 
-    res.status(201).json(newClient);
-  } catch (error) {
-    console.error("Erreur lors de l'ajout d'un client :", error);
-    res.status(500).json({ error: "Erreur interne du serveur." });
+      clients.push(newClient);
+      writeClients(clients);
+
+      res.status(201).json(newClient);
+    } catch (error) {
+      console.error("Erreur lors de l'ajout d'un client :", error);
+      res.status(500).json({ error: "Erreur interne du serveur." });
+    }
   }
-});
+);
 
 // Route : Récupérer un client par ID
 router.get("/:id", (req, res) => {
@@ -168,25 +266,6 @@ router.patch("/:id/historique", (req, res) => {
     res.status(200).json(client);
   } catch (error) {
     console.error("Erreur lors de la mise à jour de l'historique :", error);
-    res.status(500).json({ error: "Erreur interne du serveur." });
-  }
-});
-
-// Route : Supprimer un client
-router.delete("/:id", (req, res) => {
-  try {
-    const { id } = req.params;
-    const clients = readClients();
-    const filteredClients = clients.filter((client) => client.id !== id);
-
-    if (clients.length === filteredClients.length) {
-      return res.status(404).json({ error: "Client non trouvé." });
-    }
-
-    writeClients(filteredClients);
-    res.sendStatus(204); // Succès sans contenu
-  } catch (error) {
-    console.error("Erreur lors de la suppression d'un client :", error);
     res.status(500).json({ error: "Erreur interne du serveur." });
   }
 });

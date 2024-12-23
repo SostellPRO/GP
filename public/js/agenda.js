@@ -39,7 +39,6 @@ async function loadClients(status, userId) {
     }
 
     const clients = await response.json();
-    console.log(clients);
 
     // Filtrer les clients selon le matriculeGestionnaire
     const filteredClients = clients.filter(

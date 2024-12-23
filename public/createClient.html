@@ -115,36 +115,11 @@
         <div class="part2_client">
           <fieldset>
             <legend>Informations Complémentaires</legend>
-            <label for="nombreDossiers">Nombre de Dossiers :</label>
-            <select id="nombreDossiers" name="nombreDossiers">
-              <option value="<10">Moins de 10</option>
-              <option value="<100">Moins de 100</option>
-              <option value="<500">Moins de 500</option>
-              <option value="+500">Plus de 500</option>
-            </select>
-            <input
-              type="text"
-              id="nombreDossiersCustom"
-              name="nombreDossiersCustom"
-              placeholder="Spécifiez le nombre"
-              style="display: none"
-            />
+            <label for="nombreDossiers">Nombre de dossiers :</label>
+            <input type="number" id="nombreDossiers" name="nombreDossiers" />
 
-            <label for="montantEstime">Montant Estimé :</label>
-            <select id="montantEstime" name="montantEstime">
-              <option value="<500">Moins de 500€</option>
-              <option value="<1000">Moins de 1000€</option>
-              <option value="<5000">Moins de 5000€</option>
-              <option value="<10000">Plus de 10000€</option>
-              <option value="+10000">Plus de 10000€</option>
-            </select>
-            <input
-              type="text"
-              id="montantEstimeCustom"
-              name="montantEstimeCustom"
-              placeholder="Spécifiez le montant"
-              style="display: none"
-            />
+            <label for="montantEstime">Montant estimé :</label>
+            <input type="number" id="montantEstime" name="montantEstime" />
 
             <h3>Historique :</h3>
             <ul id="historiqueList"></ul>
@@ -193,7 +168,7 @@
       </form>
       <p id="statusMessage"></p>
     </div>
-    <div id="footer" class="footer hidden">
+    <div id="footer">
       <div class="logoutButtonClient">
         <button onclick="navigateToHome()" class="buttonManageLogout">
           ACCUEIL

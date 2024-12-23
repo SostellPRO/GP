@@ -156,3 +156,37 @@ legend {
   font-weight: bold;
   color: rgb(116, 0, 255);
 }
+
+.buttonDetailLogout {
+  position: fixed; /* Fixe le bouton sur la page */
+
+  left: 0.5%; /* Distance du côté gauche */
+
+  bottom: 1%; /* Distance du bas */
+
+  width: auto; /* Laisse la largeur s'ajuster automatiquement */
+
+  font-size: 1rem; /* Taille de police */
+
+  font-weight: bold;
+
+  color: white;
+
+  background-color: rgb(116, 0, 255);
+
+  border: none;
+
+  border-radius: 5px;
+
+  padding: 10px 20px; /* Ajuste le padding pour une meilleure visibilité */
+
+  cursor: pointer;
+
+  text-align: center;
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+
+  z-index: 1000; /* Assure qu'il reste au-dessus des autres éléments */
+}

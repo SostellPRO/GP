@@ -24,6 +24,74 @@ document.addEventListener("DOMContentLoaded", async () => {
       await submitForm(e, commentaires, token);
     });
 
+  // Gestion de l'importation de fichier
+  document
+    .getElementById("uploadForm")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const fileInput = document.getElementById("campaignFile");
+      const file = fileInput.files[0];
+
+      if (!file) {
+        document.getElementById("importStatus").textContent =
+          "Veuillez sélectionner un fichier.";
+        return;
+      }
+
+      const allowedExtensions = /(\.csv|\.xlsx)$/i;
+      if (!allowedExtensions.exec(file.name)) {
+        document.getElementById("importStatus").textContent =
+          "Seuls les fichiers CSV ou Excel sont acceptés.";
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("campaignFile", file);
+
+      try {
+        const response = await fetch("/api/clients/import", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || "Erreur lors de l'importation.");
+        }
+
+        const result = await response.json();
+        const importedClients = result.addedClients;
+
+        // Generate unique IDs for each imported client
+        importedClients.forEach((client) => {
+          const date = new Date();
+          client.id = `${date.getFullYear()}${(date.getMonth() + 1)
+            .toString()
+            .padStart(
+              2,
+              "0"
+            )}${date.getDate().toString().padStart(2, "0")}${date
+            .getHours()
+            .toString()
+            .padStart(2, "0")}${date.getMinutes().toString().padStart(2, "0")}`;
+        });
+
+        const successMessage = `Importation réussie : ${result.addedCount} clients ajoutés.`;
+        const invalidCount = result.invalidRows.length;
+        const errorMessage =
+          invalidCount > 0
+            ? ` ${invalidCount} lignes ignorées en raison de données incorrectes.`
+            : "";
+        document.getElementById("importStatus").textContent =
+          successMessage + errorMessage;
+      } catch (error) {
+        document.getElementById("importStatus").textContent =
+          "Erreur lors de l'importation.";
+        console.error(error);
+      }
+    });
+
   // Redirection vers la page d'accueil
   document.getElementById("backToHome").addEventListener("click", () => {
     window.location.href = "/home.html";
@@ -118,30 +186,13 @@ function updateHistoriqueDisplay(historiqueList, commentaires) {
   });
 }
 
-// Gestion de la visibilité du footer
-function setupFooterVisibility(footer) {
-  window.addEventListener("scroll", () => {
-    const scrollPosition = window.scrollY + window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-
-    // Afficher le footer lorsque l'utilisateur est en bas de la page
-    if (scrollPosition >= documentHeight - 50) {
-      footer.classList.add("visible");
-    } else {
-      footer.classList.remove("visible");
-    }
-  });
-}
-
 // Soumission du formulaire
 async function submitForm(e, commentaires, token) {
   const formData = new FormData(e.target);
   const clientData = Object.fromEntries(formData.entries());
 
-  // Vérifier et inclure la date prochaine action
   clientData.dateProchaineAction = formData.get("dateProchaineAction");
 
-  // Traiter les champs "Autre"
   if (clientData.nombreDossiers === "custom") {
     clientData.nombreDossiers = formData.get("nombreDossiersCustom");
   }
@@ -149,10 +200,8 @@ async function submitForm(e, commentaires, token) {
     clientData.montantEstime = formData.get("montantEstimeCustom");
   }
 
-  // Ajouter l'historique dans les données du client
   clientData.historique = commentaires;
 
-  // Génération automatique de l'ID client
   const date = new Date();
   clientData.id = `${date.getFullYear()}${(date.getMonth() + 1)
     .toString()
