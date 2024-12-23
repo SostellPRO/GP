@@ -89,3 +89,12 @@ button:hover {
 .client-link:hover {
   text-decoration: underline;
 }
+.fieldset__tri {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.tri {
+  width: 30%;
+}

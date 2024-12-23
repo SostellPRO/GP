@@ -82,22 +82,13 @@
         <div class="section2_detail">
           <fieldset>
             <legend>Informations supplémentaires</legend>
-            <label for="nombreDossiers">Nombre de Dossiers :</label>
-            <select id="nombreDossiers">
-              <option value="<10">Moins de 10</option>
-              <option value="<100">Moins de 100</option>
-              <option value="<500">Moins de 500</option>
-              <option value="+500">Plus de 500</option>
-            </select>
+            <label for="nombreDossiers">Nombre de dossiers :</label>
 
-            <label for="montantEstime">Montant Estimé :</label>
-            <select id="montantEstime">
-              <option value="<500">Moins de 500€</option>
-              <option value="<1000">Moins de 1000€</option>
-              <option value="<5000">Moins de 5000€</option>
-              <option value="<10000">Plus de 10000€</option>
-              <option value="+10000">Plus de 10000€</option>
-            </select>
+            <input type="number" id="nombreDossiers" />
+
+            <label for="montantEstime">Nombre de dossiers :</label>
+
+            <input type="number" id="montantEstime" />
 
             <label for="commentaire">Ajouter un commentaire :</label>
             <textarea id="commentaire"></textarea>
@@ -129,7 +120,9 @@
           </fieldset>
         </div>
       </form>
-      <button onclick="navigateToAgenda()">RETOUR</button>
+      <button onclick="navigateToAgenda()" class="buttonDetailLogout">
+        RETOUR
+      </button>
     </div>
   </body>
 </html>

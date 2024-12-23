@@ -36,11 +36,14 @@ router.get("/", (req, res) => {
       typologie,
       nombreDossiers,
       montantEstime,
+      dateAvant,
+      dateApres,
     } = req.query;
-    const clients = readClients();
 
-    let filteredClients = clients;
+    // Initialisation des clients filtrés
+    let filteredClients = readClients();
 
+    // Appliquer les filtres
     if (status) {
       filteredClients = filteredClients.filter(
         (client) => client.statut.toLowerCase() === status.toLowerCase()
@@ -112,6 +115,22 @@ router.get("/", (req, res) => {
           return montant >= min && montant <= max;
         });
       }
+    }
+
+    if (dateAvant) {
+      const dateLimit = new Date(dateAvant);
+      filteredClients = filteredClients.filter((client) => {
+        const clientDate = new Date(client.dateProchaineAction);
+        return clientDate <= dateLimit;
+      });
+    }
+
+    if (dateApres) {
+      const dateLimit = new Date(dateApres);
+      filteredClients = filteredClients.filter((client) => {
+        const clientDate = new Date(client.dateProchaineAction);
+        return clientDate >= dateLimit;
+      });
     }
 
     res.json(filteredClients);

@@ -16,7 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Pages disponibles
   const menuItems = [
     { text: "Accueil", href: "home.html" },
+
     { text: "Agenda", href: "agenda.html" },
+
+    { text: "Extraction", href: "extraction.html" },
+
     { text: "Créer un Client", href: "createClient.html" },
   ];
 

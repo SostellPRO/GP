@@ -43,6 +43,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    // Ajout des dates au filtre
+    const dateAvant = filters.dateAvant || null;
+    const dateApres = filters.dateApres || null;
+
+    if (dateAvant) {
+      filters["dateAvant"] = dateAvant;
+    }
+    if (dateApres) {
+      filters["dateApres"] = dateApres;
+    }
+
     // Ajouter le filtre matriculeGestionnaire si sélectionné
     const selectedMatricule = matriculeSelect.value;
     console.log(selectedMatricule);
@@ -69,58 +80,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
       clients.forEach((client) => {
         const row = document.createElement("tr");
+
         row.innerHTML = `
+
           <td><a href="/clientDetail.html?id=${client.id}" class="client-link">${client.id}</a></td>
+
           <td>${client.raisonSociale}</td>
+
           <td>${client.secteurActivite}</td>
-          <td>${client.siren}</td>
+
           <td>${client.siret}</td>
+
           <td>${client.typologie}</td>
+
           <td>${client.nomInterlocuteur}</td>
+
           <td>${client.prenomInterlocuteur}</td>
-          <td>${client.adressePostale}</td>
-          <td>${client.codePostal}</td>
+
           <td>${client.telephone1}</td>
+
           <td>${client.mail1}</td>
+
           <td>${client.nombreDossiers || "Non défini"}</td>
+
           <td>${formatMontant(client.montantEstime)}</td>
+
           <td>${client.historique?.[0] || "Aucun commentaire"}</td>
+
           <td>${client.dateProchaineAction || "Non définie"}</td>
+
           <td>${client.statut}</td>
+
           <td>${client.matriculeGestionnaire}</td>
+
         `;
+
         clientTableBody.appendChild(row);
+
         console.log(clientTableBody);
       });
     } catch (error) {
       console.error("Erreur lors du chargement des clients :", error);
+
       clientTableBody.innerHTML = `<tr><td colspan="17">Erreur : ${error.message}</td></tr>`;
     }
   });
 
   // Exporter les données au format Excel
+
   exportButton.addEventListener("click", () => {
     const rows = Array.from(clientTableBody.querySelectorAll("tr")).map((row) =>
       Array.from(row.querySelectorAll("td")).map((cell) => cell.textContent)
     );
+
     const headers = [
       "ID",
+
       "Raison Sociale",
+
       "Secteur Activité",
-      "SIREN",
+
       "SIRET",
+
       "Typologie",
+
       "Nom Interlocuteur",
+
       "Prénom Interlocuteur",
-      "Adresse",
-      "Code Postal",
+
       "Téléphone",
+
       "E-mail",
+
       "Volumétrie",
+
       "Montant Estimé",
+
       "Commentaire",
+
       "Date Prochaine Action",
+
       "Statut",
+
       "Matricule",
     ];
     const worksheetData = [headers, ...rows];

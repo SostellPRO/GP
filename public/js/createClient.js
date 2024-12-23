@@ -186,20 +186,6 @@ function updateHistoriqueDisplay(historiqueList, commentaires) {
   });
 }
 
-// Gestion de la visibilité du footer
-function setupFooterVisibility(footer) {
-  window.addEventListener("scroll", () => {
-    const scrollPosition = window.scrollY + window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-
-    if (scrollPosition >= documentHeight - 50) {
-      footer.classList.add("visible");
-    } else {
-      footer.classList.remove("visible");
-    }
-  });
-}
-
 // Soumission du formulaire
 async function submitForm(e, commentaires, token) {
   const formData = new FormData(e.target);
