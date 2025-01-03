@@ -82,42 +82,47 @@
         <div class="section2_detail">
           <fieldset>
             <legend>Informations supplémentaires</legend>
-            <label for="nombreDossiers">Nombre de dossiers :</label>
-
-            <input type="number" id="nombreDossiers" />
-
-            <label for="montantEstime">Nombre de dossiers :</label>
-
-            <input type="number" id="montantEstime" />
-
-            <label for="commentaire">Ajouter un commentaire :</label>
-            <textarea id="commentaire"></textarea>
-            <button type="button" id="addComment" class="button_detail">
-              Ajouter Commentaire
-            </button>
-
-            <label for="dateProchaineAction">Date prochaine action :</label>
-            <input
-              type="date"
-              id="dateProchaineAction"
-              name="dateProchaineAction"
-              required
-            />
-
-            <div id="historique">
-              <h3>Historique :</h3>
-              <ul id="historiqueList"></ul>
-            </div>
-
-            <label for="statut">Statut :</label>
-            <select id="statut">
-              <option value="En attente d'appel">En attente d'appel</option>
-              <option value="À rappeler">À rappeler</option>
-              <option value="Signé">Signé</option>
-              <option value="Fin de communication">Fin de communication</option>
-            </select>
-            <button type="submit" class="button_detail2">Enregistrer</button>
-          </fieldset>
+            <fieldset>
+              <legend>Informations supplémentaires</legend>
+              <div class="fieldset-columns">
+                <!-- Colonne de gauche -->
+                <div class="column">
+                  <label for="nombreDossiers">Nombre de dossiers :</label>
+                  <input type="number" id="nombreDossiers" />
+          
+                  <label for="montantEstime">Montant estimé :</label>
+                  <input type="number" id="montantEstime" />
+          
+                  <label for="commentaire">Ajouter un commentaire :</label>
+                  <textarea id="commentaire"></textarea>
+                  <button type="button" id="addComment" class="button_detail">
+                    Ajouter Commentaire
+                  </button>
+                </div>
+          
+                <!-- Colonne de droite -->
+                <div class="column">
+                  <label for="dateProchaineAction">Date prochaine action :</label>
+                  <input type="date" id="dateProchaineAction" name="dateProchaineAction" required />
+          
+                  <label for="statut">Statut :</label>
+                  <select id="statut">
+                    <option value="En attente d'appel">En attente d'appel</option>
+                    <option value="À rappeler">À rappeler</option>
+                    <option value="Signé">Signé</option>
+                    <option value="Fin de communication">Fin de communication</option>
+                  </select>
+          
+                  <label for="historique">Historique :</label>
+                  <div id="historique">
+                    <h3>Historique :</h3>
+                    <ul id="historiqueList"></ul>
+                  </div>
+                  <!-- Bouton Enregistrer déplacé ici -->
+                  <button type="submit" class="button_detail2">Enregistrer</button>
+                </div>
+              </div>
+            </fieldset>
         </div>
       </form>
       <button onclick="navigateToAgenda()" class="buttonDetailLogout">

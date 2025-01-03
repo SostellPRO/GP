@@ -190,3 +190,43 @@ legend {
 
   z-index: 1000; /* Assure qu'il reste au-dessus des autres éléments */
 }
+
+/* Organisation en colonnes pour le fieldset "Informations supplémentaires" */
+.fieldset-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Espace entre les colonnes */
+}
+
+.fieldset-columns .column {
+  width: 48%; /* Chaque colonne occupe environ la moitié de la largeur */
+}
+
+.fieldset-columns label {
+  display: block;
+  margin-bottom: 5px; /* Espacement entre les labels et les champs */
+}
+
+.fieldset-columns input,
+.fieldset-columns select,
+.fieldset-columns textarea {
+  width: 100%; /* Champs prennent toute la largeur de leur colonne */
+  box-sizing: border-box; /* Inclure bordures et padding dans la largeur */
+  margin-bottom: 15px; /* Espacement vertical entre les champs */
+}
+
+.fieldset-columns button#addComment {
+  margin-top: 10px; /* Espace supplémentaire sous le champ commentaire */
+  width: auto; /* Garde le bouton ajusté au contenu */
+  align-self: flex-start; /* S'assure qu'il reste à gauche */
+}
+
+.fieldset-columns .column {
+  width: 48%; /* Chaque colonne occupe environ la moitié de la largeur */
+}
+
+.fieldset-columns button.button_detail2 {
+  margin-top: 20px; /* Espace supplémentaire au-dessus du bouton */
+  align-self: flex-start; /* Le bouton reste aligné à gauche de la colonne de droite */
+  width: auto; /* Ajuste la largeur automatiquement */
+}
