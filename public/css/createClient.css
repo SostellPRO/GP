@@ -170,3 +170,27 @@ body {
 
   z-index: 1000; /* Assure qu'il reste au-dessus des autres éléments */
 }
+
+/* Organisation en colonnes pour le fieldset Informations Complémentaires */
+.fieldset-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Espace entre les colonnes */
+}
+
+.fieldset-columns .column {
+  width: 48%; /* Chaque colonne occupe environ la moitié du fieldset */
+}
+
+.fieldset-columns label {
+  display: block;
+  margin-bottom: 5px; /* Espacement entre les labels et les champs */
+}
+
+.fieldset-columns input,
+.fieldset-columns select,
+.fieldset-columns textarea {
+  width: 100%; /* Champs prennent la largeur de leur colonne */
+  box-sizing: border-box; /* Inclure les bordures et padding dans la largeur */
+  margin-bottom: 15px; /* Espacement entre les champs */
+}

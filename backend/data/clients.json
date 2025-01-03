@@ -19,10 +19,11 @@
     "nombreDossiers": "990",
     "montantEstime": "5666",
     "commentaire": "Commentaire sur la société 21.",
-    "dateProchaineAction": "2024-01-01",
-    "statut": "En attente d'appel",
+    "dateProchaineAction": "2025-01-01",
+    "statut": "À rappeler",
     "matriculeGestionnaire": "a001",
-    "historique": []
+    "historique": [],
+    "civilite": "M"
   },
   {
     "id": "1734994177265_1",
